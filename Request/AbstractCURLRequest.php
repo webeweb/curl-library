@@ -30,42 +30,42 @@ abstract class AbstractCURLRequest {
     /**
      * Content-type application/x-www-form-urlencoded
      */
-    const CONTENT_TYPE_X_WWW_FORM_URLENCODED = 'Content-Type: application/x-www-form-urlencoded';
+    const CONTENT_TYPE_X_WWW_FORM_URLENCODED = "Content-Type: application/x-www-form-urlencoded";
 
     /**
-     * Method 'DELETE'.
+     * Method "DELETE".
      */
-    const METHOD_DELETE = 'DELETE';
+    const METHOD_DELETE = "DELETE";
 
     /**
-     * Method 'GET'.
+     * Method "GET".
      */
-    const METHOD_GET = 'GET';
+    const METHOD_GET = "GET";
 
     /**
-     * Method 'HEAD'.
+     * Method "HEAD".
      */
-    const METHOD_HEAD = 'HEAD';
+    const METHOD_HEAD = "HEAD";
 
     /**
-     * Method 'OPTIONS'.
+     * Method "OPTIONS".
      */
-    const METHOD_OPTIONS = 'OPTIONS';
+    const METHOD_OPTIONS = "OPTIONS";
 
     /**
-     * Method 'PATCH'.
+     * Method "PATCH".
      */
-    const METHOD_PATCH = 'PATCH';
+    const METHOD_PATCH = "PATCH";
 
     /**
-     * Method 'POST'.
+     * Method "POST".
      */
-    const METHOD_POST = 'POST';
+    const METHOD_POST = "POST";
 
     /**
-     * Method 'PUT'.
+     * Method "PUT".
      */
-    const METHOD_PUT = 'PUT';
+    const METHOD_PUT = "PUT";
 
     /**
      * Configuration.
@@ -131,7 +131,7 @@ abstract class AbstractCURLRequest {
      */
     public final function addHeader($name, $value) {
         if (!is_string($name)) {
-            throw new CURLInvalidArgumentException('The header name must be a string');
+            throw new CURLInvalidArgumentException("The header name must be a string");
         }
         $this->headers[$name] = $value;
     }
@@ -145,7 +145,7 @@ abstract class AbstractCURLRequest {
      */
     public final function addPostData($name, $value) {
         if (!is_string($name)) {
-            throw new CURLInvalidArgumentException('The POST data name must be a string');
+            throw new CURLInvalidArgumentException("The POST data name must be a string");
         }
         $this->postData[$name] = $value;
     }
@@ -159,7 +159,7 @@ abstract class AbstractCURLRequest {
      */
     public final function addQueryData($name, $value) {
         if (!is_string($name)) {
-            throw new CURLInvalidArgumentException('The query data name must be a string');
+            throw new CURLInvalidArgumentException("The query data name must be a string");
         }
         $this->queryData[$name] = $value;
     }
@@ -181,13 +181,13 @@ abstract class AbstractCURLRequest {
 
         // Handle each merge header.
         foreach ($mergedHeaders as $key => $value) {
-            $curlHeaders[] = implode(': ', [$key, $value]);
+            $curlHeaders[] = implode(": ", [$key, $value]);
         }
 
         // Initialize the URL.
-        $curlURL = implode('/', [$this->getConfiguration()->getHost(), $this->getResourcePath()]);
+        $curlURL = implode("/", [$this->getConfiguration()->getHost(), $this->getResourcePath()]);
         if (0 < count($this->getQueryData())) {
-            $curlURL = implode('?', [$curlURL, http_build_query($this->getQueryData())]);
+            $curlURL = implode("?", [$curlURL, http_build_query($this->getQueryData())]);
         }
 
         // Initialize CURL.
@@ -200,7 +200,7 @@ abstract class AbstractCURLRequest {
 
         // Set the encoding.
         if ($this->getConfiguration()->getAllowEncoding() === true) {
-            curl_setopt($curl, CURLOPT_ENCODING, '');
+            curl_setopt($curl, CURLOPT_ENCODING, "");
         }
 
         // Set the HTTP headers.
@@ -255,7 +255,7 @@ abstract class AbstractCURLRequest {
             curl_setopt($curl, CURLOPT_PROXYTYPE, $this->getConfiguration()->getProxyType());
         }
         if (!is_null($this->getConfiguration()->getProxyUsername())) {
-            curl_setopt($curl, CURLOPT_PROXYUSERPWD, implode(':', [$this->getConfiguration()->getProxyUsername(), $this->getConfiguration()->getProxyPassword()]));
+            curl_setopt($curl, CURLOPT_PROXYUSERPWD, implode(":", [$this->getConfiguration()->getProxyUsername(), $this->getConfiguration()->getProxyPassword()]));
         }
 
         // Set the return.
@@ -280,10 +280,10 @@ abstract class AbstractCURLRequest {
 
         // Set the verbose.
         if ($this->getConfiguration()->getDebug() === true) {
-            curl_setopt($curl, CURLOPT_STDERR, fopen($this->getConfiguration()->getDebugFile(), 'a'));
+            curl_setopt($curl, CURLOPT_STDERR, fopen($this->getConfiguration()->getDebugFile(), "a"));
             curl_setopt($curl, CURLOPT_VERBOSE, 0);
 
-            $msg = (new DateTime())->format('c') . ' [DEBUG] ' . $curlURL . PHP_EOL . 'HTTP request body ~BEGIN~' . PHP_EOL . print_r($curlPOSTData, true) . PHP_EOL . '~END~' . PHP_EOL;
+            $msg = (new DateTime())->format("c") . " [DEBUG] " . $curlURL . PHP_EOL . "HTTP request body ~BEGIN~" . PHP_EOL . print_r($curlPOSTData, true) . PHP_EOL . "~END~" . PHP_EOL;
             error_log($msg, 3, $this->getConfiguration()->getDebugFile());
         } else {
             curl_setopt($curl, CURLOPT_VERBOSE, 1);
@@ -301,19 +301,19 @@ abstract class AbstractCURLRequest {
 
         //
         if ($this->getConfiguration()->getDebug() === true) {
-            $msg = (new DateTime())->format('c') . ' [DEBUG] ' . $curlURL . PHP_EOL . 'HTTP response body ~BEGIN~' . PHP_EOL . print_r($httpBody, true) . PHP_EOL . '~END~' . PHP_EOL;
+            $msg = (new DateTime())->format("c") . " [DEBUG] " . $curlURL . PHP_EOL . "HTTP response body ~BEGIN~" . PHP_EOL . print_r($httpBody, true) . PHP_EOL . "~END~" . PHP_EOL;
             error_log($msg, 3, $this->getConfiguration()->getDebugFile());
         }
 
         // Handle the response.
-        if ($curlInfo['http_code'] === 0) {
+        if ($curlInfo["http_code"] === 0) {
 
             // Get the error.
             $curlError = curl_error($curl);
             if (!empty($curlError)) {
-                $msg = 'API call to ' . $curlURL . ' failed : ' . $curlError;
+                $msg = "API call to " . $curlURL . " failed : " . $curlError;
             } else {
-                $msg = 'API call to ' . $curlURL . ' failed, but for an unknown reason. This could happen if you are disconnected from the network.';
+                $msg = "API call to " . $curlURL . " failed, but for an unknown reason. This could happen if you are disconnected from the network.";
             }
 
             // Initialize the exception.
@@ -324,7 +324,7 @@ abstract class AbstractCURLRequest {
 
             //
             throw $ex;
-        } else if (200 <= $curlInfo['http_code'] && $curlInfo['http_code'] <= 299) {
+        } else if (200 <= $curlInfo["http_code"] && $curlInfo["http_code"] <= 299) {
 
             // Initialize the response.
             $response = new CURLResponse();
@@ -417,11 +417,11 @@ abstract class AbstractCURLRequest {
 
         // Initialize the headers.
         $headers = [];
-        $key     = '';
+        $key     = "";
 
         // Handle each header.
         foreach (explode("\n", $rawHeader) as $h) {
-            $h = explode(':', $h, 2);
+            $h = explode(":", $h, 2);
             if (isset($h[1])) {
                 if (!isset($headers[$h[0]])) {
                     $headers[$h[0]] = trim($h[1]);

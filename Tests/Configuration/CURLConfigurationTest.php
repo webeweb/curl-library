@@ -32,15 +32,15 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 
         $obj = new CURLConfiguration();
 
-        $obj->addHeader('name', 'value');
-        $res1 = ['name' => 'value'];
-        $this->assertEquals($res1, $obj->getHeaders(), 'The method getHeaders() does not return the expected headers with name');
+        $obj->addHeader("name", "value");
+        $res1 = ["name" => "value"];
+        $this->assertEquals($res1, $obj->getHeaders(), "The method getHeaders() does not return the expected headers with name");
 
         try {
-            $obj->addHeader(1, 'value');
+            $obj->addHeader(1, "value");
         } catch (Exception $ex) {
-            $this->assertInstanceOf(CURLInvalidArgumentException::class, $ex, 'The method addHeader() does not throws the expected exception');
-            $this->assertEquals('The header name must be a string', $ex->getMessage(), 'The method addHeader() does not return the exepected exception message');
+            $this->assertInstanceOf(CURLInvalidArgumentException::class, $ex, "The method addHeader() does not throws the expected exception");
+            $this->assertEquals("The header name must be a string", $ex->getMessage(), "The method addHeader() does not return the exepected exception message");
         }
     }
 
@@ -50,15 +50,15 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
     public function testRemoveHeader() {
 
         $obj = new CURLConfiguration();
-        $obj->addHeader('name', 'value');
+        $obj->addHeader("name", "value");
 
-        $obj->removeHeader('');
-        $res1 = ['name' => 'value'];
-        $this->assertEquals($res1, $obj->getHeaders(), 'The method getHeaders() does not return the expected headers');
+        $obj->removeHeader("");
+        $res1 = ["name" => "value"];
+        $this->assertEquals($res1, $obj->getHeaders(), "The method getHeaders() does not return the expected headers");
 
-        $obj->removeHeader('name');
+        $obj->removeHeader("name");
         $res2 = [];
-        $this->assertEquals($res2, $obj->getHeaders(), 'The method getHeaders() does not return the expected headers with name');
+        $this->assertEquals($res2, $obj->getHeaders(), "The method getHeaders() does not return the expected headers with name");
     }
 
 }

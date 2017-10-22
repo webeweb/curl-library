@@ -31,17 +31,17 @@ final class CURLPatchRequestTest extends PHPUnit_Framework_TestCase {
      */
     public function testAddHeader() {
 
-        $obj = new CURLPatchRequest(new CURLConfiguration(), '');
+        $obj = new CURLPatchRequest(new CURLConfiguration(), "");
 
-        $obj->addHeader('name', 'value');
-        $res1 = ['name' => 'value'];
-        $this->assertEquals($res1, $obj->getHeaders(), 'The method getHeaders() does not return the expected headers with name');
+        $obj->addHeader("name", "value");
+        $res1 = ["name" => "value"];
+        $this->assertEquals($res1, $obj->getHeaders(), "The method getHeaders() does not return the expected headers with name");
 
         try {
-            $obj->addHeader(1, 'value');
+            $obj->addHeader(1, "value");
         } catch (Exception $ex) {
-            $this->assertInstanceOf(CURLInvalidArgumentException::class, $ex, 'The method addHeader() does not throws the expected exception');
-            $this->assertEquals('The header name must be a string', $ex->getMessage(), 'The method addHeader() does not return the exepected exception message');
+            $this->assertInstanceOf(CURLInvalidArgumentException::class, $ex, "The method addHeader() does not throws the expected exception");
+            $this->assertEquals("The header name must be a string", $ex->getMessage(), "The method addHeader() does not return the exepected exception message");
         }
     }
 
@@ -50,16 +50,16 @@ final class CURLPatchRequestTest extends PHPUnit_Framework_TestCase {
      */
     public function testRemoveHeader() {
 
-        $obj = new CURLPatchRequest(new CURLConfiguration(), '');
-        $obj->addHeader('name', 'value');
+        $obj = new CURLPatchRequest(new CURLConfiguration(), "");
+        $obj->addHeader("name", "value");
 
-        $obj->removeHeader('');
-        $res1 = ['name' => 'value'];
-        $this->assertEquals($res1, $obj->getHeaders(), 'The method getHeaders() does not return the expected headers with name');
+        $obj->removeHeader("");
+        $res1 = ["name" => "value"];
+        $this->assertEquals($res1, $obj->getHeaders(), "The method getHeaders() does not return the expected headers with name");
 
-        $obj->removeHeader('name');
+        $obj->removeHeader("name");
         $res2 = [];
-        $this->assertEquals($res2, $obj->getHeaders(), 'The method getHeaders() does not return the expected headers');
+        $this->assertEquals($res2, $obj->getHeaders(), "The method getHeaders() does not return the expected headers");
     }
 
     /**
@@ -67,17 +67,17 @@ final class CURLPatchRequestTest extends PHPUnit_Framework_TestCase {
      */
     public function testAddQueryData() {
 
-        $obj = new CURLPatchRequest(new CURLConfiguration(), '');
+        $obj = new CURLPatchRequest(new CURLConfiguration(), "");
 
-        $obj->addQueryData('name', 'value');
-        $res1 = ['name' => 'value'];
-        $this->assertEquals($res1, $obj->getQueryData(), 'The method getQueryData() does not return the expected query data with name');
+        $obj->addQueryData("name", "value");
+        $res1 = ["name" => "value"];
+        $this->assertEquals($res1, $obj->getQueryData(), "The method getQueryData() does not return the expected query data with name");
 
         try {
-            $obj->addQueryData(1, 'value');
+            $obj->addQueryData(1, "value");
         } catch (Exception $ex) {
-            $this->assertInstanceOf(CURLInvalidArgumentException::class, $ex, 'The method addQueryData() does not throws the expected exception');
-            $this->assertEquals('The query data name must be a string', $ex->getMessage(), 'The method addQueryData() does not return the exepected exception message');
+            $this->assertInstanceOf(CURLInvalidArgumentException::class, $ex, "The method addQueryData() does not throws the expected exception");
+            $this->assertEquals("The query data name must be a string", $ex->getMessage(), "The method addQueryData() does not return the exepected exception message");
         }
     }
 
@@ -86,16 +86,16 @@ final class CURLPatchRequestTest extends PHPUnit_Framework_TestCase {
      */
     public function testRemoveQueryData() {
 
-        $obj = new CURLPatchRequest(new CURLConfiguration(), '');
-        $obj->addQueryData('name', 'value');
+        $obj = new CURLPatchRequest(new CURLConfiguration(), "");
+        $obj->addQueryData("name", "value");
 
-        $obj->removeQueryData('');
-        $res1 = ['name' => 'value'];
-        $this->assertEquals($res1, $obj->getQueryData(), 'The method getQueryData() does not return the expected query data with name');
+        $obj->removeQueryData("");
+        $res1 = ["name" => "value"];
+        $this->assertEquals($res1, $obj->getQueryData(), "The method getQueryData() does not return the expected query data with name");
 
-        $obj->removeQueryData('name');
+        $obj->removeQueryData("name");
         $res2 = [];
-        $this->assertEquals($res2, $obj->getQueryData(), 'The method getQueryData() does not return the expected query data');
+        $this->assertEquals($res2, $obj->getQueryData(), "The method getQueryData() does not return the expected query data");
     }
 
     /**
@@ -103,17 +103,17 @@ final class CURLPatchRequestTest extends PHPUnit_Framework_TestCase {
      */
     public function testAddPostData() {
 
-        $obj = new CURLPatchRequest(new CURLConfiguration(), '');
+        $obj = new CURLPatchRequest(new CURLConfiguration(), "");
 
-        $obj->addPostData('name', 'value');
-        $res1 = ['name' => 'value'];
-        $this->assertEquals($res1, $obj->getPostData(), 'The method getPostData() does not return the expected post data with name');
+        $obj->addPostData("name", "value");
+        $res1 = ["name" => "value"];
+        $this->assertEquals($res1, $obj->getPostData(), "The method getPostData() does not return the expected post data with name");
 
         try {
-            $obj->addPostData(1, 'value');
+            $obj->addPostData(1, "value");
         } catch (Exception $ex) {
-            $this->assertInstanceOf(CURLInvalidArgumentException::class, $ex, 'The method addPostData() does not throws the expected exception');
-            $this->assertEquals('The POST data name must be a string', $ex->getMessage(), 'The method addPostData() does not return the exepected exception message');
+            $this->assertInstanceOf(CURLInvalidArgumentException::class, $ex, "The method addPostData() does not throws the expected exception");
+            $this->assertEquals("The POST data name must be a string", $ex->getMessage(), "The method addPostData() does not return the exepected exception message");
         }
     }
 
@@ -122,16 +122,16 @@ final class CURLPatchRequestTest extends PHPUnit_Framework_TestCase {
      */
     public function testRemovePostData() {
 
-        $obj = new CURLPatchRequest(new CURLConfiguration(), '');
-        $obj->addPostData('name', 'value');
+        $obj = new CURLPatchRequest(new CURLConfiguration(), "");
+        $obj->addPostData("name", "value");
 
-        $obj->removePostData('');
-        $res1 = ['name' => 'value'];
-        $this->assertEquals($res1, $obj->getPostData(), 'The method getPostData() does not return the expected post data with name');
+        $obj->removePostData("");
+        $res1 = ["name" => "value"];
+        $this->assertEquals($res1, $obj->getPostData(), "The method getPostData() does not return the expected post data with name");
 
-        $obj->removePostData('name');
+        $obj->removePostData("name");
         $res2 = [];
-        $this->assertEquals($res2, $obj->getPostData(), 'The method getPostData() does not return the expected post data');
+        $this->assertEquals($res2, $obj->getPostData(), "The method getPostData() does not return the expected post data");
     }
 
 }

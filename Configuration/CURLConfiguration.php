@@ -47,7 +47,7 @@ final class CURLConfiguration {
      *
      * @var string
      */
-    private $debugFile = 'php://output';
+    private $debugFile = "php://output";
 
     /**
      * Headers.
@@ -131,7 +131,7 @@ final class CURLConfiguration {
      *
      * @var string
      */
-    private $userAgent = 'SDKBundle/API/CURL/1.0.0';
+    private $userAgent = "SDKBundle/API/CURL/1.0.0";
 
     /**
      * Constructor.
@@ -149,7 +149,7 @@ final class CURLConfiguration {
      */
     public function addHeader($name, $value) {
         if (!is_string($name)) {
-            throw new CURLInvalidArgumentException('The header name must be a string');
+            throw new CURLInvalidArgumentException("The header name must be a string");
         }
         $this->headers[$name] = $value;
     }
