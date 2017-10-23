@@ -131,7 +131,7 @@ final class CURLConfiguration {
      *
      * @var string
      */
-    private $userAgent = "SDKBundle/API/CURL/1.0.0";
+    private $userAgent = "cURLLibrary/1.0";
 
     /**
      * Constructor.

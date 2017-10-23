@@ -26,7 +26,27 @@ use WBW\Library\CURL\Exception\CURLInvalidArgumentException;
 final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 
     /**
+     * Test the __constructor() method.
+     *
+     * @return void
+     */
+    public function testConstructor() {
+
+        $obj = new CURLConfiguration();
+
+        $this->assertEquals(false, $obj->getAllowEncoding(), "The method getAllowEncoding() does not return the expected value");
+        $this->assertEquals(0, $obj->getConnectTimeout(), "The method getConnectTimeout() does not return the expected value");
+        $this->assertEquals(false, $obj->getDebug(), "The method getDebug() does not return the expected value");
+        $this->assertEquals("php://output", $obj->getDebugFile(), "The method getDebugFile() does not return the expected value");
+        $this->assertEquals([], $obj->getHeaders(), "The method getHeaders() does not return the expected value");
+        $this->assertEquals(true, $obj->getSslVerification(), "The method getSslVerification() does not return the expected value");
+        $this->assertEquals("cURLLibrary/1.0", $obj->getUserAgent(), "The method getUserAgent() does not return the expected value");
+    }
+
+    /**
      * Test the addHeader() method.
+     *
+     * @return void
      */
     public function testAddHeader() {
 
@@ -46,6 +66,8 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 
     /**
      * Test the removeHeader() method.
+     *
+     * @return void
      */
     public function testRemoveHeader() {
 
