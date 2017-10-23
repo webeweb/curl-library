@@ -11,7 +11,8 @@
 
 namespace WBW\Library\CURL\Configuration;
 
-use WBW\Library\CURL\Exception\CURLInvalidArgumentException;
+use WBW\Library\Core\Argument\ArgumentValidator;
+use WBW\Library\Core\Exception\Argument\StringArgumentException;
 
 /**
  * CURL configuration.
@@ -145,12 +146,10 @@ final class CURLConfiguration {
      *
      * @param string $name The header name.
      * @param string $value The header value.
-     * @throws CURLInvalidArgumentException Throws a CURL invalid argument exception if the argument is not a string.
+     * @throws StringArgumentException Throws a string argument exception if the argument is not a string.
      */
     public function addHeader($name, $value) {
-        if (!is_string($name)) {
-            throw new CURLInvalidArgumentException("The header name must be a string");
-        }
+        ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
         $this->headers[$name] = $value;
     }
 
@@ -332,7 +331,7 @@ final class CURLConfiguration {
      *
      * @param boolean $debug The debug.
      */
-    public function setDebug($debug) {
+    public function setDebug($debug = false) {
         $this->debug = $debug;
     }
 
@@ -341,7 +340,7 @@ final class CURLConfiguration {
      *
      * @param string $debugFile The debug file.
      */
-    public function setDebugFile($debugFile) {
+    public function setDebugFile($debugFile = "php://output") {
         $this->debugFile = $debugFile;
     }
 
@@ -449,7 +448,7 @@ final class CURLConfiguration {
      *
      * @param string $userAgent The user agent.
      */
-    public function setUserAgent($userAgent) {
+    public function setUserAgent($userAgent = "cURLLibrary/1.0") {
         $this->userAgent = $userAgent;
     }
 
