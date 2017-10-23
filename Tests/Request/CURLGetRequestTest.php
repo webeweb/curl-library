@@ -9,12 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace WBW\Library\CURL\Request;
+namespace WBW\Library\CURL\Tests\Request;
 
 use Exception;
-use PHPUnit_Framework_TestCase;
-use WBW\Library\CURL\Configuration\CURLConfiguration;
-use WBW\Library\CURL\Exception\CURLInvalidArgumentException;
+use WBW\Library\Core\Exception\Argument\StringArgumentException;
+use WBW\Library\Core\HTTP\HTTPCodeInterface;
+use WBW\Library\CURL\Exception\CURLRequestCallException;
+use WBW\Library\CURL\Request\CURLGetRequest;
 
 /**
  * CURL GET request test.
@@ -23,114 +24,144 @@ use WBW\Library\CURL\Exception\CURLInvalidArgumentException;
  * @package WBW\Library\CURL\Tests\Request
  * @final
  */
-final class CURLGetRequestTest extends PHPUnit_Framework_TestCase {
+final class CURLGetRequestTest extends AbstractCURLRequestTest {
 
     /**
-     * Test the addHeader() method.
+     * Test __construct() method.
+     *
+     * @return void
+     */
+    public function testConstructor() {
+
+        $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
+
+        $this->assertEquals($this->configuration, $obj->getConfiguration(), "The method getConfiguration() does not return the expected value");
+        $this->assertEquals([], $obj->getHeaders(), "The method getHeaders() does not return the expecetd value");
+        $this->assertEquals(CURLGetRequest::METHOD_GET, $obj->getMethod(), "The method getMethod() does not return the expecetd value");
+        $this->assertEquals([], $obj->getPostData(), "The method getPostData() does not return the expecetd value");
+        $this->assertEquals([], $obj->getQueryData(), "The method getQueryData() does not return the expecetd value");
+        $this->assertEquals(self::RESOURCE_PATH, $obj->getResourcePath(), "The method getResourcePath() does not return the expecetd value");
+    }
+
+    /**
+     * Test addHeader() method.
+     *
+     * @return void
      */
     public function testAddHeader() {
 
-        $obj = new CURLGetRequest(new CURLConfiguration(), "");
-
-        $obj->addHeader("name", "value");
-        $res1 = ["name" => "value"];
-        $this->assertEquals($res1, $obj->getHeaders(), "The method getHeaders() does not return the expected headers with name");
+        $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
 
         try {
-            $obj->addHeader(1, "value");
+            $obj->addHeader(1, "header");
         } catch (Exception $ex) {
-            $this->assertInstanceOf(CURLInvalidArgumentException::class, $ex, "The method addHeader() does not throws the expected exception");
-            $this->assertEquals("The header name must be a string", $ex->getMessage(), "The method addHeader() does not return the exepected exception message");
+            $this->assertInstanceOf(StringArgumentException::class, $ex, "The method addHeader() dos not throw the expected exception");
+            $this->assertEquals("The argument \"1\" is not a string", $ex->getMessage(), "The getMessage() does not return the expecetd string");
         }
+
+        $obj->addHeader("header", "header");
+
+        $res = ["header" => "header"];
+        $this->assertEquals($res, $obj->getHeaders(), "The method getHeaders() does not return the expected value");
     }
 
     /**
-     * Test the removeHeader() method.
-     */
-    public function testRemoveHeader() {
-
-        $obj = new CURLGetRequest(new CURLConfiguration(), "");
-        $obj->addHeader("name", "value");
-
-        $obj->removeHeader("");
-        $res1 = ["name" => "value"];
-        $this->assertEquals($res1, $obj->getHeaders(), "The method getHeaders() does not return the expected headers with name");
-
-        $obj->removeHeader("name");
-        $res2 = [];
-        $this->assertEquals($res2, $obj->getHeaders(), "The method getHeaders() does not return the expected headers");
-    }
-
-    /**
-     * Test the addQueryData() method.
-     */
-    public function testAddQueryData() {
-
-        $obj = new CURLGetRequest(new CURLConfiguration(), "");
-
-        $obj->addQueryData("name", "value");
-        $res1 = ["name" => "value"];
-        $this->assertEquals($res1, $obj->getQueryData(), "The method getQueryData() does not return the expected query data with name");
-
-        try {
-            $obj->addQueryData(1, "value");
-        } catch (Exception $ex) {
-            $this->assertInstanceOf(CURLInvalidArgumentException::class, $ex, "The method addQueryData() does not throws the expected exception");
-            $this->assertEquals("The query data name must be a string", $ex->getMessage(), "The method addQueryData() does not return the exepected exception message");
-        }
-    }
-
-    /**
-     * Test the removeQueryData() method.
-     */
-    public function testRemoveQueryData() {
-
-        $obj = new CURLGetRequest(new CURLConfiguration(), "");
-        $obj->addQueryData("name", "value");
-
-        $obj->removeQueryData("");
-        $res1 = ["name" => "value"];
-        $this->assertEquals($res1, $obj->getQueryData(), "The method getQueryData() does not return the expected query data with name");
-
-        $obj->removeQueryData("name");
-        $res2 = [];
-        $this->assertEquals($res2, $obj->getQueryData(), "The method getQueryData() does not return the expected query data");
-    }
-
-    /**
-     * Test the addPostData() method.
+     * Test addQueryData() method.
+     *
+     * @return void
      */
     public function testAddPostData() {
 
-        $obj = new CURLGetRequest(new CURLConfiguration(), "");
-
-        $obj->addPostData("name", "value");
-        $res1 = ["name" => "value"];
-        $this->assertEquals($res1, $obj->getPostData(), "The method getPostData() does not return the expected post data with name");
+        $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
 
         try {
-            $obj->addPostData(1, "value");
+            $obj->addQueryData(1, "queryData");
         } catch (Exception $ex) {
-            $this->assertInstanceOf(CURLInvalidArgumentException::class, $ex, "The method addPostData() does not throws the expected exception");
-            $this->assertEquals("The POST data name must be a string", $ex->getMessage(), "The method addPostData() does not return the exepected exception message");
+            $this->assertInstanceOf(StringArgumentException::class, $ex, "The method addQueryData() dos not throw the expected exception");
+            $this->assertEquals("The argument \"1\" is not a string", $ex->getMessage(), "The getMessage() does not return the expecetd string");
+        }
+
+        $obj->addQueryData("queryData", "queryData");
+
+        $res = ["queryData" => "queryData"];
+        $this->assertEquals($res, $obj->getQueryData(), "The method getQueryData() does not return the expected value");
+    }
+
+    /**
+     * Test call() method.
+     *
+     * @return void
+     */
+    public function testCall() {
+
+        $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
+
+        $obj->addHeader("header", "header");
+        $obj->addQueryData("queryData", "queryData");
+
+        $res = $obj->call();
+
+        $this->assertContains("header: header", $res->getRequestHeader(), "The method getRequestHeader() does not return the expecetd value");
+        $this->assertContains("queryData=queryData", $res->getRequestURL(), "The method getRequestURL() does not return the expected value");
+        $this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res->getResponseBody(), true)["method"]);
+        $this->assertEquals(200, $res->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
+
+        // Handle each code.
+        foreach (HTTPCodeInterface::CODES as $code) {
+
+            try {
+
+                $obj->removeQueryData("code");
+                $obj->addQueryData("code", $code);
+
+                $rslt = $obj->call();
+
+                $this->assertEquals($code, $rslt->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value with code " . $code);
+                $this->assertGreaterThanOrEqual(200, $rslt->getResponseInfo()["http_code"]);
+                $this->assertLessThanOrEqual(299, $rslt->getResponseInfo()["http_code"]);
+            } catch (Exception $ex) {
+                $this->assertInstanceOf(CURLRequestCallException::class, $ex, "The method call() does not throw the expected exception");
+                $this->assertEquals($code, $ex->getResponse()->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value with code " . $code);
+            }
         }
     }
 
     /**
-     * Test the removePostData() method.
+     * Test removeHeader() method.
+     *
+     * @return void
      */
-    public function testRemovePostData() {
+    public function testRemoveHeader() {
 
-        $obj = new CURLGetRequest(new CURLConfiguration(), "");
-        $obj->addPostData("name", "value");
+        $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
 
-        $obj->removePostData("");
-        $res1 = ["name" => "value"];
-        $this->assertEquals($res1, $obj->getPostData(), "The method getPostData() does not return the expected post data with name");
+        $obj->addHeader("header", "header");
+        $this->assertCount(1, $obj->getHeaders(), "The method getHeaders() does not return the expected value");
 
-        $obj->removePostData("name");
-        $res2 = [];
-        $this->assertEquals($res2, $obj->getPostData(), "The method getPostData() does not return the expected post data");
+        $obj->removeHeader("Header");
+        $this->assertCount(1, $obj->getHeaders(), "The method removeHeader() does not remove the expected value");
+
+        $obj->removeHeader("header");
+        $this->assertCount(0, $obj->getHeaders(), "The method removeHeader() does not return the expected value");
+    }
+
+    /**
+     * Test removeQueryData() method.
+     *
+     * @return void
+     */
+    public function testRemoveQueryData() {
+
+        $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
+
+        $obj->addQueryData("queryData", "queryData");
+        $this->assertCount(1, $obj->getQueryData(), "The method getQueryData() does not return the expected value");
+
+        $obj->removeQueryData("QueryData");
+        $this->assertCount(1, $obj->getQueryData(), "The method removeQueryData() does not remove the expected value");
+
+        $obj->removeQueryData("queryData");
+        $this->assertCount(0, $obj->getQueryData(), "The method removeQueryData() does not return the expected value");
     }
 
 }
