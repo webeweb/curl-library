@@ -17,7 +17,7 @@ use PHPUnit_Framework_TestCase;
  * CURLResponseTest
  *
  * @author NdC/WBW <https://github.com/webeweb/>
- * @package WBW\Library\CURL\Tests\Request
+ * @package WBW\Library\CURL\Tests\Response
  * @final
  */
 final class CURLResponseTest extends PHPUnit_Framework_TestCase {
