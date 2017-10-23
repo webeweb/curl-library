@@ -45,6 +45,7 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(null, $obj->getProxyHost(), "The method getProxyHost() does not return the expected value");
         $this->assertEquals(null, $obj->getProxyPassword(), "The method getProxyPassword() does not return the expected value");
         $this->assertEquals(null, $obj->getProxyPort(), "The method getProxyPort() does not return the expected value");
+        $this->assertEquals(null, $obj->getProxyType(), "The method getProxyType() does not return the expected value");
         $this->assertEquals(null, $obj->getProxyUsername(), "The method getProxyUsername() does not return the expected value");
         $this->assertEquals(0, $obj->getRequestTimeout(), "The method getRequestTimeout() does not return the expected value");
         $this->assertEquals(true, $obj->getSslVerification(), "The method getSslVerification() does not return the expected value");
@@ -70,6 +71,22 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
             $this->assertInstanceOf(StringArgumentException::class, $ex, "The method addHeader() does not throws the expected exception");
             $this->assertEquals("The argument \"1\" is not a string", $ex->getMessage(), "The method addHeader() does not return the exepected exception message");
         }
+    }
+
+    /**
+     * Test the clearHeader() method.
+     *
+     * @return void
+     */
+    public function testClearHeaders() {
+
+        $obj = new CURLConfiguration();
+
+        $obj->addHeader("name", "value");
+        $this->assertCount(1, $obj->getHeaders(), "The method getHeaders() does not return the expected headers count");
+
+        $obj->clearHeaders();
+        $this->assertCount(0, $obj->getHeaders(), "The method getHeaders() does not return the expected headers count");
     }
 
     /**
@@ -130,6 +147,9 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 
         $obj->setProxyPort("proxyPort");
         $this->assertEquals("proxyPort", $obj->getProxyPort(), "The method getProxyPort() does not return the expected value");
+
+        $obj->setProxyType(1);
+        $this->assertEquals(1, $obj->getProxyType(), "The method getProxyType() does not return the expected value");
 
         $obj->setProxyUsername("proxyUsername");
         $this->assertEquals("proxyUsername", $obj->getProxyUsername(), "The method getProxyUsername() does not return the expected value");
