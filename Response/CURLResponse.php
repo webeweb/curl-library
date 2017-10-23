@@ -23,9 +23,9 @@ final class CURLResponse {
     /**
      * Request body.
      *
-     * @var array
+     * @var string
      */
-    private $requestBody = [];
+    private $requestBody;
 
     /**
      * Request header.
