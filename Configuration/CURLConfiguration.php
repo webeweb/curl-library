@@ -135,6 +135,13 @@ final class CURLConfiguration {
     private $userAgent = "cURLLibrary/1.0";
 
     /**
+     * Verbose.
+     *
+     * @var boolean
+     */
+    private $verbose = false;
+
+    /**
      * Constructor.
      */
     public function __construct() {
@@ -307,6 +314,15 @@ final class CURLConfiguration {
     }
 
     /**
+     * Get the verbose.
+     *
+     * @return boolean Returns the verbose.
+     */
+    public function getVerbose() {
+        return $this->verbose;
+    }
+
+    /**
      * Remove an header.
      *
      * @param string $name The header name.
@@ -474,7 +490,7 @@ final class CURLConfiguration {
     /**
      * Set the SSL verification.
      *
-     * @param boolean $sslVerification The SSL verrification.
+     * @param boolean $sslVerification The SSL verification.
      * @return CURLConfiguration Returns the CURL configuration.
      */
     public function setSslVerification($sslVerification = true) {
@@ -490,6 +506,17 @@ final class CURLConfiguration {
      */
     public function setUserAgent($userAgent = "cURLLibrary/1.0") {
         $this->userAgent = $userAgent;
+        return $this;
+    }
+
+    /**
+     * Set the verbose.
+     *
+     * @param boolean $verbose The verbose.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setVerbose($verbose = false) {
+        $this->verbose = $verbose;
         return $this;
     }
 

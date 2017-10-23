@@ -50,6 +50,7 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(0, $obj->getRequestTimeout(), "The method getRequestTimeout() does not return the expected value");
         $this->assertEquals(true, $obj->getSslVerification(), "The method getSslVerification() does not return the expected value");
         $this->assertEquals("cURLLibrary/1.0", $obj->getUserAgent(), "The method getUserAgent() does not return the expected value");
+        $this->assertEquals(false, $obj->getVerbose(), "The method getVerbose() does not return the expected value");
     }
 
     /**
@@ -162,6 +163,9 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 
         $obj->setUserAgent("userAgent");
         $this->assertEquals("userAgent", $obj->getUserAgent(), "The method getUserAgent() does not return the expected value");
+
+        $obj->setVerbose(true);
+        $this->assertEquals(true, $obj->getVerbose(), "The method getVerbose() does not return the expected value");
     }
 
 }
