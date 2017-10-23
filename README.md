@@ -14,7 +14,7 @@ Edit `composer.json` file to add this library package:
 ```yml
 "require": {
     ...
-    "webeweb/curl-library": "dev-master"
+    "webeweb/curl-library": "~1.0@dev"
 },
 ```
 
