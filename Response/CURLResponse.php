@@ -127,54 +127,66 @@ final class CURLResponse {
      * Set the request body.
      *
      * @param string $requestBody The request body.
+     * @return CURLResponse Returns the CURL response.
      */
     public function setRequestBody($requestBody) {
         $this->requestBody = $requestBody;
+        return $this;
     }
 
     /**
      * Set the request header.
      *
      * @param array $requestHeader The request header.
+     * @return CURLResponse Returns the CURL response.
      */
     public function setRequestHeader(array $requestHeader = []) {
         $this->requestHeader = $requestHeader;
+        return $this;
     }
 
     /**
      * Set the request URL.
      *
      * @param string $requestURL The request URL.
+     * @return CURLResponse Returns the CURL response.
      */
     public function setRequestURL($requestURL) {
         $this->requestURL = $requestURL;
+        return $this;
     }
 
     /**
      * Set the response body.
      *
      * @param string $responseBody The response body.
+     * @return CURLResponse Returns the CURL response.
      */
     public function setResponseBody($responseBody) {
         $this->responseBody = $responseBody;
+        return $this;
     }
 
     /**
      * Set the response header.
      *
      * @param array $responseHeader The response header.
+     * @return CURLResponse Returns the CURL response.
      */
     public function setResponseHeader(array $responseHeader = []) {
         $this->responseHeader = $responseHeader;
+        return $this;
     }
 
     /**
      * Set the response info.
      *
      * @param array $responseInfo The response info.
+     * @return CURLResponse Returns the CURL response.
      */
     public function setResponseInfo(array $responseInfo = []) {
         $this->responseInfo = $responseInfo;
+        return $this;
     }
 
 }
