@@ -12,9 +12,10 @@
 namespace WBW\Library\CURL\Request;
 
 use DateTime;
+use WBW\Library\Core\Argument\ArgumentValidator;
+use WBW\Library\Core\Exception\Argument\StringArgumentException;
 use WBW\Library\Core\HTTP\HTTPMethodInterface;
 use WBW\Library\CURL\Configuration\CURLConfiguration;
-use WBW\Library\CURL\Exception\CURLInvalidArgumentException;
 use WBW\Library\CURL\Exception\CURLMethodNotAllowedException;
 use WBW\Library\CURL\Exception\CURLRequestCallException;
 use WBW\Library\CURL\Response\CURLResponse;
@@ -93,12 +94,10 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
      *
      * @param string $name The header name.
      * @param string $value The header value.
-     * @throws CURLInvalidArgumentException Throws a CURL invalid argument exception if the name is not a string.
+     * @throws StringArgumentException Throws a string argument exception if the name is not a string.
      */
     public final function addHeader($name, $value) {
-        if (!is_string($name)) {
-            throw new CURLInvalidArgumentException("The header name must be a string");
-        }
+        ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
         $this->headers[$name] = $value;
     }
 
@@ -107,12 +106,10 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
      *
      * @param string $name The POST data name.
      * @param string $value The POST data value.
-     * @throws CURLInvalidArgumentException Throws a CURL invalid argument exception if the name is not a string.
+     * @throws StringArgumentException Throws a string argument exception if the name is not a string.
      */
     public final function addPostData($name, $value) {
-        if (!is_string($name)) {
-            throw new CURLInvalidArgumentException("The POST data name must be a string");
-        }
+        ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
         $this->postData[$name] = $value;
     }
 
@@ -121,12 +118,10 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
      *
      * @param string $name The query data name.
      * @param string $value The query data value.
-     * @throws CURLInvalidArgumentException Throws a CURL invalid argument exception if the name is not a string.
+     * @throws StringArgumentException Throws a string argument exception if the name is not a string.
      */
     public final function addQueryData($name, $value) {
-        if (!is_string($name)) {
-            throw new CURLInvalidArgumentException("The query data name must be a string");
-        }
+        ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
         $this->queryData[$name] = $value;
     }
 
@@ -244,6 +239,9 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
         // Set the user agent.
         curl_setopt($curl, CURLOPT_USERAGENT, $this->getConfiguration()->getUserAgent());
 
+        // Get the HTTP response headers.
+        curl_setopt($curl, CURLOPT_HEADER, 1);
+
         // Set the verbose.
         if ($this->getConfiguration()->getDebug() === true) {
             curl_setopt($curl, CURLOPT_STDERR, fopen($this->getConfiguration()->getDebugFile(), "a"));
@@ -251,12 +249,11 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 
             $msg = (new DateTime())->format("c") . " [DEBUG] " . $curlURL . PHP_EOL . "HTTP request body ~BEGIN~" . PHP_EOL . print_r($curlPOSTData, true) . PHP_EOL . "~END~" . PHP_EOL;
             error_log($msg, 3, $this->getConfiguration()->getDebugFile());
-        } else {
+        } else if ($this->getConfiguration()->getVerbose() === true) {
             curl_setopt($curl, CURLOPT_VERBOSE, 1);
+        } else {
+            curl_setopt($curl, CURLOPT_VERBOSE, 0);
         }
-
-        // Get the HTTP response headers.
-        curl_setopt($curl, CURLOPT_HEADER, 1);
 
         // Make the request.
         $curlExec     = curl_exec($curl);
@@ -271,52 +268,36 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
             error_log($msg, 3, $this->getConfiguration()->getDebugFile());
         }
 
-        // Handle the response.
-        if ($curlInfo["http_code"] === 0) {
+        // Initialize the response.
+        $response = new CURLResponse();
+        $response->setRequestBody($curlPOSTData);
+        $response->setRequestHeader($curlHeaders);
+        $response->setRequestURL($curlURL);
+        $response->setResponseBody($httpBody);
+        $response->setResponseHeader($httpHead);
+        $response->setResponseInfo($curlInfo);
 
-            // Get the error.
-            $curlError = curl_error($curl);
-            if (!empty($curlError)) {
-                $msg = "API call to " . $curlURL . " failed : " . $curlError;
-            } else {
-                $msg = "API call to " . $curlURL . " failed, but for an unknown reason. This could happen if you are disconnected from the network.";
-            }
-
-            // Initialize the exception.
-            $ex = new CURLRequestCallException($msg);
-            $ex->setRequestBody($curlPOSTData);
-            $ex->setRequestHeader($curlHeaders);
-            $ex->setRequestURL($curlURL);
-
-            //
-            throw $ex;
-        } else if (200 <= $curlInfo["http_code"] && $curlInfo["http_code"] <= 299) {
-
-            // Initialize the response.
-            $response = new CURLResponse();
-            $response->setRequestBody($curlPOSTData);
-            $response->setRequestHeader($curlHeaders);
-            $response->setRequestURL($curlURL);
-            $response->setResponseBody($httpBody);
-            $response->setResponseHeader($httpHead);
-            $response->setResponseInfo($curlInfo);
+        // Check HTTP code.
+        if (200 <= $curlInfo["http_code"] && $curlInfo["http_code"] <= 299) {
 
             // Return the response.
             return $response;
-        } else {
-
-            // Initialize the exception.
-            $ex = new CURLRequestCallException($msg);
-            $ex->setRequestBody($curlPOSTData);
-            $ex->setRequestHeader($curlHeaders);
-            $ex->setRequestURL($curlURL);
-            $ex->setResponseBody($httpBody);
-            $ex->setResponseHeader($httpHead);
-            $ex->setResponseInfo($curlInfo);
-
-            //
-            throw $ex;
         }
+
+        // Initialize the message.
+        $msg = curl_errno($curl);
+
+        // Check the HTTP code.
+        if ($curlInfo["http_code"] === 0) {
+            if (!empty(curl_error($curl))) {
+                $msg = "Call to " . $curlURL . " failed : " . curl_error($curl);
+            } else {
+                $msg = "Call to " . $curlURL . " failed, but for an unknown reason. This could happen if you are disconnected from the network.";
+            }
+        }
+
+        // Throw the exception.
+        throw new CURLRequestCallException($msg, $response);
     }
 
     /**
