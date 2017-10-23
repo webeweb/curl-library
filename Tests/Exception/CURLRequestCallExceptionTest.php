@@ -13,6 +13,7 @@ namespace WBW\Library\CURL\Tests\Exception;
 
 use PHPUnit_Framework_TestCase;
 use WBW\Library\CURL\Exception\CURLRequestCallException;
+use WBW\Library\CURL\Response\CURLResponse;
 
 /**
  * CURL request call exception test.
@@ -30,45 +31,15 @@ final class CURLRequestCallExceptionTest extends PHPUnit_Framework_TestCase {
      */
     public function testConstructor() {
 
-        $obj = new CURLRequestCallException("");
+        $obj = new CURLRequestCallException("", new CURLResponse());
 
         $this->assertEquals("", $obj->getMessage(), "The method getMessage() does not return the expecetd string");
-        $this->assertEquals(null, $obj->getRequestBody(), "The method getRequestBody() does not return the expected value");
-        $this->assertEquals([], $obj->getRequestHeader(), "The method getRequestHeader() does not return the expected value");
-        $this->assertEquals(null, $obj->getRequestURL(), "The method getRequestURL() does not return the expected value");
-        $this->assertEquals(null, $obj->getResponseBody(), "The method getResponseBody() does not return the expected value");
-        $this->assertEquals([], $obj->getResponseHeader(), "The method getResponseHeader() does not return the expected value");
-        $this->assertEquals([], $obj->getResponseInfo(), "The method getResponseInfo() does not return the expected value");
-    }
-
-    /**
-     * Test the setX() method.
-     *
-     * @return void
-     */
-    public function testSetX() {
-
-        $obj = new CURLRequestCallException("");
-
-        $this->assertEquals("", $obj->getMessage(), "The method getMessage() does not return the expecetd string");
-
-        $obj->setRequestBody("requestBody");
-        $this->assertEquals("requestBody", $obj->getRequestBody(), "The method getRequestBody() does not return the expected value");
-
-        $obj->setRequestHeader(["requestHeader" => "requestHeader"]);
-        $this->assertEquals(["requestHeader" => "requestHeader"], $obj->getRequestHeader(), "The method getRequestHeader() does not return the expected value");
-
-        $obj->setRequestURL("requestURL");
-        $this->assertEquals("requestURL", $obj->getRequestURL(), "The method getRequestURL() does not return the expected value");
-
-        $obj->setResponseBody("responseBody");
-        $this->assertEquals("responseBody", $obj->getResponseBody(), "The method getResponseBody() does not return the expected value");
-
-        $obj->setResponseHeader(["responseHeader" => "responseHeader"]);
-        $this->assertEquals(["responseHeader" => "responseHeader"], $obj->getResponseHeader(), "The method getResponseHeader() does not return the expected value");
-
-        $obj->setResponseInfo(["responseInfo" => "responseInfo"]);
-        $this->assertEquals(["responseInfo" => "responseInfo"], $obj->getResponseInfo(), "The method getResponseInfo() does not return the expected value");
+        $this->assertEquals(null, $obj->getResponse()->getRequestBody(), "The method getRequestBody() does not return the expected value");
+        $this->assertEquals([], $obj->getResponse()->getRequestHeader(), "The method getRequestHeader() does not return the expected value");
+        $this->assertEquals(null, $obj->getResponse()->getRequestURL(), "The method getRequestURL() does not return the expected value");
+        $this->assertEquals(null, $obj->getResponse()->getResponseBody(), "The method getResponseBody() does not return the expected value");
+        $this->assertEquals([], $obj->getResponse()->getResponseHeader(), "The method getResponseHeader() does not return the expected value");
+        $this->assertEquals([], $obj->getResponse()->getResponseInfo(), "The method getResponseInfo() does not return the expected value");
     }
 
 }

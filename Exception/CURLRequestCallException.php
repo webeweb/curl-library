@@ -11,6 +11,8 @@
 
 namespace WBW\Library\CURL\Exception;
 
+use WBW\Library\CURL\Response\CURLResponse;
+
 /**
  * CURL request call exception.
  *
@@ -21,162 +23,29 @@ namespace WBW\Library\CURL\Exception;
 final class CURLRequestCallException extends AbstractCURLException {
 
     /**
-     * Request body.
+     * CURL response.
      *
-     * @var string
+     * @var CURLResponse
      */
-    private $requestBody;
-
-    /**
-     * Request header.
-     *
-     * @var array
-     */
-    private $requestHeader = [];
-
-    /**
-     * Request URL.
-     *
-     * @var string
-     */
-    private $requestURL;
-
-    /**
-     * Response body.
-     *
-     * @var string
-     */
-    private $responseBody;
-
-    /**
-     * Response header.
-     *
-     * @var array
-     */
-    private $responseHeader = [];
-
-    /**
-     * Response info.
-     *
-     * @var array
-     */
-    private $responseInfo = [];
+    private $response;
 
     /**
      * Constructor.
      *
      * @param string $message The message.
      */
-    public function __construct($message) {
+    public function __construct($message, CURLResponse $cURLResponse) {
         parent::__construct($message);
+        $this->response = $cURLResponse;
     }
 
     /**
-     * Get the request body.
+     * Get the response.
      *
-     * @return string Returns the request body.
+     * @return CURLResponse Returns the cURL response.
      */
-    public function getRequestBody() {
-        return $this->requestBody;
-    }
-
-    /**
-     * Get the request header.
-     *
-     * @return array Returns the request header.
-     */
-    public function getRequestHeader() {
-        return $this->requestHeader;
-    }
-
-    /**
-     * Get the request URL.
-     *
-     * @return string Returns the request URL.
-     */
-    public function getRequestURL() {
-        return $this->requestURL;
-    }
-
-    /**
-     * Get the response body.
-     *
-     * @return string The response body.
-     */
-    public function getResponseBody() {
-        return $this->responseBody;
-    }
-
-    /**
-     * Get the response header.
-     *
-     * @return array Returns the response header.
-     */
-    public function getResponseHeader() {
-        return $this->responseHeader;
-    }
-
-    /**
-     * Get the response info.
-     *
-     * @return array Returns the response info.
-     */
-    public function getResponseInfo() {
-        return $this->responseInfo;
-    }
-
-    /**
-     * Set the request body.
-     *
-     * @param string $requestBody The request body.
-     */
-    public function setRequestBody($requestBody) {
-        $this->requestBody = $requestBody;
-    }
-
-    /**
-     * Set the request header.
-     *
-     * @param array $requestHeader The request header.
-     */
-    public function setRequestHeader(array $requestHeader = []) {
-        $this->requestHeader = $requestHeader;
-    }
-
-    /**
-     * Set the request URL.
-     *
-     * @param string $requestURL The request URL.
-     */
-    public function setRequestURL($requestURL) {
-        $this->requestURL = $requestURL;
-    }
-
-    /**
-     * Set the response body.
-     *
-     * @param string $responseBody The response body.
-     */
-    public function setResponseBody($responseBody) {
-        $this->responseBody = $responseBody;
-    }
-
-    /**
-     * Set the response header.
-     *
-     * @param array $responseHeader The response header.
-     */
-    public function setResponseHeader(array $responseHeader = []) {
-        $this->responseHeader = $responseHeader;
-    }
-
-    /**
-     * Set the response info.
-     *
-     * @param array $responseInfo The response info.
-     */
-    public function setResponseInfo(array $responseInfo = []) {
-        $this->responseInfo = $responseInfo;
+    public function getResponse() {
+        return $this->response;
     }
 
 }
