@@ -12,6 +12,7 @@
 namespace WBW\Library\CURL\Request;
 
 use DateTime;
+use WBW\Library\Core\HTTP\HTTPMethodInterface;
 use WBW\Library\CURL\Configuration\CURLConfiguration;
 use WBW\Library\CURL\Exception\CURLInvalidArgumentException;
 use WBW\Library\CURL\Exception\CURLMethodNotAllowedException;
@@ -25,47 +26,12 @@ use WBW\Library\CURL\Response\CURLResponse;
  * @package WBW\Library\CURL\Request
  * @abstract
  */
-abstract class AbstractCURLRequest {
+abstract class AbstractCURLRequest implements HTTPMethodInterface {
 
     /**
      * Content-type application/x-www-form-urlencoded
      */
     const CONTENT_TYPE_X_WWW_FORM_URLENCODED = "Content-Type: application/x-www-form-urlencoded";
-
-    /**
-     * Method "DELETE".
-     */
-    const METHOD_DELETE = "DELETE";
-
-    /**
-     * Method "GET".
-     */
-    const METHOD_GET = "GET";
-
-    /**
-     * Method "HEAD".
-     */
-    const METHOD_HEAD = "HEAD";
-
-    /**
-     * Method "OPTIONS".
-     */
-    const METHOD_OPTIONS = "OPTIONS";
-
-    /**
-     * Method "PATCH".
-     */
-    const METHOD_PATCH = "PATCH";
-
-    /**
-     * Method "POST".
-     */
-    const METHOD_POST = "POST";
-
-    /**
-     * Method "PUT".
-     */
-    const METHOD_PUT = "PUT";
 
     /**
      * Configuration.
