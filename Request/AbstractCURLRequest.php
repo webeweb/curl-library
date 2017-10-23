@@ -303,6 +303,33 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
     }
 
     /**
+     * Clear headers.
+     *
+     * @return AbstractCURLRequest Return the CURL request.
+     */
+    public final function clearHeaders() {
+        return $this->setHeaders();
+    }
+
+    /**
+     * Clear post data.
+     *
+     * @return AbstractCURLRequest Return the CURL request.
+     */
+    public final function clearPostData() {
+        return $this->setPostData();
+    }
+
+    /**
+     * Clear query data.
+     *
+     * @return AbstractCURLRequest Return the CURL request.
+     */
+    public final function clearQueryData() {
+        return $this->setQueryData();
+    }
+
+    /**
      * Get the configuration.
      *
      * @return CURLConfiguration Returns the configuration.
@@ -431,24 +458,29 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
      * Set the configuration.
      *
      * @param CURLConfiguration $configuration The configuration.
+     * @return AbstractCURLRequest Return the CURL request.
      */
     protected final function setConfiguration(CURLConfiguration $configuration) {
         $this->configuration = $configuration;
+        return $this;
     }
 
     /**
      * Set the headers.
      *
      * @param array $headers The headers.
+     * @return AbstractCURLRequest Return the CURL request.
      */
     protected final function setHeaders(array $headers = []) {
         $this->headers = $headers;
+        return $this;
     }
 
     /**
      * Set the method.
      *
      * @param string $method The method.
+     * @return AbstractCURLRequest Return the CURL request.
      * @throws CURLMethodNotAllowedException Throws a CURL method not allowed exception if the method is not implemented.
      */
     protected final function setMethod($method) {
@@ -465,33 +497,40 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
             default:
                 throw new CURLMethodNotAllowedException($method);
         }
+        return $this;
     }
 
     /**
      * Set the POST data.
      *
      * @param array $postData The POST data.
+     * @return AbstractCURLRequest Return the CURL request.
      */
     protected final function setPostData(array $postData = []) {
         $this->postData = $postData;
+        return $this;
     }
 
     /**
      * Set the query data.
      *
      * @param array $queryData The query data.
+     * @return AbstractCURLRequest Return the CURL request.
      */
     protected final function setQueryData(array $queryData = []) {
         $this->queryData = $queryData;
+        return $this;
     }
 
     /**
      * Set the resource path.
      *
      * @param string $resourcePath The resource path.
+     * @return AbstractCURLRequest Return the CURL request.
      */
     protected final function setResourcePath($resourcePath) {
         $this->resourcePath = $resourcePath;
+        return $this;
     }
 
 }

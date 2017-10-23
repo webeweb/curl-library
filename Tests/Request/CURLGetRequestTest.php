@@ -53,15 +53,15 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
         $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
 
         try {
-            $obj->addHeader(1, "header");
+            $obj->addHeader(1, "value");
         } catch (Exception $ex) {
             $this->assertInstanceOf(StringArgumentException::class, $ex, "The method addHeader() dos not throw the expected exception");
             $this->assertEquals("The argument \"1\" is not a string", $ex->getMessage(), "The getMessage() does not return the expecetd string");
         }
 
-        $obj->addHeader("header", "header");
+        $obj->addHeader("name", "value");
 
-        $res = ["header" => "header"];
+        $res = ["name" => "value"];
         $this->assertEquals($res, $obj->getHeaders(), "The method getHeaders() does not return the expected value");
     }
 
@@ -75,15 +75,15 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
         $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
 
         try {
-            $obj->addQueryData(1, "queryData");
+            $obj->addQueryData(1, "value");
         } catch (Exception $ex) {
             $this->assertInstanceOf(StringArgumentException::class, $ex, "The method addQueryData() dos not throw the expected exception");
             $this->assertEquals("The argument \"1\" is not a string", $ex->getMessage(), "The getMessage() does not return the expecetd string");
         }
 
-        $obj->addQueryData("queryData", "queryData");
+        $obj->addQueryData("name", "value");
 
-        $res = ["queryData" => "queryData"];
+        $res = ["name" => "value"];
         $this->assertEquals($res, $obj->getQueryData(), "The method getQueryData() does not return the expected value");
     }
 
@@ -96,14 +96,14 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
 
         $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
 
-        $obj->addHeader("header", "header");
-        $obj->addQueryData("queryData", "queryData");
+        $obj->addHeader("h", "v");
+        $obj->addQueryData("q", "v");
         $obj->getConfiguration()->setVerbose(true);
 
         $res = $obj->call();
 
-        $this->assertContains("header: header", $res->getRequestHeader(), "The method getRequestHeader() does not return the expecetd value");
-        $this->assertContains("queryData=queryData", $res->getRequestURL(), "The method getRequestURL() does not return the expected value");
+        $this->assertContains("h: v", $res->getRequestHeader(), "The method getRequestHeader() does not return the expecetd value");
+        $this->assertContains("q=v", $res->getRequestURL(), "The method getRequestURL() does not return the expected value");
         $this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res->getResponseBody(), true)["method"]);
         $this->assertEquals(200, $res->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
 
@@ -130,6 +130,38 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
+     * Test the clearHeader() method.
+     *
+     * @return void
+     */
+    public function testClearHeaders() {
+
+        $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
+
+        $obj->addHeader("name", "value");
+        $this->assertCount(1, $obj->getHeaders(), "The method getHeaders() does not return the expected headers count");
+
+        $obj->clearHeaders();
+        $this->assertCount(0, $obj->getHeaders(), "The method getHeaders() does not return the expected headers count");
+    }
+
+    /**
+     * Test the clearQueryData() method.
+     *
+     * @return void
+     */
+    public function testClearQueryData() {
+
+        $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
+
+        $obj->addQueryData("name", "value");
+        $this->assertCount(1, $obj->getQueryData(), "The method getQueryData() does not return the expected query data count");
+
+        $obj->clearQueryData();
+        $this->assertCount(0, $obj->getQueryData(), "The method getQueryData() does not return the expected query data count");
+    }
+
+    /**
      * Test removeHeader() method.
      *
      * @return void
@@ -138,13 +170,13 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
 
         $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
 
-        $obj->addHeader("header", "header");
+        $obj->addHeader("name", "value");
         $this->assertCount(1, $obj->getHeaders(), "The method getHeaders() does not return the expected value");
 
-        $obj->removeHeader("Header");
+        $obj->removeHeader("Name");
         $this->assertCount(1, $obj->getHeaders(), "The method removeHeader() does not remove the expected value");
 
-        $obj->removeHeader("header");
+        $obj->removeHeader("name");
         $this->assertCount(0, $obj->getHeaders(), "The method removeHeader() does not return the expected value");
     }
 
@@ -157,13 +189,13 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
 
         $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
 
-        $obj->addQueryData("queryData", "queryData");
+        $obj->addQueryData("name", "value");
         $this->assertCount(1, $obj->getQueryData(), "The method getQueryData() does not return the expected value");
 
-        $obj->removeQueryData("QueryData");
+        $obj->removeQueryData("Name");
         $this->assertCount(1, $obj->getQueryData(), "The method removeQueryData() does not remove the expected value");
 
-        $obj->removeQueryData("queryData");
+        $obj->removeQueryData("name");
         $this->assertCount(0, $obj->getQueryData(), "The method removeQueryData() does not return the expected value");
     }
 

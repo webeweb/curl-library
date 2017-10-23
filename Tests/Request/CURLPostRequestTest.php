@@ -51,15 +51,15 @@ final class CURLPostRequestTest extends AbstractCURLRequestTest {
         $obj = new CURLPostRequest($this->configuration, self::RESOURCE_PATH);
 
         try {
-            $obj->addPostData(1, "postData");
+            $obj->addPostData(1, "value");
         } catch (Exception $ex) {
             $this->assertInstanceOf(StringArgumentException::class, $ex, "The method addPostData() dos not throw the expected exception");
             $this->assertEquals("The argument \"1\" is not a string", $ex->getMessage(), "The getMessage() does not return the expecetd string");
         }
 
-        $obj->addPostData("postData", "postData");
+        $obj->addPostData("name", "value");
 
-        $res = ["postData" => "postData"];
+        $res = ["name" => "value"];
         $this->assertEquals($res, $obj->getPostData(), "The method getPostData() does not return the expected value");
     }
 
@@ -84,6 +84,22 @@ final class CURLPostRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
+     * Test the clearPostData() method.
+     *
+     * @return void
+     */
+    public function testClearPostData() {
+
+        $obj = new CURLPostRequest($this->configuration, self::RESOURCE_PATH);
+
+        $obj->addPostData("name", "value");
+        $this->assertCount(1, $obj->getPostData(), "The method getPostData() does not return the expected post data count");
+
+        $obj->clearPostData();
+        $this->assertCount(0, $obj->getPostData(), "The method getPostData() does not return the expected post data count");
+    }
+
+    /**
      * Test removePostData() method.
      *
      * @return void
@@ -92,13 +108,13 @@ final class CURLPostRequestTest extends AbstractCURLRequestTest {
 
         $obj = new CURLPostRequest($this->configuration, self::RESOURCE_PATH);
 
-        $obj->addPostData("postData", "postData");
+        $obj->addPostData("name", "value");
         $this->assertCount(1, $obj->getPostData(), "The method getPostData() does not return the expected value");
 
-        $obj->removePostData("PostData");
+        $obj->removePostData("Name");
         $this->assertCount(1, $obj->getPostData(), "The method removePostData() does not remove the expected value");
 
-        $obj->removePostData("postData");
+        $obj->removePostData("name");
         $this->assertCount(0, $obj->getPostData(), "The method removePostData() does not return the expected value");
     }
 
