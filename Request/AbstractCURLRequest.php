@@ -249,10 +249,12 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 
             $msg = (new DateTime())->format("c") . " [DEBUG] " . $curlURL . PHP_EOL . "HTTP request body ~BEGIN~" . PHP_EOL . print_r($curlPOSTData, true) . PHP_EOL . "~END~" . PHP_EOL;
             error_log($msg, 3, $this->getConfiguration()->getDebugFile());
-        } else if ($this->getConfiguration()->getVerbose() === true) {
-            curl_setopt($curl, CURLOPT_VERBOSE, 1);
         } else {
-            curl_setopt($curl, CURLOPT_VERBOSE, 0);
+            if ($this->getConfiguration()->getVerbose() === true) {
+                curl_setopt($curl, CURLOPT_VERBOSE, 1);
+            } else {
+                curl_setopt($curl, CURLOPT_VERBOSE, 0);
+            }
         }
 
         // Make the request.
