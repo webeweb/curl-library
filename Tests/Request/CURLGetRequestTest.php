@@ -98,6 +98,7 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
 
         $obj->addHeader("header", "header");
         $obj->addQueryData("queryData", "queryData");
+        $obj->getConfiguration()->setVerbose(true);
 
         $res = $obj->call();
 
@@ -105,6 +106,8 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
         $this->assertContains("queryData=queryData", $res->getRequestURL(), "The method getRequestURL() does not return the expected value");
         $this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res->getResponseBody(), true)["method"]);
         $this->assertEquals(200, $res->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
+
+        $obj->getConfiguration()->setVerbose(false);
 
         // Handle each code.
         foreach (HTTPCodeInterface::CODES as $code) {
