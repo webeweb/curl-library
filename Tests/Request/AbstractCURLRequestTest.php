@@ -47,7 +47,7 @@ abstract class AbstractCURLRequestTest extends PHPUnit_Framework_TestCase {
 
         // Set the CURL configuration.
         $this->configuration = new CURLConfiguration();
-        $this->configuration->setHost("http://local.curl-library-test");
+        $this->configuration->setHost("https://webeweb.fr");
     }
 
 }
