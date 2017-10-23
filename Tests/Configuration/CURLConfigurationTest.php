@@ -109,11 +109,11 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * Test the set() method.
+     * Test the setX() method.
      *
      * @return void
      */
-    public function testSet() {
+    public function testSetX() {
 
         $obj = new CURLConfiguration();
 
