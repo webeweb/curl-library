@@ -39,4 +39,24 @@ final class CURLDeleteRequestTest extends AbstractCURLRequestTest {
         $this->assertEquals(self::RESOURCE_PATH, $obj->getResourcePath(), "The method getResourcePath() does not return the expecetd value");
     }
 
+    /**
+     * Test call() method.
+     *
+     * @return void
+     */
+    public function testCall() {
+
+        $obj = new CURLDeleteRequest($this->configuration, self::RESOURCE_PATH);
+
+        $obj->addHeader("header", "header");
+        $obj->addQueryData("queryData", "queryData");
+
+        $res = $obj->call();
+
+        $this->assertContains("header: header", $res->getRequestHeader(), "The method getRequestHeader() does not return the expecetd value");
+        $this->assertContains("queryData=queryData", $res->getRequestURL(), "The method getRequestURL() does not return the expected value");
+        $this->assertEquals(CURLDeleteRequest::METHOD_DELETE, json_decode($res->getResponseBody(), true)["method"]);
+        $this->assertEquals(200, $res->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
+    }
+
 }
