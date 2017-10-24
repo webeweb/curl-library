@@ -104,8 +104,9 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
         $this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res1->getResponseBody(), true)["method"]);
         $this->assertEquals(200, $res1->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
 
-        /* === Connect timeout ============================================= */
         $obj->getConfiguration()->setAllowEncoding(false);
+
+        /* === Connect timeout ============================================= */
         $obj->getConfiguration()->setConnectTimeout(30);
 
         $res2 = $obj->call();
@@ -113,8 +114,9 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
         $this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res2->getResponseBody(), true)["method"]);
         $this->assertEquals(200, $res2->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
 
-        /* === Debug ======================================================= */
         $obj->getConfiguration()->setConnectTimeout(0);
+
+        /* === Debug ======================================================= */
         $obj->getConfiguration()->setDebug(true);
 
         $res3 = $obj->call();
@@ -122,8 +124,9 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
         $this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res3->getResponseBody(), true)["method"]);
         $this->assertEquals(200, $res3->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
 
-        /* === Headers ===================================================== */
         $obj->getConfiguration()->setDebug(false);
+
+        /* === Headers ===================================================== */
         $obj->addHeader("h", "v");
 
         $res4 = $obj->call();
@@ -131,6 +134,8 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
         $this->assertContains("h: v", $res4->getRequestHeader(), "The method getRequestHeader() does not return the expecetd value");
         $this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res4->getResponseBody(), true)["method"]);
         $this->assertEquals(200, $res4->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
+
+        $obj->removeHeader("h");
 
         /* === Request timeout ============================================= */
         $obj->getConfiguration()->setRequestTimeout(30);
@@ -140,8 +145,9 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
         $this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res5->getResponseBody(), true)["method"]);
         $this->assertEquals(200, $res5->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
 
-        /* === SSL verification ============================================ */
         $obj->getConfiguration()->setRequestTimeout(0);
+
+        /* === SSL verification ============================================ */
         $obj->getConfiguration()->setSslVerification(false);
 
         $res6 = $obj->call();
@@ -149,8 +155,9 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
         $this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res6->getResponseBody(), true)["method"]);
         $this->assertEquals(200, $res6->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
 
-        /* === Verbose ===================================================== */
         $obj->getConfiguration()->setSslVerification(true);
+
+        /* === Verbose ===================================================== */
         $obj->getConfiguration()->setVerbose(true);
 
         $res7 = $obj->call();
@@ -158,13 +165,27 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
         $this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res7->getResponseBody(), true)["method"]);
         $this->assertEquals(200, $res7->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
 
-        /* === HTTP codes ================================================== */
         $obj->getConfiguration()->setVerbose(false);
+        /* === HTTP code 0 ================================================= */
+        $obj->getConfiguration()->setRequestTimeout(10);
+        $obj->addQueryData("sleep", 60);
 
+        try {
+            $obj->call();
+        } catch (Exception $ex) {
+
+            $this->assertInstanceOf(CURLRequestCallException::class, $ex, "The method call() does not throw the expected exception");
+            $this->assertContains("Call to ", $ex->getMessage(), "The method getMessage() does not return the expected string");
+            $this->assertEquals(0, $ex->getResponse()->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value with code 0");
+        }
+
+        $obj->getConfiguration()->setRequestTimeout(0);
+        $obj->removeQueryData("sleep");
+
+        /* === HTTP codes ================================================== */
         foreach (HTTPCodeInterface::CODES as $code) {
             try {
 
-                $obj->removeQueryData("code");
                 $obj->addQueryData("code", $code);
 
                 $rslt = $obj->call();
@@ -178,6 +199,7 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
                 $this->assertEquals($code, $ex->getResponse()->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value with code " . $code);
             }
         }
+
         /* ================================================================= */
     }
 
