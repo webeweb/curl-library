@@ -25,7 +25,7 @@ use WBW\Library\CURL\Response\CURLResponse;
 final class CURLRequestCallExceptionTest extends PHPUnit_Framework_TestCase {
 
     /**
-     * Test the __constructor() method.
+     * Tests the __constructor() method.
      *
      * @return void
      */

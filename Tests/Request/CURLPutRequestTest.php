@@ -23,7 +23,7 @@ use WBW\Library\CURL\Request\CURLPutRequest;
 final class CURLPutRequestTest extends AbstractCURLRequestTest {
 
     /**
-     * Test __construct() method.
+     * Tests __construct() method.
      *
      * @return void
      */
@@ -40,7 +40,7 @@ final class CURLPutRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
-     * Test call() method.
+     * Tests call() method.
      *
      * @return void
      */

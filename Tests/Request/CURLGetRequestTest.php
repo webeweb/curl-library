@@ -27,7 +27,7 @@ use WBW\Library\CURL\Request\CURLGetRequest;
 final class CURLGetRequestTest extends AbstractCURLRequestTest {
 
     /**
-     * Test __construct() method.
+     * Tests __construct() method.
      *
      * @return void
      */
@@ -44,7 +44,7 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
-     * Test addHeader() method.
+     * Tests addHeader() method.
      *
      * @return void
      */
@@ -66,7 +66,7 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
-     * Test addQueryData() method.
+     * Tests addQueryData() method.
      *
      * @return void
      */
@@ -88,7 +88,7 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
-     * Test call() method.
+     * Tests call() method.
      *
      * @return void
      */
@@ -204,7 +204,7 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
-     * Test the clearHeader() method.
+     * Tests the clearHeader() method.
      *
      * @return void
      */
@@ -220,7 +220,7 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
-     * Test the clearQueryData() method.
+     * Tests the clearQueryData() method.
      *
      * @return void
      */
@@ -236,7 +236,7 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
-     * Test removeHeader() method.
+     * Tests removeHeader() method.
      *
      * @return void
      */
@@ -255,7 +255,7 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
-     * Test removeQueryData() method.
+     * Tests removeQueryData() method.
      *
      * @return void
      */

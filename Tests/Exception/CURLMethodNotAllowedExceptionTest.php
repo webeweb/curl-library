@@ -24,7 +24,7 @@ use WBW\Library\CURL\Exception\CURLMethodNotAllowedException;
 final class CURLInvalidMessageClassExceptionTest extends PHPUnit_Framework_TestCase {
 
     /**
-     * Test the __construct() method.
+     * Tests the __construct() method.
      */
     public function testConstruct() {
 

@@ -23,7 +23,7 @@ use WBW\Library\CURL\Request\CURLDeleteRequest;
 final class CURLDeleteRequestTest extends AbstractCURLRequestTest {
 
     /**
-     * Test __construct() method.
+     * Tests __construct() method.
      *
      * @return void
      */
@@ -40,7 +40,7 @@ final class CURLDeleteRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
-     * Test call() method.
+     * Tests call() method.
      *
      * @return void
      */

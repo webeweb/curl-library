@@ -23,7 +23,7 @@ use PHPUnit_Framework_TestCase;
 final class CURLResponseTest extends PHPUnit_Framework_TestCase {
 
     /**
-     * Test the __constructor() method.
+     * Tests the __constructor() method.
      *
      * @return void
      */
@@ -40,7 +40,7 @@ final class CURLResponseTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * Test the setX() method.
+     * Tests the setX() method.
      *
      * @return void
      */

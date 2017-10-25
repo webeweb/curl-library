@@ -26,7 +26,7 @@ use WBW\Library\CURL\Configuration\CURLConfiguration;
 final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 
     /**
-     * Test the __constructor() method.
+     * Tests the __constructor() method.
      *
      * @return void
      */
@@ -54,7 +54,7 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * Test the addHeader() method.
+     * Tests the addHeader() method.
      *
      * @return void
      */
@@ -75,7 +75,7 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * Test the clearHeader() method.
+     * Tests the clearHeader() method.
      *
      * @return void
      */
@@ -91,7 +91,7 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * Test the removeHeader() method.
+     * Tests the removeHeader() method.
      *
      * @return void
      */
@@ -110,7 +110,7 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * Test the setX() method.
+     * Tests the setX() method.
      *
      * @return void
      */

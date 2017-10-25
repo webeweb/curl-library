@@ -25,7 +25,7 @@ use WBW\Library\CURL\Request\CURLPostRequest;
 final class CURLPostRequestTest extends AbstractCURLRequestTest {
 
     /**
-     * Test __construct() method.
+     * Tests __construct() method.
      *
      * @return void
      */
@@ -42,7 +42,7 @@ final class CURLPostRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
-     * Test addPostData() method.
+     * Tests addPostData() method.
      *
      * @return void
      */
@@ -64,7 +64,7 @@ final class CURLPostRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
-     * Test call() method.
+     * Tests call() method.
      *
      * @return void
      */
@@ -84,7 +84,7 @@ final class CURLPostRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
-     * Test the clearPostData() method.
+     * Tests the clearPostData() method.
      *
      * @return void
      */
@@ -100,7 +100,7 @@ final class CURLPostRequestTest extends AbstractCURLRequestTest {
     }
 
     /**
-     * Test removePostData() method.
+     * Tests removePostData() method.
      *
      * @return void
      */
