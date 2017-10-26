@@ -1,7 +1,7 @@
 {
     "name": "webeweb/curl-library",
     "type": "library",
-    "description": "WBW cURL library",
+    "description": "cURL library",
     "keywords": ["webeweb", "library", "cURL"],
     "homepage": "http://github.com/webeweb/WBWCURLLibrary",
     "license": "LGPL-3.0",
