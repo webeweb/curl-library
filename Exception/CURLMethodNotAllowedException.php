@@ -20,13 +20,13 @@ namespace WBW\Library\CURL\Exception;
  */
 final class CURLMethodNotAllowedException extends AbstractCURLException {
 
-    /**
-     * Constructor.
-     *
-     * @param string $method The method.
-     */
-    public function __construct($method) {
-        parent::__construct("The method \"" . $method . "\" is not allowed");
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param string $method The method.
+	 */
+	public function __construct($method) {
+		parent::__construct("The method \"" . $method . "\" is not allowed");
+	}
 
 }

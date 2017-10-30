@@ -23,15 +23,15 @@ use WBW\Library\CURL\Exception\CURLInvalidArgumentException;
  */
 final class CURLInvalidArgumentExceptionTest extends PHPUnit_Framework_TestCase {
 
-    /**
-     * Tests the __construct() method.
-     */
-    public function testConstruct() {
+	/**
+	 * Tests the __construct() method.
+	 */
+	public function testConstruct() {
 
-        $ex = new CURLInvalidArgumentException("");
+		$ex = new CURLInvalidArgumentException("");
 
-        $res = "";
-        $this->assertEquals($res, $ex->getMessage(), "The method getMessage() does not return the expected string");
-    }
+		$res = "";
+		$this->assertEquals($res, $ex->getMessage(), "The method getMessage() does not return the expected string");
+	}
 
 }

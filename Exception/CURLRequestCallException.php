@@ -22,30 +22,30 @@ use WBW\Library\CURL\Response\CURLResponse;
  */
 final class CURLRequestCallException extends AbstractCURLException {
 
-    /**
-     * CURL response.
-     *
-     * @var CURLResponse
-     */
-    private $response;
+	/**
+	 * CURL response.
+	 *
+	 * @var CURLResponse
+	 */
+	private $response;
 
-    /**
-     * Constructor.
-     *
-     * @param string $message The message.
-     */
-    public function __construct($message, CURLResponse $cURLResponse) {
-        parent::__construct($message);
-        $this->response = $cURLResponse;
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param string $message The message.
+	 */
+	public function __construct($message, CURLResponse $cURLResponse) {
+		parent::__construct($message);
+		$this->response = $cURLResponse;
+	}
 
-    /**
-     * Get the response.
-     *
-     * @return CURLResponse Returns the cURL response.
-     */
-    public function getResponse() {
-        return $this->response;
-    }
+	/**
+	 * Get the response.
+	 *
+	 * @return CURLResponse Returns the cURL response.
+	 */
+	public function getResponse() {
+		return $this->response;
+	}
 
 }

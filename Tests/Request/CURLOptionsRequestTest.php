@@ -22,41 +22,41 @@ use WBW\Library\CURL\Request\CURLOptionsRequest;
  */
 final class CURLOptionsRequestTest extends AbstractCURLRequestTest {
 
-    /**
-     * Tests __construct() method.
-     *
-     * @return void
-     */
-    public function testConstructor() {
+	/**
+	 * Tests __construct() method.
+	 *
+	 * @return void
+	 */
+	public function testConstructor() {
 
-        $obj = new CURLOptionsRequest($this->configuration, self::RESOURCE_PATH);
+		$obj = new CURLOptionsRequest($this->configuration, self::RESOURCE_PATH);
 
-        $this->assertEquals($this->configuration, $obj->getConfiguration(), "The method getConfiguration() does not return the expected value");
-        $this->assertEquals([], $obj->getHeaders(), "The method getHeaders() does not return the expecetd value");
-        $this->assertEquals(CURLOptionsRequest::METHOD_OPTIONS, $obj->getMethod(), "The method getMethod() does not return the expecetd value");
-        $this->assertEquals([], $obj->getPostData(), "The method getPostData() does not return the expecetd value");
-        $this->assertEquals([], $obj->getQueryData(), "The method getQueryData() does not return the expecetd value");
-        $this->assertEquals(self::RESOURCE_PATH, $obj->getResourcePath(), "The method getResourcePath() does not return the expecetd value");
-    }
+		$this->assertEquals($this->configuration, $obj->getConfiguration(), "The method getConfiguration() does not return the expected value");
+		$this->assertEquals([], $obj->getHeaders(), "The method getHeaders() does not return the expecetd value");
+		$this->assertEquals(CURLOptionsRequest::METHOD_OPTIONS, $obj->getMethod(), "The method getMethod() does not return the expecetd value");
+		$this->assertEquals([], $obj->getPostData(), "The method getPostData() does not return the expecetd value");
+		$this->assertEquals([], $obj->getQueryData(), "The method getQueryData() does not return the expecetd value");
+		$this->assertEquals(self::RESOURCE_PATH, $obj->getResourcePath(), "The method getResourcePath() does not return the expecetd value");
+	}
 
-    /**
-     * Tests call() method.
-     *
-     * @return void
-     */
-    public function testCall() {
+	/**
+	 * Tests call() method.
+	 *
+	 * @return void
+	 */
+	public function testCall() {
 
-        $obj = new CURLOptionsRequest($this->configuration, self::RESOURCE_PATH);
+		$obj = new CURLOptionsRequest($this->configuration, self::RESOURCE_PATH);
 
-        $obj->addHeader("header", "header");
-        $obj->addQueryData("queryData", "queryData");
+		$obj->addHeader("header", "header");
+		$obj->addQueryData("queryData", "queryData");
 
-        $res = $obj->call();
+		$res = $obj->call();
 
-        $this->assertContains("header: header", $res->getRequestHeader(), "The method getRequestHeader() does not return the expecetd value");
-        $this->assertContains("queryData=queryData", $res->getRequestURL(), "The method getRequestURL() does not return the expected value");
-        $this->assertEquals(CURLOptionsRequest::METHOD_OPTIONS, json_decode($res->getResponseBody(), true)["method"]);
-        $this->assertEquals(200, $res->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
-    }
+		$this->assertContains("header: header", $res->getRequestHeader(), "The method getRequestHeader() does not return the expecetd value");
+		$this->assertContains("queryData=queryData", $res->getRequestURL(), "The method getRequestURL() does not return the expected value");
+		$this->assertEquals(CURLOptionsRequest::METHOD_OPTIONS, json_decode($res->getResponseBody(), true)["method"]);
+		$this->assertEquals(200, $res->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
+	}
 
 }
