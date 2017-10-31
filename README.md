@@ -58,7 +58,7 @@ Requests available :
 
 ```php
 
-class MyCustomRequest extends  extends AbstractCURLRequest {
+class MyCustomRequest extends AbstractCURLRequest {
 
 	/**
 	 * Constructor.
