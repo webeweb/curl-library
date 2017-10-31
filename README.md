@@ -27,14 +27,15 @@ Run `php composer.phar update webeweb/curl-library`
 ```php
 
 	// Initialize the POST request.
-	$postRequest = new CURLPostRequest(new CURLConfiguration(), "/resource-path");
-	$postRequest->getConfiguration()->setHost("http://domain.tld");
-	$postRequest->addPostData("id", 1);
-	$postRequest->addPostData("comment", "my comment");
+	$request = new CURLPostRequest(new CURLConfiguration(), "/resource-path");
+	$request->getConfiguration()->setHost("http://domain.tld");
+	$request->addQueryData("id", 1);
+	$request->addPostData("firstname", "John");
+	$request->addPostData("lastname", "DOE");
 	...
 
 	// Call the POST request.
-	$postResponse = $postRequest->call();
+	$response = $request->call();
 
 	// Make something with the response.
 	...
