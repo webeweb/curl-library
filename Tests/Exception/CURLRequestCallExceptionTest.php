@@ -31,9 +31,9 @@ final class CURLRequestCallExceptionTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testConstructor() {
 
-		$obj = new CURLRequestCallException("", new CURLResponse());
+		$obj = new CURLRequestCallException("exception", new CURLResponse());
 
-		$this->assertEquals("", $obj->getMessage(), "The method getMessage() does not return the expecetd string");
+		$this->assertEquals("exception", $obj->getMessage(), "The method getMessage() does not return the expecetd string");
 		$this->assertEquals(null, $obj->getResponse()->getRequestBody(), "The method getRequestBody() does not return the expected value");
 		$this->assertEquals([], $obj->getResponse()->getRequestHeader(), "The method getRequestHeader() does not return the expected value");
 		$this->assertEquals(null, $obj->getResponse()->getRequestURL(), "The method getRequestURL() does not return the expected value");

@@ -28,9 +28,9 @@ final class CURLInvalidArgumentExceptionTest extends PHPUnit_Framework_TestCase 
 	 */
 	public function testConstruct() {
 
-		$ex = new CURLInvalidArgumentException("");
+		$ex = new CURLInvalidArgumentException("exception");
 
-		$res = "";
+		$res = "exception";
 		$this->assertEquals($res, $ex->getMessage(), "The method getMessage() does not return the expected string");
 	}
 
