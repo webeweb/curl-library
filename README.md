@@ -12,10 +12,12 @@ cURL library
 Edit `composer.json` file to add this library package:
 
 ```yml
+
 "require": {
     ...
     "webeweb/curl-library": "1.0"
 },
+
 ```
 
 Run `php composer.phar update webeweb/curl-library`
@@ -25,6 +27,7 @@ Run `php composer.phar update webeweb/curl-library`
 ## Usage
 
 ```php
+
 	// Initialize the POST request.
 	$request = new CURLPostRequest(new CURLConfiguration(), "/resource-path");
 	$request->getConfiguration()->setHost("http://domain.tld");
@@ -38,6 +41,7 @@ Run `php composer.phar update webeweb/curl-library`
 
 	// Make something with the response.
 	...
+
 ```
 
 Requests available :
@@ -55,6 +59,7 @@ Requests available :
 ## Customize
 
 ```php
+
 class MyCustomRequest extends AbstractCURLRequest {
 
 	/**
@@ -81,13 +86,17 @@ To test the package, is better to clone this repository on your computer. After,
 the following (assuming you have `composer` installed on your computer):
 
 ```bash
+
 $ composer install --no-interaction --prefer-source --dev
+
 ```
 
 Once all required libraries are installed then do:
 
 ```bash
+
 $ vendor/bin/phpunit
+
 ```
 
 ---
