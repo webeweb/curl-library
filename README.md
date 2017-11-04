@@ -20,7 +20,7 @@ Edit `composer.json` file to add this library package:
 
 ```
 
-Run `php composer.phar update webeweb/curl-library`
+Run `composer update webeweb/curl-library`
 
 ---
 
