@@ -9,18 +9,18 @@ Interact with web API in your projects
 
 ## Installation
 
-Edit `composer.json` file to add this library package:
+Open a command console, enter your project directory and execute the following
+command to download the latest stable version of this package:
 
-```yml
+```bash
 
-"require": {
-    ...
-    "webeweb/curl-library": "1.0"
-},
+$ composer require webeweb/curl-library "1.0"
 
 ```
 
-Run `composer update webeweb/curl-library`
+This command requires you to have Composer installed globally, as explained
+in the [installation chapter](https://getcomposer.org/doc/00-intro.md)
+of the Composer documentation.
 
 ---
 
@@ -82,12 +82,16 @@ class MyCustomRequest extends AbstractCURLRequest {
 
 ## Testing
 
-To test the package, is better to clone this repository on your computer. After, go to the package folder and do
-the following (assuming you have `composer` installed on your computer):
+To test the package, is better to clone this repository on your computer.
+Open a command console and execute the following commands to download the latest
+stable version of this package:
 
 ```bash
 
-$ composer install --no-interaction --prefer-source --dev
+$ mkdir WBWCURLLibrary
+$ cd WBWCURLLibrary
+$ git clone git@github.com:webeweb/WBWCURLLibrary.git .
+$ composer install
 
 ```
 
@@ -103,4 +107,5 @@ $ vendor/bin/phpunit
 
 ## License
 
-WBWCURLLibrary is released under the LGPL License. See the bundled [LICENSE](LICENSE) file for details.
+WBWCURLLibrary is released under the LGPL License. See the bundled [LICENSE](LICENSE)
+file for details.
