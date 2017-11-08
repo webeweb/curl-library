@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the WBWCURLLibrary package.
+ * This file is part of the curl-library package.
  *
  * (c) 2017 NdC/WBW
  *
