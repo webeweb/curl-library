@@ -14,7 +14,7 @@ command to download the latest stable version of this package:
 
 ```bash
 
-$ composer require webeweb/curl-library "1.0"
+$ composer require webeweb/curl-library "1.1"
 
 ```
 
