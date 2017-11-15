@@ -31,7 +31,7 @@ final class CURLInvalidMessageClassExceptionTest extends PHPUnit_Framework_TestC
 		$ex = new CURLMethodNotAllowedException("exception");
 
 		$res = "The method \"exception\" is not allowed";
-		$this->assertEquals($res, $ex->getMessage(), "The method getMessage() does not return the expected string");
+		$this->assertEquals($res, $ex->getMessage());
 	}
 
 }

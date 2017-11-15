@@ -34,23 +34,23 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 
 		$obj = new CURLConfiguration();
 
-		$this->assertEquals(false, $obj->getAllowEncoding(), "The method getAllowEncoding() does not return the expected value");
-		$this->assertEquals(0, $obj->getConnectTimeout(), "The method getConnectTimeout() does not return the expected value");
-		$this->assertEquals(false, $obj->getDebug(), "The method getDebug() does not return the expected value");
-		$this->assertEquals("php://output", $obj->getDebugFile(), "The method getDebugFile() does not return the expected value");
-		$this->assertEquals([], $obj->getHeaders(), "The method getHeaders() does not return the expected value");
-		$this->assertEquals(null, $obj->getHost(), "The method getHost() does not return the expected value");
-		$this->assertEquals(null, $obj->getHttpPassword(), "The method getHttpPassword() does not return the expected value");
-		$this->assertEquals(null, $obj->getHttpUsername(), "The method getHttpUsername() does not return the expected value");
-		$this->assertEquals(null, $obj->getProxyHost(), "The method getProxyHost() does not return the expected value");
-		$this->assertEquals(null, $obj->getProxyPassword(), "The method getProxyPassword() does not return the expected value");
-		$this->assertEquals(null, $obj->getProxyPort(), "The method getProxyPort() does not return the expected value");
-		$this->assertEquals(null, $obj->getProxyType(), "The method getProxyType() does not return the expected value");
-		$this->assertEquals(null, $obj->getProxyUsername(), "The method getProxyUsername() does not return the expected value");
-		$this->assertEquals(0, $obj->getRequestTimeout(), "The method getRequestTimeout() does not return the expected value");
-		$this->assertEquals(true, $obj->getSslVerification(), "The method getSslVerification() does not return the expected value");
-		$this->assertEquals("cURLLibrary/1.0", $obj->getUserAgent(), "The method getUserAgent() does not return the expected value");
-		$this->assertEquals(false, $obj->getVerbose(), "The method getVerbose() does not return the expected value");
+		$this->assertEquals(false, $obj->getAllowEncoding());
+		$this->assertEquals(0, $obj->getConnectTimeout());
+		$this->assertEquals(false, $obj->getDebug());
+		$this->assertEquals("php://output", $obj->getDebugFile());
+		$this->assertEquals([], $obj->getHeaders());
+		$this->assertEquals(null, $obj->getHost());
+		$this->assertEquals(null, $obj->getHttpPassword());
+		$this->assertEquals(null, $obj->getHttpUsername());
+		$this->assertEquals(null, $obj->getProxyHost());
+		$this->assertEquals(null, $obj->getProxyPassword());
+		$this->assertEquals(null, $obj->getProxyPort());
+		$this->assertEquals(null, $obj->getProxyType());
+		$this->assertEquals(null, $obj->getProxyUsername());
+		$this->assertEquals(0, $obj->getRequestTimeout());
+		$this->assertEquals(true, $obj->getSslVerification());
+		$this->assertEquals("cURLLibrary/1.0", $obj->getUserAgent());
+		$this->assertEquals(false, $obj->getVerbose());
 	}
 
 	/**
@@ -64,13 +64,13 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 
 		$obj->addHeader("name", "value");
 		$res1 = ["name" => "value"];
-		$this->assertEquals($res1, $obj->getHeaders(), "The method getHeaders() does not return the expected headers with name");
+		$this->assertEquals($res1, $obj->getHeaders());
 
 		try {
 			$obj->addHeader(1, "value");
 		} catch (Exception $ex) {
-			$this->assertInstanceOf(StringArgumentException::class, $ex, "The method addHeader() does not throws the expected exception");
-			$this->assertEquals("The argument \"1\" is not a string", $ex->getMessage(), "The method addHeader() does not return the exepected exception message");
+			$this->assertInstanceOf(StringArgumentException::class, $ex);
+			$this->assertEquals("The argument \"1\" is not a string", $ex->getMessage());
 		}
 	}
 
@@ -84,10 +84,10 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 		$obj = new CURLConfiguration();
 
 		$obj->addHeader("name", "value");
-		$this->assertCount(1, $obj->getHeaders(), "The method getHeaders() does not return the expected headers count");
+		$this->assertCount(1, $obj->getHeaders());
 
 		$obj->clearHeaders();
-		$this->assertCount(0, $obj->getHeaders(), "The method getHeaders() does not return the expected headers count");
+		$this->assertCount(0, $obj->getHeaders());
 	}
 
 	/**
@@ -102,11 +102,11 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 
 		$obj->removeHeader("");
 		$res1 = ["name" => "value"];
-		$this->assertEquals($res1, $obj->getHeaders(), "The method getHeaders() does not return the expected headers");
+		$this->assertEquals($res1, $obj->getHeaders());
 
 		$obj->removeHeader("name");
 		$res2 = [];
-		$this->assertEquals($res2, $obj->getHeaders(), "The method getHeaders() does not return the expected headers with name");
+		$this->assertEquals($res2, $obj->getHeaders());
 	}
 
 	/**
@@ -120,52 +120,52 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 
 
 		$obj->setAllowEncoding(true);
-		$this->assertEquals(true, $obj->getAllowEncoding(), "The method getAllowEncoding() does not return the expected value");
+		$this->assertEquals(true, $obj->getAllowEncoding());
 
 		$obj->setConnectTimeout(1);
-		$this->assertEquals(1, $obj->getConnectTimeout(), "The method getConnectTimeout() does not return the expected value");
+		$this->assertEquals(1, $obj->getConnectTimeout());
 
 		$obj->setDebug(true);
-		$this->assertEquals(true, $obj->getDebug(), "The method getDebug() does not return the expected value");
+		$this->assertEquals(true, $obj->getDebug());
 
 		$obj->setDebugFile("./debugfile.log");
-		$this->assertEquals("./debugfile.log", $obj->getDebugFile(), "The method getDebugFile() does not return the expected value");
+		$this->assertEquals("./debugfile.log", $obj->getDebugFile());
 
 		$obj->setHost("host");
-		$this->assertEquals("host", $obj->getHost(), "The method getHost() does not return the expected value");
+		$this->assertEquals("host", $obj->getHost());
 
 		$obj->setHttpPassword("httpPassword");
-		$this->assertEquals("httpPassword", $obj->getHttpPassword(), "The method getHttpPassword() does not return the expected value");
+		$this->assertEquals("httpPassword", $obj->getHttpPassword());
 
 		$obj->setHttpUsername("httpUsername");
-		$this->assertEquals("httpUsername", $obj->getHttpUsername(), "The method getHttpUsername() does not return the expected value");
+		$this->assertEquals("httpUsername", $obj->getHttpUsername());
 
 		$obj->setProxyHost("proxyHost");
-		$this->assertEquals("proxyHost", $obj->getProxyHost(), "The method getProxyHost() does not return the expected value");
+		$this->assertEquals("proxyHost", $obj->getProxyHost());
 
 		$obj->setProxyPassword("proxyPassword");
-		$this->assertEquals("proxyPassword", $obj->getProxyPassword(), "The method getProxyPassword() does not return the expected value");
+		$this->assertEquals("proxyPassword", $obj->getProxyPassword());
 
 		$obj->setProxyPort("proxyPort");
-		$this->assertEquals("proxyPort", $obj->getProxyPort(), "The method getProxyPort() does not return the expected value");
+		$this->assertEquals("proxyPort", $obj->getProxyPort());
 
 		$obj->setProxyType(1);
-		$this->assertEquals(1, $obj->getProxyType(), "The method getProxyType() does not return the expected value");
+		$this->assertEquals(1, $obj->getProxyType());
 
 		$obj->setProxyUsername("proxyUsername");
-		$this->assertEquals("proxyUsername", $obj->getProxyUsername(), "The method getProxyUsername() does not return the expected value");
+		$this->assertEquals("proxyUsername", $obj->getProxyUsername());
 
 		$obj->setRequestTimeout(1);
-		$this->assertEquals(1, $obj->getRequestTimeout(), "The method getRequestTimeout() does not return the expected value");
+		$this->assertEquals(1, $obj->getRequestTimeout());
 
 		$obj->setSslVerification(false);
-		$this->assertEquals(false, $obj->getSslVerification(), "The method getSslVerification() does not return the expected value");
+		$this->assertEquals(false, $obj->getSslVerification());
 
 		$obj->setUserAgent("userAgent");
-		$this->assertEquals("userAgent", $obj->getUserAgent(), "The method getUserAgent() does not return the expected value");
+		$this->assertEquals("userAgent", $obj->getUserAgent());
 
 		$obj->setVerbose(true);
-		$this->assertEquals(true, $obj->getVerbose(), "The method getVerbose() does not return the expected value");
+		$this->assertEquals(true, $obj->getVerbose());
 	}
 
 }

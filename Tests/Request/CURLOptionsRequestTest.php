@@ -31,12 +31,12 @@ final class CURLOptionsRequestTest extends AbstractCURLRequestTest {
 
 		$obj = new CURLOptionsRequest($this->configuration, self::RESOURCE_PATH);
 
-		$this->assertEquals($this->configuration, $obj->getConfiguration(), "The method getConfiguration() does not return the expected value");
-		$this->assertEquals([], $obj->getHeaders(), "The method getHeaders() does not return the expecetd value");
-		$this->assertEquals(CURLOptionsRequest::METHOD_OPTIONS, $obj->getMethod(), "The method getMethod() does not return the expecetd value");
-		$this->assertEquals([], $obj->getPostData(), "The method getPostData() does not return the expecetd value");
-		$this->assertEquals([], $obj->getQueryData(), "The method getQueryData() does not return the expecetd value");
-		$this->assertEquals(self::RESOURCE_PATH, $obj->getResourcePath(), "The method getResourcePath() does not return the expecetd value");
+		$this->assertEquals($this->configuration, $obj->getConfiguration());
+		$this->assertEquals([], $obj->getHeaders());
+		$this->assertEquals(CURLOptionsRequest::METHOD_OPTIONS, $obj->getMethod());
+		$this->assertEquals([], $obj->getPostData());
+		$this->assertEquals([], $obj->getQueryData());
+		$this->assertEquals(self::RESOURCE_PATH, $obj->getResourcePath());
 	}
 
 	/**
@@ -53,10 +53,10 @@ final class CURLOptionsRequestTest extends AbstractCURLRequestTest {
 
 		$res = $obj->call();
 
-		$this->assertContains("header: header", $res->getRequestHeader(), "The method getRequestHeader() does not return the expecetd value");
-		$this->assertContains("queryData=queryData", $res->getRequestURL(), "The method getRequestURL() does not return the expected value");
+		$this->assertContains("header: header", $res->getRequestHeader());
+		$this->assertContains("queryData=queryData", $res->getRequestURL());
 		$this->assertEquals(CURLOptionsRequest::METHOD_OPTIONS, json_decode($res->getResponseBody(), true)["method"]);
-		$this->assertEquals(200, $res->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value");
+		$this->assertEquals(200, $res->getResponseInfo()["http_code"]);
 	}
 
 }

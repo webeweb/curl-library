@@ -33,13 +33,13 @@ final class CURLRequestCallExceptionTest extends PHPUnit_Framework_TestCase {
 
 		$obj = new CURLRequestCallException("exception", new CURLResponse());
 
-		$this->assertEquals("exception", $obj->getMessage(), "The method getMessage() does not return the expecetd string");
-		$this->assertEquals(null, $obj->getResponse()->getRequestBody(), "The method getRequestBody() does not return the expected value");
-		$this->assertEquals([], $obj->getResponse()->getRequestHeader(), "The method getRequestHeader() does not return the expected value");
-		$this->assertEquals(null, $obj->getResponse()->getRequestURL(), "The method getRequestURL() does not return the expected value");
-		$this->assertEquals(null, $obj->getResponse()->getResponseBody(), "The method getResponseBody() does not return the expected value");
-		$this->assertEquals([], $obj->getResponse()->getResponseHeader(), "The method getResponseHeader() does not return the expected value");
-		$this->assertEquals([], $obj->getResponse()->getResponseInfo(), "The method getResponseInfo() does not return the expected value");
+		$this->assertEquals("exception", $obj->getMessage());
+		$this->assertEquals(null, $obj->getResponse()->getRequestBody());
+		$this->assertEquals([], $obj->getResponse()->getRequestHeader());
+		$this->assertEquals(null, $obj->getResponse()->getRequestURL());
+		$this->assertEquals(null, $obj->getResponse()->getResponseBody());
+		$this->assertEquals([], $obj->getResponse()->getResponseHeader());
+		$this->assertEquals([], $obj->getResponse()->getResponseInfo());
 	}
 
 }
