@@ -3,10 +3,10 @@ curl-library
 
 [![Build Status](https://travis-ci.org/webeweb/curl-library.svg?branch=master)](https://travis-ci.org/webeweb/curl-library) [![Coverage Status](https://coveralls.io/repos/github/webeweb/curl-library/badge.svg?branch=master)](https://coveralls.io/github/webeweb/curl-library?branch=master) [![License](https://poser.pugx.org/webeweb/curl-library/license)](https://packagist.org/packages/webeweb/curl-library) [![composer.lock](https://poser.pugx.org/webeweb/curl-library/composerlock)](https://packagist.org/packages/webeweb/curl-library) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/1e7bc269-53c0-40ec-a905-4eb061afaab1/mini.png)](https://insight.sensiolabs.com/projects/1e7bc269-53c0-40ec-a905-4eb061afaab1)
 
-Interact with web API in your projects
+Interact with web API in your projects.
 
-`curl-library` uses a rolling release based on git master branch which is considered
-stable.
+`curl-library` uses a rolling release based on git master branch which is
+considered stable.
 
 ---
 
