@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * This file is part of the curl-library package.
  *
  * (c) 2017 NdC/WBW
@@ -33,10 +33,11 @@ final class CURLRequestCallException extends AbstractCURLException {
 	 * Constructor.
 	 *
 	 * @param string $message The message.
+	 * @param CURLResponse $response The response.
 	 */
-	public function __construct($message, CURLResponse $cURLResponse) {
+	public function __construct($message, CURLResponse $response) {
 		parent::__construct($message);
-		$this->response = $cURLResponse;
+		$this->response = $response;
 	}
 
 	/**

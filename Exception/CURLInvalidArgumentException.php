@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * This file is part of the curl-library package.
  *
  * (c) 2017 NdC/WBW
@@ -23,7 +23,7 @@ final class CURLInvalidArgumentException extends AbstractCURLException {
 	/**
 	 * Constructor.
 	 *
-	 * @param string $masseg The message.
+	 * @param string $message The message.
 	 */
 	public function __construct($message) {
 		parent::__construct($message);
