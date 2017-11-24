@@ -99,71 +99,85 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
 		/* === Allow encoding ============================================== */
 		$obj->getConfiguration()->setAllowEncoding(true);
 
-		$res1 = $obj->call();
+		$resAE = $obj->call();
 
-		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res1->getResponseBody(), true)["method"]);
-		$this->assertEquals(200, $res1->getResponseInfo()["http_code"]);
+		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($resAE->getResponseBody(), true)["method"]);
+		$this->assertEquals(200, $resAE->getResponseInfo()["http_code"]);
 
 		$obj->getConfiguration()->setAllowEncoding(false);
 
 		/* === Connect timeout ============================================= */
 		$obj->getConfiguration()->setConnectTimeout(30);
 
-		$res2 = $obj->call();
+		$resCT = $obj->call();
 
-		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res2->getResponseBody(), true)["method"]);
-		$this->assertEquals(200, $res2->getResponseInfo()["http_code"]);
+		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($resCT->getResponseBody(), true)["method"]);
+		$this->assertEquals(200, $resCT->getResponseInfo()["http_code"]);
 
 		$obj->getConfiguration()->setConnectTimeout(0);
 
 		/* === Debug ======================================================= */
 		$obj->getConfiguration()->setDebug(true);
 
-		$res3 = $obj->call();
+		$resD = $obj->call();
 
-		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res3->getResponseBody(), true)["method"]);
-		$this->assertEquals(200, $res3->getResponseInfo()["http_code"]);
+		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($resD->getResponseBody(), true)["method"]);
+		$this->assertEquals(200, $resD->getResponseInfo()["http_code"]);
 
 		$obj->getConfiguration()->setDebug(false);
 
 		/* === Headers ===================================================== */
 		$obj->addHeader("h", "v");
 
-		$res4 = $obj->call();
+		$resH = $obj->call();
 
-		$this->assertContains("h: v", $res4->getRequestHeader());
-		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res4->getResponseBody(), true)["method"]);
-		$this->assertEquals(200, $res4->getResponseInfo()["http_code"]);
+		$this->assertContains("h: v", $resH->getRequestHeader());
+		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($resH->getResponseBody(), true)["method"]);
+		$this->assertEquals(200, $resH->getResponseInfo()["http_code"]);
 
 		$obj->removeHeader("h");
+
+		/* === JSON ======================================================== */
+		$obj->addHeader("Content-Type", "application/json");
+		$obj->addPostData("name", "value");
+
+		$resJSON = $obj->call();
+
+		$this->assertContains("Content-Type: application/json", $resJSON->getRequestHeader());
+		$this->assertContains('{"name"="value"}', $resJSON->getRequestBody());
+		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($resH->getResponseBody(), true)["method"]);
+		$this->assertEquals(200, $resH->getResponseInfo()["http_code"]);
+
+		$obj->removeHeader("Content-Type");
+		$obj->removePostData("name");
 
 		/* === Request timeout ============================================= */
 		$obj->getConfiguration()->setRequestTimeout(30);
 
-		$res5 = $obj->call();
+		$resRT = $obj->call();
 
-		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res5->getResponseBody(), true)["method"]);
-		$this->assertEquals(200, $res5->getResponseInfo()["http_code"]);
+		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($resRT->getResponseBody(), true)["method"]);
+		$this->assertEquals(200, $resRT->getResponseInfo()["http_code"]);
 
 		$obj->getConfiguration()->setRequestTimeout(0);
 
 		/* === SSL verification ============================================ */
 		$obj->getConfiguration()->setSslVerification(false);
 
-		$res6 = $obj->call();
+		$resSSL = $obj->call();
 
-		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res6->getResponseBody(), true)["method"]);
-		$this->assertEquals(200, $res6->getResponseInfo()["http_code"]);
+		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($resSSL->getResponseBody(), true)["method"]);
+		$this->assertEquals(200, $resSSL->getResponseInfo()["http_code"]);
 
 		$obj->getConfiguration()->setSslVerification(true);
 
 		/* === Verbose ===================================================== */
 		$obj->getConfiguration()->setVerbose(true);
 
-		$res7 = $obj->call();
+		$resV = $obj->call();
 
-		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($res7->getResponseBody(), true)["method"]);
-		$this->assertEquals(200, $res7->getResponseInfo()["http_code"]);
+		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($resV->getResponseBody(), true)["method"]);
+		$this->assertEquals(200, $resV->getResponseInfo()["http_code"]);
 
 		$obj->getConfiguration()->setVerbose(false);
 		/* === HTTP code 0 ================================================= */

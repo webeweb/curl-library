@@ -145,6 +145,9 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		foreach ($mergedHeaders as $key => $value) {
 			$curlHeaders[] = implode(": ", [$key, $value]);
 		}
+		if (in_array("application/json", $mergedHeaders)) {
+			$curlPOSTData = json_encode($this->getPostData());
+		}
 
 		// Initialize the URL.
 		$curlURL = implode("/", [$this->getConfiguration()->getHost(), $this->getResourcePath()]);
@@ -529,7 +532,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 * @param string $resourcePath The resource path.
 	 * @return AbstractCURLRequest Return the CURL request.
 	 */
-	protected final function setResourcePath($resourcePath) {
+	public final function setResourcePath($resourcePath) {
 		$this->resourcePath = $resourcePath;
 		return $this;
 	}
