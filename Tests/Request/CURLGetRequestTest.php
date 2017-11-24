@@ -144,7 +144,7 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
 		$resJSON = $obj->call();
 
 		$this->assertContains("Content-Type: application/json", $resJSON->getRequestHeader());
-		$this->assertContains('{"name"="value"}', $resJSON->getRequestBody());
+		$this->assertContains('{"name":"value"}', $resJSON->getRequestBody());
 		$this->assertEquals(CURLGetRequest::METHOD_GET, json_decode($resH->getResponseBody(), true)["method"]);
 		$this->assertEquals(200, $resH->getResponseInfo()["http_code"]);
 
