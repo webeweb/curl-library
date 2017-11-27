@@ -26,7 +26,7 @@ abstract class AbstractCURLRequestTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Resource path.
 	 */
-	const RESOURCE_PATH = "testCall.php";
+	const RESOURCE_PATH = "/testCall.php";
 
 	/**
 	 * CURL configuration.

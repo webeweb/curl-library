@@ -150,7 +150,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		}
 
 		// Initialize the URL.
-		$curlURL = implode("/", [$this->getConfiguration()->getHost(), $this->getResourcePath()]);
+		$curlURL = implode("", [$this->getConfiguration()->getHost(), $this->getResourcePath()]);
 		if (0 < count($this->getQueryData())) {
 			$curlURL = implode("?", [$curlURL, http_build_query($this->getQueryData())]);
 		}
