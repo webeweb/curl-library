@@ -410,7 +410,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		// Initialize the merged URL.
 		$mergedURL	 = [];
 		$mergedURL[] = $this->getConfiguration()->getHost();
-		if (!is_null($this->getResourcePath()) || $this->getResourcePath() !== "") {
+		if (!is_null($this->getResourcePath()) && $this->getResourcePath() !== "") {
 			$mergedURL[] = $this->getResourcePath();
 		}
 
