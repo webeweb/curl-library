@@ -37,7 +37,7 @@ final class CURLPatchRequestTest extends AbstractCURLRequestTest {
 		$this->assertEquals(CURLPatchRequest::METHOD_PATCH, $obj->getMethod());
 		$this->assertEquals([], $obj->getPostData());
 		$this->assertEquals([], $obj->getQueryData());
-		$this->assertEquals(self::RESOURCE_PATH, $obj->getResourcePath());
+		$this->assertEquals("testCall.php", $obj->getResourcePath());
 	}
 
 	/**

@@ -135,22 +135,16 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	public final function call() {
 
 		// Define the necessary argurments.
-		$curlHeaders	 = [];
+		$curlHeaders	 = $this->mergeHeaders();
 		$curlPOSTData	 = http_build_query($this->getPostData());
 
-		// Merge the headers.
-		$mergedHeaders = array_merge($this->getConfiguration()->getHeaders(), $this->getHeaders());
-
-		// Handle each merge header.
-		foreach ($mergedHeaders as $key => $value) {
-			$curlHeaders[] = implode(": ", [$key, $value]);
-		}
-		if (in_array("application/json", $mergedHeaders)) {
+		//
+		if (in_array("Content-Type: application/json", $curlHeaders)) {
 			$curlPOSTData = json_encode($this->getPostData());
 		}
 
 		// Initialize the URL.
-		$curlURL = implode("", [$this->getConfiguration()->getHost(), $this->getResourcePath()]);
+		$curlURL = $this->mergeURL();
 		if (0 < count($this->getQueryData())) {
 			$curlURL = implode("?", [$curlURL, http_build_query($this->getQueryData())]);
 		}
@@ -388,6 +382,43 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	}
 
 	/**
+	 * Merge the headers.
+	 *
+	 * @return array Returns the meged headers.
+	 */
+	private function mergeHeaders() {
+
+		// Initialize the merged headers.
+		$mergedHeaders = [];
+
+		// Handle each header.
+		foreach (array_merge($this->getConfiguration()->getHeaders(), $this->getHeaders()) as $key => $value) {
+			$mergedHeaders[] = implode(": ", [$key, $value]);
+		}
+
+		// Return the merged headers.
+		return $mergedHeaders;
+	}
+
+	/**
+	 * Merge the URL.
+	 *
+	 * @return string Returns the merged URL.
+	 */
+	private function mergeURL() {
+
+		// Initialize the merged URL.
+		$mergedURL	 = [];
+		$mergedURL[] = $this->getConfiguration()->getHost();
+		if (!is_null($this->getResourcePath()) || $this->getResourcePath() !== "") {
+			$mergedURL[] = $this->getResourcePath();
+		}
+
+		// Return the merged URL.
+		return implode("/", $mergedURL);
+	}
+
+	/**
 	 * Parse the raw header.
 	 *
 	 * @param string $rawHeader The raw header.
@@ -533,7 +564,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 * @return AbstractCURLRequest Return the CURL request.
 	 */
 	public final function setResourcePath($resourcePath) {
-		$this->resourcePath = $resourcePath;
+		$this->resourcePath = preg_replace("/^\//", "", trim($resourcePath));
 		return $this;
 	}
 

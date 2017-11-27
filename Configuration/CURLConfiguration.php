@@ -395,7 +395,7 @@ final class CURLConfiguration {
 	 * @return CURLConfiguration Returns the CURL configuration.
 	 */
 	public function setHost($host) {
-		$this->host = $host;
+		$this->host = preg_replace("/\/$/", "", trim($host));
 		return $this;
 	}
 
