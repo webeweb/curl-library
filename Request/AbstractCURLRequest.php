@@ -31,6 +31,8 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 
 	/**
 	 * Content-type application/x-www-form-urlencoded
+	 *
+	 * @var string
 	 */
 	const CONTENT_TYPE_X_WWW_FORM_URLENCODED = "Content-Type: application/x-www-form-urlencoded";
 
