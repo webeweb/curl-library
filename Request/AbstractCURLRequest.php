@@ -99,7 +99,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 * @param string $value The header value.
 	 * @throws StringArgumentException Throws a string argument exception if the name is not a string.
 	 */
-	public final function addHeader($name, $value) {
+	final public function addHeader($name, $value) {
 		ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
 		$this->headers[$name] = $value;
 	}
@@ -111,7 +111,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 * @param string $value The POST data value.
 	 * @throws StringArgumentException Throws a string argument exception if the name is not a string.
 	 */
-	public final function addPostData($name, $value) {
+	final public function addPostData($name, $value) {
 		ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
 		$this->postData[$name] = $value;
 	}
@@ -123,7 +123,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 * @param string $value The query data value.
 	 * @throws StringArgumentException Throws a string argument exception if the name is not a string.
 	 */
-	public final function addQueryData($name, $value) {
+	final public function addQueryData($name, $value) {
 		ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
 		$this->queryData[$name] = $value;
 	}
@@ -134,7 +134,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 * @return CURLResponse Returns the response.
 	 * @throws CURLRequestCallException Throws a CURL request call if something failed.
 	 */
-	public final function call() {
+	final public function call() {
 
 		// Define the necessary argurments.
 		$curlHeaders	 = $this->mergeHeaders();
@@ -307,7 +307,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 *
 	 * @return AbstractCURLRequest Return the CURL request.
 	 */
-	public final function clearHeaders() {
+	final public function clearHeaders() {
 		return $this->setHeaders();
 	}
 
@@ -316,7 +316,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 *
 	 * @return AbstractCURLRequest Return the CURL request.
 	 */
-	public final function clearPostData() {
+	final public function clearPostData() {
 		return $this->setPostData();
 	}
 
@@ -325,7 +325,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 *
 	 * @return AbstractCURLRequest Return the CURL request.
 	 */
-	public final function clearQueryData() {
+	final public function clearQueryData() {
 		return $this->setQueryData();
 	}
 
@@ -334,7 +334,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 *
 	 * @return CURLConfiguration Returns the configuration.
 	 */
-	public final function getConfiguration() {
+	final public function getConfiguration() {
 		return $this->configuration;
 	}
 
@@ -343,7 +343,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 *
 	 * @return array Returns the headers.
 	 */
-	public final function getHeaders() {
+	final public function getHeaders() {
 		return $this->headers;
 	}
 
@@ -352,7 +352,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 *
 	 * @return string Returns the method.
 	 */
-	public final function getMethod() {
+	final public function getMethod() {
 		return $this->method;
 	}
 
@@ -361,7 +361,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 *
 	 * @return array Returns the POST data.
 	 */
-	public final function getPostData() {
+	final public function getPostData() {
 		return $this->postData;
 	}
 
@@ -370,7 +370,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 *
 	 * @return array Returns the query data.
 	 */
-	public final function getQueryData() {
+	final public function getQueryData() {
 		return $this->queryData;
 	}
 
@@ -379,7 +379,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 *
 	 * @return string Return the resource path.
 	 */
-	public final function getResourcePath() {
+	final public function getResourcePath() {
 		return $this->resourcePath;
 	}
 
@@ -463,7 +463,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 *
 	 * @param string $name The header name.
 	 */
-	public final function removeHeader($name) {
+	final public function removeHeader($name) {
 		if (array_key_exists($name, $this->headers)) {
 			unset($this->headers[$name]);
 		}
@@ -474,7 +474,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 *
 	 * @param string $name The POST data name.
 	 */
-	public final function removePostData($name) {
+	final public function removePostData($name) {
 		if (array_key_exists($name, $this->postData)) {
 			unset($this->postData[$name]);
 		}
@@ -485,7 +485,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 *
 	 * @param string $name The query data name.
 	 */
-	public final function removeQueryData($name) {
+	final public function removeQueryData($name) {
 		if (array_key_exists($name, $this->queryData)) {
 			unset($this->queryData[$name]);
 		}
@@ -497,7 +497,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 * @param CURLConfiguration $configuration The configuration.
 	 * @return AbstractCURLRequest Return the CURL request.
 	 */
-	protected final function setConfiguration(CURLConfiguration $configuration) {
+	final protected function setConfiguration(CURLConfiguration $configuration) {
 		$this->configuration = $configuration;
 		return $this;
 	}
@@ -508,7 +508,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 * @param array $headers The headers.
 	 * @return AbstractCURLRequest Return the CURL request.
 	 */
-	protected final function setHeaders(array $headers = []) {
+	final protected function setHeaders(array $headers = []) {
 		$this->headers = $headers;
 		return $this;
 	}
@@ -520,7 +520,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 * @return AbstractCURLRequest Return the CURL request.
 	 * @throws InvalidHTTPMethodException Throws an invalid HTTP method exception if the method is not implemented.
 	 */
-	protected final function setMethod($method) {
+	final protected function setMethod($method) {
 		switch ($method) {
 			case self::METHOD_DELETE:
 			case self::METHOD_GET:
@@ -543,7 +543,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 * @param array $postData The POST data.
 	 * @return AbstractCURLRequest Return the CURL request.
 	 */
-	protected final function setPostData(array $postData = []) {
+	final protected function setPostData(array $postData = []) {
 		$this->postData = $postData;
 		return $this;
 	}
@@ -554,7 +554,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 * @param array $queryData The query data.
 	 * @return AbstractCURLRequest Return the CURL request.
 	 */
-	protected final function setQueryData(array $queryData = []) {
+	final protected function setQueryData(array $queryData = []) {
 		$this->queryData = $queryData;
 		return $this;
 	}
@@ -565,7 +565,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	 * @param string $resourcePath The resource path.
 	 * @return AbstractCURLRequest Return the CURL request.
 	 */
-	public final function setResourcePath($resourcePath) {
+	final public function setResourcePath($resourcePath) {
 		$this->resourcePath = preg_replace("/^\//", "", trim($resourcePath));
 		return $this;
 	}
