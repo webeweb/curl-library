@@ -160,7 +160,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		}
 
 		// Set the encoding.
-		if ($this->getConfiguration()->getAllowEncoding() === true) {
+		if (true === $this->getConfiguration()->getAllowEncoding()) {
 			curl_setopt($curl, CURLOPT_ENCODING, "");
 		}
 
@@ -223,7 +223,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
 		// Set the SSL verification.
-		if ($this->getConfiguration()->getSslVerification() === false) {
+		if (false === $this->getConfiguration()->getSslVerification()) {
 			curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
 			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 		}
@@ -243,14 +243,14 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		curl_setopt($curl, CURLOPT_HEADER, 1);
 
 		// Set the verbose.
-		if ($this->getConfiguration()->getDebug() === true) {
+		if (true === $this->getConfiguration()->getDebug()) {
 			curl_setopt($curl, CURLOPT_STDERR, fopen($this->getConfiguration()->getDebugFile(), "a"));
 			curl_setopt($curl, CURLOPT_VERBOSE, 0);
 
 			$msg = (new DateTime())->format("c") . " [DEBUG] " . $curlURL . PHP_EOL . "HTTP request body ~BEGIN~" . PHP_EOL . print_r($curlPOSTData, true) . PHP_EOL . "~END~" . PHP_EOL;
 			error_log($msg, 3, $this->getConfiguration()->getDebugFile());
 		} else {
-			if ($this->getConfiguration()->getVerbose() === true) {
+			if (true === $this->getConfiguration()->getVerbose()) {
 				curl_setopt($curl, CURLOPT_VERBOSE, 1);
 			} else {
 				curl_setopt($curl, CURLOPT_VERBOSE, 0);
@@ -265,7 +265,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		$curlInfo		 = curl_getinfo($curl);
 
 		//
-		if ($this->getConfiguration()->getDebug() === true) {
+		if (true === $this->getConfiguration()->getDebug()) {
 			$msg = (new DateTime())->format("c") . " [DEBUG] " . $curlURL . PHP_EOL . "HTTP response body ~BEGIN~" . PHP_EOL . print_r($httpBody, true) . PHP_EOL . "~END~" . PHP_EOL;
 			error_log($msg, 3, $this->getConfiguration()->getDebugFile());
 		}
@@ -290,7 +290,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		$msg = curl_errno($curl);
 
 		// Check the HTTP code.
-		if ($curlInfo["http_code"] === 0) {
+		if (0 === $curlInfo["http_code"]) {
 			if (!empty(curl_error($curl))) {
 				$msg = "Call to " . $curlURL . " failed : " . curl_error($curl);
 			} else {
@@ -412,7 +412,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		// Initialize the merged URL.
 		$mergedURL	 = [];
 		$mergedURL[] = $this->getConfiguration()->getHost();
-		if (!is_null($this->getResourcePath()) && $this->getResourcePath() !== "") {
+		if (null !== $this->getResourcePath() && "" !== $this->getResourcePath()) {
 			$mergedURL[] = $this->getResourcePath();
 		}
 
@@ -436,16 +436,16 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		foreach (explode("\n", $rawHeader) as $h) {
 			$h = explode(":", $h, 2);
 			if (isset($h[1])) {
-				if (!isset($headers[$h[0]])) {
+				if (false === isset($headers[$h[0]])) {
 					$headers[$h[0]] = trim($h[1]);
-				} elseif (is_array($headers[$h[0]])) {
+				} elseif (true === is_array($headers[$h[0]])) {
 					$headers[$h[0]] = array_merge($headers[$h[0]], [trim($h[1])]);
 				} else {
 					$headers[$h[0]] = array_merge([$headers[$h[0]]], [trim($h[1])]);
 				}
 				$key = $h[0];
 			} else {
-				if (substr($h[0], 0, 1) === "\t") {
+				if ("\t" === substr($h[0], 0, 1)) {
 					$headers[$key] .= "\r\n\t" . trim($h[0]);
 				} elseif (!$key) {
 					$headers[0] = trim($h[0]);
