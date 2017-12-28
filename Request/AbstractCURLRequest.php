@@ -141,7 +141,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		$curlPOSTData	 = http_build_query($this->getPostData());
 
 		//
-		if (in_array("Content-Type: application/json", $curlHeaders)) {
+		if (true === in_array("Content-Type: application/json", $curlHeaders)) {
 			$curlPOSTData = json_encode($this->getPostData());
 		}
 
@@ -189,16 +189,16 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		}
 
 		// Set the proxy.
-		if (!is_null($this->getConfiguration()->getProxyHost())) {
+		if (null !== $this->getConfiguration()->getProxyHost()) {
 			curl_setopt($curl, CURLOPT_PROXY, $this->getConfiguration()->getProxyHost());
 		}
-		if (!is_null($this->getConfiguration()->getProxyPort())) {
+		if (null !== $this->getConfiguration()->getProxyPort()) {
 			curl_setopt($curl, CURLOPT_PROXYPORT, $this->getConfiguration()->getProxyPort());
 		}
-		if (!is_null($this->getConfiguration()->getProxyType())) {
+		if (null !== $this->getConfiguration()->getProxyType()) {
 			curl_setopt($curl, CURLOPT_PROXYTYPE, $this->getConfiguration()->getProxyType());
 		}
-		if (!is_null($this->getConfiguration()->getProxyUsername())) {
+		if (null !== $this->getConfiguration()->getProxyUsername()) {
 			curl_setopt($curl, CURLOPT_PROXYUSERPWD, implode(":", [$this->getConfiguration()->getProxyUsername(), $this->getConfiguration()->getProxyPassword()]));
 		}
 
