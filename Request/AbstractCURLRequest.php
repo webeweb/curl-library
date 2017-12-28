@@ -171,37 +171,20 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		switch ($this->getMethod()) {
 
 			case self::METHOD_DELETE:
+			case self::METHOD_OPTIONS:
+			case self::METHOD_PATCH:
+			case self::METHOD_PUT:
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->getMethod());
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPOSTData);
-				break;
-
-			case self::METHOD_GET:
-				// NOTHING TO DO.
 				break;
 
 			case self::METHOD_HEAD:
 				curl_setopt($curl, CURLOPT_NOBODY, true);
 				break;
 
-			case self::METHOD_OPTIONS:
-				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->getMethod());
-				curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPOSTData);
-				break;
-
-			case self::METHOD_PATCH:
-				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->getMethod());
-				curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPOSTData);
-				break;
-
 			case self::METHOD_POST:
 				curl_setopt($curl, CURLOPT_POST, true);
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPOSTData);
-				break;
-
-			case self::METHOD_PUT:
-				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->getMethod());
-				curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPOSTData);
-
 				break;
 		}
 
