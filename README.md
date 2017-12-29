@@ -1,7 +1,7 @@
 curl-library
 ============
 
-[![Build Status](https://travis-ci.org/webeweb/curl-library.svg?branch=master)](https://travis-ci.org/webeweb/curl-library) [![Coverage Status](https://coveralls.io/repos/github/webeweb/curl-library/badge.svg?branch=master)](https://coveralls.io/github/webeweb/curl-library?branch=master) [![License](https://poser.pugx.org/webeweb/curl-library/license)](https://packagist.org/packages/webeweb/curl-library) [![composer.lock](https://poser.pugx.org/webeweb/curl-library/composerlock)](https://packagist.org/packages/webeweb/curl-library) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/webeweb/curl-library/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/webeweb/curl-library/?branch=master)
+[![Build Status](https://travis-ci.org/webeweb/curl-library.svg?branch=master)](https://travis-ci.org/webeweb/curl-library) [![Coverage Status](https://coveralls.io/repos/github/webeweb/curl-library/badge.svg?branch=master)](https://coveralls.io/github/webeweb/curl-library?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/webeweb/curl-library/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/webeweb/curl-library/?branch=master) [![License](https://poser.pugx.org/webeweb/curl-library/license)](https://packagist.org/packages/webeweb/curl-library) [![composer.lock](https://poser.pugx.org/webeweb/curl-library/composerlock)](https://packagist.org/packages/webeweb/curl-library)
 
 Interact with web API in your projects.
 
