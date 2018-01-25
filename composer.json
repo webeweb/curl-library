@@ -4,7 +4,7 @@
 	"description": "Interact with web API in your projects",
 	"keywords": ["webeweb", "library", "cURL"],
 	"homepage": "http://github.com/webeweb/curl-library",
-	"license": "LGPL-3.0",
+	"license": "LGPL-3.0-only",
 	"authors": [
 		{
 			"name": "webeweb",
