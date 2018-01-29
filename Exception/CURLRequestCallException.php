@@ -14,7 +14,7 @@ namespace WBW\Library\CURL\Exception;
 use WBW\Library\CURL\Response\CURLResponse;
 
 /**
- * CURL request call exception.
+ * cURL request call exception.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Exception

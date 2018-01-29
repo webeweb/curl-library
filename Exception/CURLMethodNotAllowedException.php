@@ -12,7 +12,7 @@
 namespace WBW\Library\CURL\Exception;
 
 /**
- * CURL method not allowed exception.
+ * cURL method not allowed exception.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Exception

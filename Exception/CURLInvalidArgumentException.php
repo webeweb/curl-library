@@ -12,7 +12,7 @@
 namespace WBW\Library\CURL\Exception;
 
 /**
- * CURL invalid argument exception.
+ * cURL invalid argument exception.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Exception
