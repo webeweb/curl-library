@@ -25,6 +25,8 @@ final class CURLInvalidMessageClassExceptionTest extends PHPUnit_Framework_TestC
 
 	/**
 	 * Tests the __construct() method.
+	 *
+	 * @return void
 	 */
 	public function testConstruct() {
 
