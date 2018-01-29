@@ -11,7 +11,9 @@
 
 namespace WBW\Library\CURL\Tests\Factory;
 
+use Exception;
 use PHPUnit_Framework_TestCase;
+use WBW\Library\Core\Exception\HTTP\InvalidHTTPMethodException;
 use WBW\Library\Core\HTTP\HTTPMethodInterface;
 use WBW\Library\CURL\Factory\CURLFactory;
 use WBW\Library\CURL\Request\CURLDeleteRequest;
@@ -37,6 +39,13 @@ final class CURLFactoryTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testGetInstance() {
+
+		try {
+			CURLFactory::getInstance("exception");
+		} catch (Exception $ex) {
+			$this->assertInstanceOf(InvalidHTTPMethodException::class, $ex);
+			$this->assertEquals("The HTTP method \"exception\" is invalid", $ex->getMessage());
+		}
 
 		$res1 = CURLFactory::getInstance(HTTPMethodInterface::METHOD_DELETE);
 		$this->assertInstanceOf(CURLDeleteRequest::class, $res1);
