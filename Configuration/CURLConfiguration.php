@@ -15,10 +15,11 @@ use WBW\Library\Core\Argument\ArgumentValidator;
 use WBW\Library\Core\Exception\Argument\StringArgumentException;
 
 /**
- * CURL configuration.
+ * cURL configuration.
  *
- *
+ * @author NdC/WBW <https://github.com/webeweb/>
  * @package SDKBundle\Web\API\CURL\Configuration
+ * @final
  */
 final class CURLConfiguration {
 
