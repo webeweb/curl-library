@@ -13,13 +13,11 @@ namespace WBW\Library\CURL\Request;
 
 use DateTime;
 use WBW\Library\Core\Argument\ArgumentValidator;
-use WBW\Library\Core\Exception\Argument\StringArgumentException;
 use WBW\Library\Core\Exception\HTTP\InvalidHTTPMethodException;
 use WBW\Library\Core\HTTP\HTTPMethodInterface;
 use WBW\Library\CURL\Configuration\CURLConfiguration;
 use WBW\Library\CURL\Exception\CURLRequestCallException;
 use WBW\Library\CURL\Response\CURLResponse;
-use WBW\Library\CURL\Response\CURLResponseInterface;
 
 /**
  * Abstract cURL request.
@@ -28,7 +26,7 @@ use WBW\Library\CURL\Response\CURLResponseInterface;
  * @package WBW\Library\CURL\Request
  * @abstract
  */
-abstract class AbstractCURLRequest implements HTTPMethodInterface {
+abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPMethodInterface {
 
 	/**
 	 * Content-type application/x-www-form-urlencoded
@@ -94,11 +92,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	}
 
 	/**
-	 * Add an header.
-	 *
-	 * @param string $name The header name.
-	 * @param string $value The header value.
-	 * @throws StringArgumentException Throws a string argument exception if the name is not a string.
+	 * {@inheritdoc}
 	 */
 	final public function addHeader($name, $value) {
 		ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
@@ -106,11 +100,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	}
 
 	/**
-	 * Add a POST data.
-	 *
-	 * @param string $name The POST data name.
-	 * @param string $value The POST data value.
-	 * @throws StringArgumentException Throws a string argument exception if the name is not a string.
+	 * {@inheritdoc}
 	 */
 	final public function addPostData($name, $value) {
 		ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
@@ -118,11 +108,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	}
 
 	/**
-	 * Add a query data.
-	 *
-	 * @param string $name The query data name.
-	 * @param string $value The query data value.
-	 * @throws StringArgumentException Throws a string argument exception if the name is not a string.
+	 * {@inheritdoc}
 	 */
 	final public function addQueryData($name, $value) {
 		ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
@@ -130,10 +116,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	}
 
 	/**
-	 * Call the request.
-	 *
-	 * @return CURLResponseInterface Returns the response.
-	 * @throws CURLRequestCallException Throws a CURL request call if something failed.
+	 * {@inheritdoc}
 	 */
 	final public function call() {
 
@@ -275,7 +258,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 
 		// Check the HTTP code.
 		if (0 === $curlInfo["http_code"]) {
-			if (!empty(curl_error($curl))) {
+			if (false === empty(curl_error($curl))) {
 				$msg = "Call to " . $curlURL . " failed : " . curl_error($curl);
 			} else {
 				$msg = "Call to " . $curlURL . " failed, but for an unknown reason. This could happen if you are disconnected from the network.";
@@ -287,81 +270,63 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	}
 
 	/**
-	 * Clear headers.
-	 *
-	 * @return AbstractCURLRequest Return the CURL request.
+	 * {@inheritdoc}
 	 */
 	final public function clearHeaders() {
 		return $this->setHeaders();
 	}
 
 	/**
-	 * Clear post data.
-	 *
-	 * @return AbstractCURLRequest Return the CURL request.
+	 * {@inheritdoc}
 	 */
 	final public function clearPostData() {
 		return $this->setPostData();
 	}
 
 	/**
-	 * Clear query data.
-	 *
-	 * @return AbstractCURLRequest Return the CURL request.
+	 * {@inheritdoc}
 	 */
 	final public function clearQueryData() {
 		return $this->setQueryData();
 	}
 
 	/**
-	 * Get the configuration.
-	 *
-	 * @return CURLConfiguration Returns the configuration.
+	 * {@inheritdoc}
 	 */
 	final public function getConfiguration() {
 		return $this->configuration;
 	}
 
 	/**
-	 * Get the headers.
-	 *
-	 * @return array Returns the headers.
+	 * {@inheritdoc}
 	 */
 	final public function getHeaders() {
 		return $this->headers;
 	}
 
 	/**
-	 * Get the method.
-	 *
-	 * @return string Returns the method.
+	 * {@inheritdoc}
 	 */
 	final public function getMethod() {
 		return $this->method;
 	}
 
 	/**
-	 * Get the POST data.
-	 *
-	 * @return array Returns the POST data.
+	 * {@inheritdoc}
 	 */
 	final public function getPostData() {
 		return $this->postData;
 	}
 
 	/**
-	 * Get the query data.
-	 *
-	 * @return array Returns the query data.
+	 * {@inheritdoc}
 	 */
 	final public function getQueryData() {
 		return $this->queryData;
 	}
 
 	/**
-	 * Get the resource path.
-	 *
-	 * @return string Return the resource path.
+	 * {@inheritdoc}
 	 */
 	final public function getResourcePath() {
 		return $this->resourcePath;
@@ -419,7 +384,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 		// Handle each header.
 		foreach (explode("\n", $rawHeader) as $h) {
 			$h = explode(":", $h, 2);
-			if (isset($h[1])) {
+			if (true === isset($h[1])) {
 				if (false === isset($headers[$h[0]])) {
 					$headers[$h[0]] = trim($h[1]);
 				} elseif (true === is_array($headers[$h[0]])) {
@@ -443,36 +408,33 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	}
 
 	/**
-	 * Remove an header.
-	 *
-	 * @param string $name The header name.
+	 * {@inheritdoc}
 	 */
 	final public function removeHeader($name) {
-		if (array_key_exists($name, $this->headers)) {
+		if (true === array_key_exists($name, $this->headers)) {
 			unset($this->headers[$name]);
 		}
+		return $this;
 	}
 
 	/**
-	 * Remove a POST data.
-	 *
-	 * @param string $name The POST data name.
+	 * {@inheritdoc}
 	 */
 	final public function removePostData($name) {
-		if (array_key_exists($name, $this->postData)) {
+		if (true === array_key_exists($name, $this->postData)) {
 			unset($this->postData[$name]);
 		}
+		return $this;
 	}
 
 	/**
-	 * Remove a query data.
-	 *
-	 * @param string $name The query data name.
+	 * {@inheritdoc}
 	 */
 	final public function removeQueryData($name) {
-		if (array_key_exists($name, $this->queryData)) {
+		if (true === array_key_exists($name, $this->queryData)) {
 			unset($this->queryData[$name]);
 		}
+		return $this;
 	}
 
 	/**
@@ -544,10 +506,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	}
 
 	/**
-	 * Set the resource path.
-	 *
-	 * @param string $resourcePath The resource path.
-	 * @return AbstractCURLRequest Return the CURL request.
+	 * {@inheritdoc}
 	 */
 	final public function setResourcePath($resourcePath) {
 		$this->resourcePath = preg_replace("/^\//", "", trim($resourcePath));
