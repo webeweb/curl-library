@@ -19,9 +19,10 @@ use WBW\Library\Core\HTTP\HTTPMethodInterface;
 use WBW\Library\CURL\Configuration\CURLConfiguration;
 use WBW\Library\CURL\Exception\CURLRequestCallException;
 use WBW\Library\CURL\Response\CURLResponse;
+use WBW\Library\CURL\Response\CURLResponseInterface;
 
 /**
- * Abstract CURL request.
+ * Abstract cURL request.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Request
@@ -131,7 +132,7 @@ abstract class AbstractCURLRequest implements HTTPMethodInterface {
 	/**
 	 * Call the request.
 	 *
-	 * @return CURLResponse Returns the response.
+	 * @return CURLResponseInterface Returns the response.
 	 * @throws CURLRequestCallException Throws a CURL request call if something failed.
 	 */
 	final public function call() {

@@ -12,13 +12,13 @@
 namespace WBW\Library\CURL\Response;
 
 /**
- * CURL response.
+ * cURL response.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Response
  * @final
  */
-final class CURLResponse {
+final class CURLResponse implements CURLResponseInterface {
 
 	/**
 	 * Request body.
@@ -70,54 +70,42 @@ final class CURLResponse {
 	}
 
 	/**
-	 * Get the request body.
-	 *
-	 * @return string Returns the request body.
+	 * {@inheritdoc}
 	 */
 	public function getRequestBody() {
 		return $this->requestBody;
 	}
 
 	/**
-	 * Get the request header.
-	 *
-	 * @return array Returns the request header.
+	 * {@inheritdoc}
 	 */
 	public function getRequestHeader() {
 		return $this->requestHeader;
 	}
 
 	/**
-	 * Get the request URL.
-	 *
-	 * @return string Returns the request URL.
+	 * {@inheritdoc}
 	 */
 	public function getRequestURL() {
 		return $this->requestURL;
 	}
 
 	/**
-	 * Get the response body.
-	 *
-	 * @return string The response body.
+	 * {@inheritdoc}
 	 */
 	public function getResponseBody() {
 		return $this->responseBody;
 	}
 
 	/**
-	 * Get the response header.
-	 *
-	 * @return array Returns the response header.
+	 * {@inheritdoc}
 	 */
 	public function getResponseHeader() {
 		return $this->responseHeader;
 	}
 
 	/**
-	 * Get the response info.
-	 *
-	 * @return array Returns the response info.
+	 * {@inheritdoc}
 	 */
 	public function getResponseInfo() {
 		return $this->responseInfo;
