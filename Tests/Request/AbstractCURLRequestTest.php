@@ -15,7 +15,7 @@ use PHPUnit_Framework_TestCase;
 use WBW\Library\CURL\Configuration\CURLConfiguration;
 
 /**
- * Abstract CURL request test.
+ * Abstract cURL request test.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Tests\Request

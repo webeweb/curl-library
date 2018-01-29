@@ -16,7 +16,7 @@ use WBW\Library\Core\Exception\Argument\StringArgumentException;
 use WBW\Library\CURL\Request\CURLPostRequest;
 
 /**
- * CURL POST request test.
+ * cURL POST request test.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Tests\Request

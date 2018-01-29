@@ -15,7 +15,7 @@ use PHPUnit_Framework_TestCase;
 use WBW\Library\CURL\Exception\CURLMethodNotAllowedException;
 
 /**
- * CURL method not allowed exception test.
+ * cURL method not allowed exception test.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Tests\Exception

@@ -15,7 +15,7 @@ namespace WBW\Library\CURL\Tests\Request;
 use WBW\Library\CURL\Request\CURLPatchRequest;
 
 /**
- * CURL PATCH request test.
+ * cURL PATCH request test.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Tests\Request

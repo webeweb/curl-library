@@ -14,7 +14,7 @@ namespace WBW\Library\CURL\Tests\Request;
 use WBW\Library\CURL\Request\CURLOptionsRequest;
 
 /**
- * CURL Options request test.
+ * cURL Options request test.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Tests\Request

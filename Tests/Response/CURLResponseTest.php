@@ -14,7 +14,7 @@ namespace WBW\Library\CURL\Response;
 use PHPUnit_Framework_TestCase;
 
 /**
- * CURL response test.
+ * cURL response test.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Tests\Response

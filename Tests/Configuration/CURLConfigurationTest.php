@@ -17,7 +17,7 @@ use WBW\Library\Core\Exception\Argument\StringArgumentException;
 use WBW\Library\CURL\Configuration\CURLConfiguration;
 
 /**
- * CURL configuration test.
+ * cURL configuration test.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Tests\Configuration

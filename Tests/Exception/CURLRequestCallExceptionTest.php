@@ -16,7 +16,7 @@ use WBW\Library\CURL\Exception\CURLRequestCallException;
 use WBW\Library\CURL\Response\CURLResponse;
 
 /**
- * CURL request call exception test.
+ * cURL request call exception test.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Tests\Exception

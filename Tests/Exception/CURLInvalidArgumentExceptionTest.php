@@ -15,7 +15,7 @@ use PHPUnit_Framework_TestCase;
 use WBW\Library\CURL\Exception\CURLInvalidArgumentException;
 
 /**
- * CURL invalid argument exception test.
+ * cURL invalid argument exception test.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Tests\Exception

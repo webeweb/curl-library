@@ -14,7 +14,7 @@ namespace WBW\Library\CURL\Tests\Request;
 use WBW\Library\CURL\Request\CURLDeleteRequest;
 
 /**
- * CURL DELETE request test.
+ * cURL DELETE request test.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Tests\Request

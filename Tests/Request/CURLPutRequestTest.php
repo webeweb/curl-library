@@ -14,7 +14,7 @@ namespace WBW\Library\CURL\Tests\Request;
 use WBW\Library\CURL\Request\CURLPutRequest;
 
 /**
- * CURL PUT request test.
+ * cURL PUT request test.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Tests\Request

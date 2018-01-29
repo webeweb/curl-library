@@ -14,7 +14,7 @@ namespace WBW\Library\CURL\Tests\Request;
 use WBW\Library\CURL\Request\CURLHeadRequest;
 
 /**
- * CURL HEAD request test.
+ * cURL HEAD request test.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Tests\Request
