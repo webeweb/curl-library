@@ -14,7 +14,7 @@ namespace WBW\Library\CURL\Request;
 use WBW\Library\CURL\Configuration\CURLConfiguration;
 
 /**
- * CURL POST request.
+ * cURL POST request.
  *
  * @author NdC/WBW <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Request
