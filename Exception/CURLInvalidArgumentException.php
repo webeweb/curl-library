@@ -20,13 +20,13 @@ namespace WBW\Library\CURL\Exception;
  */
 final class CURLInvalidArgumentException extends AbstractCURLException {
 
-	/**
-	 * Constructor.
-	 *
-	 * @param string $message The message.
-	 */
-	public function __construct($message) {
-		parent::__construct($message);
-	}
+    /**
+     * Constructor.
+     *
+     * @param string $message The message.
+     */
+    public function __construct($message) {
+        parent::__construct($message);
+    }
 
 }

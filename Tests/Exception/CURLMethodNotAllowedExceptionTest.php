@@ -23,17 +23,17 @@ use WBW\Library\CURL\Exception\CURLMethodNotAllowedException;
  */
 final class CURLInvalidMessageClassExceptionTest extends PHPUnit_Framework_TestCase {
 
-	/**
-	 * Tests the __construct() method.
-	 *
-	 * @return void
-	 */
-	public function testConstruct() {
+    /**
+     * Tests the __construct() method.
+     *
+     * @return void
+     */
+    public function testConstruct() {
 
-		$ex = new CURLMethodNotAllowedException("exception");
+        $ex = new CURLMethodNotAllowedException("exception");
 
-		$res = "The method \"exception\" is not allowed";
-		$this->assertEquals($res, $ex->getMessage());
-	}
+        $res = "The method \"exception\" is not allowed";
+        $this->assertEquals($res, $ex->getMessage());
+    }
 
 }

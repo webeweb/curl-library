@@ -25,147 +25,147 @@ use WBW\Library\CURL\Configuration\CURLConfiguration;
  */
 final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 
-	/**
-	 * Tests the __constructor() method.
-	 *
-	 * @return void
-	 */
-	public function testConstructor() {
+    /**
+     * Tests the __constructor() method.
+     *
+     * @return void
+     */
+    public function testConstructor() {
 
-		$obj = new CURLConfiguration();
+        $obj = new CURLConfiguration();
 
-		$this->assertEquals(false, $obj->getAllowEncoding());
-		$this->assertEquals(0, $obj->getConnectTimeout());
-		$this->assertEquals(false, $obj->getDebug());
-		$this->assertEquals("php://output", $obj->getDebugFile());
-		$this->assertEquals([], $obj->getHeaders());
-		$this->assertEquals(null, $obj->getHost());
-		$this->assertEquals(null, $obj->getHttpPassword());
-		$this->assertEquals(null, $obj->getHttpUsername());
-		$this->assertEquals(null, $obj->getProxyHost());
-		$this->assertEquals(null, $obj->getProxyPassword());
-		$this->assertEquals(null, $obj->getProxyPort());
-		$this->assertEquals(null, $obj->getProxyType());
-		$this->assertEquals(null, $obj->getProxyUsername());
-		$this->assertEquals(0, $obj->getRequestTimeout());
-		$this->assertEquals(true, $obj->getSslVerification());
-		$this->assertEquals("cURLLibrary/1.0", $obj->getUserAgent());
-		$this->assertEquals(false, $obj->getVerbose());
-	}
+        $this->assertEquals(false, $obj->getAllowEncoding());
+        $this->assertEquals(0, $obj->getConnectTimeout());
+        $this->assertEquals(false, $obj->getDebug());
+        $this->assertEquals("php://output", $obj->getDebugFile());
+        $this->assertEquals([], $obj->getHeaders());
+        $this->assertEquals(null, $obj->getHost());
+        $this->assertEquals(null, $obj->getHttpPassword());
+        $this->assertEquals(null, $obj->getHttpUsername());
+        $this->assertEquals(null, $obj->getProxyHost());
+        $this->assertEquals(null, $obj->getProxyPassword());
+        $this->assertEquals(null, $obj->getProxyPort());
+        $this->assertEquals(null, $obj->getProxyType());
+        $this->assertEquals(null, $obj->getProxyUsername());
+        $this->assertEquals(0, $obj->getRequestTimeout());
+        $this->assertEquals(true, $obj->getSslVerification());
+        $this->assertEquals("cURLLibrary/1.0", $obj->getUserAgent());
+        $this->assertEquals(false, $obj->getVerbose());
+    }
 
-	/**
-	 * Tests the addHeader() method.
-	 *
-	 * @return void
-	 */
-	public function testAddHeader() {
+    /**
+     * Tests the addHeader() method.
+     *
+     * @return void
+     */
+    public function testAddHeader() {
 
-		$obj = new CURLConfiguration();
+        $obj = new CURLConfiguration();
 
-		$obj->addHeader("name", "value");
-		$res1 = ["name" => "value"];
-		$this->assertEquals($res1, $obj->getHeaders());
+        $obj->addHeader("name", "value");
+        $res1 = ["name" => "value"];
+        $this->assertEquals($res1, $obj->getHeaders());
 
-		try {
-			$obj->addHeader(1, "value");
-		} catch (Exception $ex) {
-			$this->assertInstanceOf(StringArgumentException::class, $ex);
-			$this->assertEquals("The argument \"1\" is not a string", $ex->getMessage());
-		}
-	}
+        try {
+            $obj->addHeader(1, "value");
+        } catch (Exception $ex) {
+            $this->assertInstanceOf(StringArgumentException::class, $ex);
+            $this->assertEquals("The argument \"1\" is not a string", $ex->getMessage());
+        }
+    }
 
-	/**
-	 * Tests the clearHeader() method.
-	 *
-	 * @return void
-	 */
-	public function testClearHeaders() {
+    /**
+     * Tests the clearHeader() method.
+     *
+     * @return void
+     */
+    public function testClearHeaders() {
 
-		$obj = new CURLConfiguration();
+        $obj = new CURLConfiguration();
 
-		$obj->addHeader("name", "value");
-		$this->assertCount(1, $obj->getHeaders());
+        $obj->addHeader("name", "value");
+        $this->assertCount(1, $obj->getHeaders());
 
-		$obj->clearHeaders();
-		$this->assertCount(0, $obj->getHeaders());
-	}
+        $obj->clearHeaders();
+        $this->assertCount(0, $obj->getHeaders());
+    }
 
-	/**
-	 * Tests the removeHeader() method.
-	 *
-	 * @return void
-	 */
-	public function testRemoveHeader() {
+    /**
+     * Tests the removeHeader() method.
+     *
+     * @return void
+     */
+    public function testRemoveHeader() {
 
-		$obj = new CURLConfiguration();
-		$obj->addHeader("name", "value");
+        $obj = new CURLConfiguration();
+        $obj->addHeader("name", "value");
 
-		$obj->removeHeader("");
-		$res1 = ["name" => "value"];
-		$this->assertEquals($res1, $obj->getHeaders());
+        $obj->removeHeader("");
+        $res1 = ["name" => "value"];
+        $this->assertEquals($res1, $obj->getHeaders());
 
-		$obj->removeHeader("name");
-		$res2 = [];
-		$this->assertEquals($res2, $obj->getHeaders());
-	}
+        $obj->removeHeader("name");
+        $res2 = [];
+        $this->assertEquals($res2, $obj->getHeaders());
+    }
 
-	/**
-	 * Tests the setX() method.
-	 *
-	 * @return void
-	 */
-	public function testSetX() {
+    /**
+     * Tests the setX() method.
+     *
+     * @return void
+     */
+    public function testSetX() {
 
-		$obj = new CURLConfiguration();
+        $obj = new CURLConfiguration();
 
 
-		$obj->setAllowEncoding(true);
-		$this->assertEquals(true, $obj->getAllowEncoding());
+        $obj->setAllowEncoding(true);
+        $this->assertEquals(true, $obj->getAllowEncoding());
 
-		$obj->setConnectTimeout(1);
-		$this->assertEquals(1, $obj->getConnectTimeout());
+        $obj->setConnectTimeout(1);
+        $this->assertEquals(1, $obj->getConnectTimeout());
 
-		$obj->setDebug(true);
-		$this->assertEquals(true, $obj->getDebug());
+        $obj->setDebug(true);
+        $this->assertEquals(true, $obj->getDebug());
 
-		$obj->setDebugFile("./debugfile.log");
-		$this->assertEquals("./debugfile.log", $obj->getDebugFile());
+        $obj->setDebugFile("./debugfile.log");
+        $this->assertEquals("./debugfile.log", $obj->getDebugFile());
 
-		$obj->setHost("host");
-		$this->assertEquals("host", $obj->getHost());
+        $obj->setHost("host");
+        $this->assertEquals("host", $obj->getHost());
 
-		$obj->setHttpPassword("httpPassword");
-		$this->assertEquals("httpPassword", $obj->getHttpPassword());
+        $obj->setHttpPassword("httpPassword");
+        $this->assertEquals("httpPassword", $obj->getHttpPassword());
 
-		$obj->setHttpUsername("httpUsername");
-		$this->assertEquals("httpUsername", $obj->getHttpUsername());
+        $obj->setHttpUsername("httpUsername");
+        $this->assertEquals("httpUsername", $obj->getHttpUsername());
 
-		$obj->setProxyHost("proxyHost");
-		$this->assertEquals("proxyHost", $obj->getProxyHost());
+        $obj->setProxyHost("proxyHost");
+        $this->assertEquals("proxyHost", $obj->getProxyHost());
 
-		$obj->setProxyPassword("proxyPassword");
-		$this->assertEquals("proxyPassword", $obj->getProxyPassword());
+        $obj->setProxyPassword("proxyPassword");
+        $this->assertEquals("proxyPassword", $obj->getProxyPassword());
 
-		$obj->setProxyPort("proxyPort");
-		$this->assertEquals("proxyPort", $obj->getProxyPort());
+        $obj->setProxyPort("proxyPort");
+        $this->assertEquals("proxyPort", $obj->getProxyPort());
 
-		$obj->setProxyType(1);
-		$this->assertEquals(1, $obj->getProxyType());
+        $obj->setProxyType(1);
+        $this->assertEquals(1, $obj->getProxyType());
 
-		$obj->setProxyUsername("proxyUsername");
-		$this->assertEquals("proxyUsername", $obj->getProxyUsername());
+        $obj->setProxyUsername("proxyUsername");
+        $this->assertEquals("proxyUsername", $obj->getProxyUsername());
 
-		$obj->setRequestTimeout(1);
-		$this->assertEquals(1, $obj->getRequestTimeout());
+        $obj->setRequestTimeout(1);
+        $this->assertEquals(1, $obj->getRequestTimeout());
 
-		$obj->setSslVerification(false);
-		$this->assertEquals(false, $obj->getSslVerification());
+        $obj->setSslVerification(false);
+        $this->assertEquals(false, $obj->getSslVerification());
 
-		$obj->setUserAgent("userAgent");
-		$this->assertEquals("userAgent", $obj->getUserAgent());
+        $obj->setUserAgent("userAgent");
+        $this->assertEquals("userAgent", $obj->getUserAgent());
 
-		$obj->setVerbose(true);
-		$this->assertEquals(true, $obj->getVerbose());
-	}
+        $obj->setVerbose(true);
+        $this->assertEquals(true, $obj->getVerbose());
+    }
 
 }

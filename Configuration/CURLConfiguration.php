@@ -23,502 +23,502 @@ use WBW\Library\Core\Exception\Argument\StringArgumentException;
  */
 final class CURLConfiguration {
 
-	/**
-	 * Allow encoding.
-	 *
-	 * @var boolean
-	 */
-	private $allowEncoding = false;
+    /**
+     * Allow encoding.
+     *
+     * @var boolean
+     */
+    private $allowEncoding = false;
 
-	/**
-	 * HTTP connect timeout.
-	 *
-	 * @var integer
-	 */
-	private $connectTimeout = 0;
+    /**
+     * HTTP connect timeout.
+     *
+     * @var integer
+     */
+    private $connectTimeout = 0;
 
-	/**
-	 * Debug.
-	 *
-	 * @var boolean
-	 */
-	private $debug = false;
+    /**
+     * Debug.
+     *
+     * @var boolean
+     */
+    private $debug = false;
 
-	/**
-	 * Debug file.
-	 *
-	 * @var string
-	 */
-	private $debugFile = "php://output";
+    /**
+     * Debug file.
+     *
+     * @var string
+     */
+    private $debugFile = "php://output";
 
-	/**
-	 * Headers.
-	 *
-	 * @var array
-	 */
-	private $headers = [];
+    /**
+     * Headers.
+     *
+     * @var array
+     */
+    private $headers = [];
 
-	/**
-	 * Host.
-	 *
-	 * @var string
-	 */
-	private $host;
+    /**
+     * Host.
+     *
+     * @var string
+     */
+    private $host;
 
-	/**
-	 * HTTP basic password.
-	 *
-	 * @var string
-	 */
-	private $httpPassword;
+    /**
+     * HTTP basic password.
+     *
+     * @var string
+     */
+    private $httpPassword;
 
-	/**
-	 * HTTP basic username.
-	 *
-	 * @var string
-	 */
-	private $httpUsername;
+    /**
+     * HTTP basic username.
+     *
+     * @var string
+     */
+    private $httpUsername;
 
-	/**
-	 * Proxy host.
-	 *
-	 * @var string
-	 */
-	private $proxyHost;
+    /**
+     * Proxy host.
+     *
+     * @var string
+     */
+    private $proxyHost;
 
-	/**
-	 * Proxy password.
-	 *
-	 * @var string
-	 */
-	private $proxyPassword;
+    /**
+     * Proxy password.
+     *
+     * @var string
+     */
+    private $proxyPassword;
 
-	/**
-	 * Proxy port.
-	 *
-	 * @var integer
-	 */
-	private $proxyPort;
+    /**
+     * Proxy port.
+     *
+     * @var integer
+     */
+    private $proxyPort;
 
-	/**
-	 * Proxy type.
-	 *
-	 * @var integer
-	 */
-	private $proxyType;
+    /**
+     * Proxy type.
+     *
+     * @var integer
+     */
+    private $proxyType;
 
-	/**
-	 * Proxy username.
-	 *
-	 * @var string
-	 */
-	private $proxyUsername;
+    /**
+     * Proxy username.
+     *
+     * @var string
+     */
+    private $proxyUsername;
 
-	/**
-	 * HTTP request timeout.
-	 *
-	 * @var integer
-	 */
-	private $requestTimeout = 0;
+    /**
+     * HTTP request timeout.
+     *
+     * @var integer
+     */
+    private $requestTimeout = 0;
 
-	/**
-	 * SSL verification.
-	 *
-	 * @var boolean
-	 */
-	private $sslVerification = true;
+    /**
+     * SSL verification.
+     *
+     * @var boolean
+     */
+    private $sslVerification = true;
 
-	/**
-	 * User agent.
-	 *
-	 * @var string
-	 */
-	private $userAgent = "cURLLibrary/1.0";
+    /**
+     * User agent.
+     *
+     * @var string
+     */
+    private $userAgent = "cURLLibrary/1.0";
 
-	/**
-	 * Verbose.
-	 *
-	 * @var boolean
-	 */
-	private $verbose = false;
+    /**
+     * Verbose.
+     *
+     * @var boolean
+     */
+    private $verbose = false;
 
-	/**
-	 * Constructor.
-	 */
-	public function __construct() {
-		// NOTHING TO DO.
-	}
+    /**
+     * Constructor.
+     */
+    public function __construct() {
+        // NOTHING TO DO.
+    }
 
-	/**
-	 * Add an header.
-	 *
-	 * @param string $name The header name.
-	 * @param string $value The header value.
-	 * @throws StringArgumentException Throws a string argument exception if the argument is not a string.
-	 */
-	public function addHeader($name, $value) {
-		ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
-		$this->headers[$name] = $value;
-	}
+    /**
+     * Add an header.
+     *
+     * @param string $name The header name.
+     * @param string $value The header value.
+     * @throws StringArgumentException Throws a string argument exception if the argument is not a string.
+     */
+    public function addHeader($name, $value) {
+        ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
+        $this->headers[$name] = $value;
+    }
 
-	/**
-	 * Clear the headers.
-	 *
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function clearHeaders() {
-		return $this->setHeaders();
-	}
+    /**
+     * Clear the headers.
+     *
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function clearHeaders() {
+        return $this->setHeaders();
+    }
 
-	/**
-	 * Get the allow encoding.
-	 *
-	 * @return boolean Returns the allow encoding.
-	 */
-	public function getAllowEncoding() {
-		return $this->allowEncoding;
-	}
+    /**
+     * Get the allow encoding.
+     *
+     * @return boolean Returns the allow encoding.
+     */
+    public function getAllowEncoding() {
+        return $this->allowEncoding;
+    }
 
-	/**
-	 * Get the connect timeout.
-	 *
-	 * @return integer Returns the connect timeout.
-	 */
-	public function getConnectTimeout() {
-		return $this->connectTimeout;
-	}
+    /**
+     * Get the connect timeout.
+     *
+     * @return integer Returns the connect timeout.
+     */
+    public function getConnectTimeout() {
+        return $this->connectTimeout;
+    }
 
-	/**
-	 * Ge the debug.
-	 *
-	 * @return boolen Returns the debug.
-	 */
-	public function getDebug() {
-		return $this->debug;
-	}
+    /**
+     * Ge the debug.
+     *
+     * @return boolen Returns the debug.
+     */
+    public function getDebug() {
+        return $this->debug;
+    }
 
-	/**
-	 * Get the debug file.
-	 *
-	 * @return string Returns the debug file.
-	 */
-	public function getDebugFile() {
-		return $this->debugFile;
-	}
+    /**
+     * Get the debug file.
+     *
+     * @return string Returns the debug file.
+     */
+    public function getDebugFile() {
+        return $this->debugFile;
+    }
 
-	/**
-	 * Get the headers.
-	 *
-	 * @return array Returns the headers.
-	 */
-	public function getHeaders() {
-		return $this->headers;
-	}
+    /**
+     * Get the headers.
+     *
+     * @return array Returns the headers.
+     */
+    public function getHeaders() {
+        return $this->headers;
+    }
 
-	/**
-	 * Get the host.
-	 *
-	 * @return string Returns the host.
-	 */
-	public function getHost() {
-		return $this->host;
-	}
+    /**
+     * Get the host.
+     *
+     * @return string Returns the host.
+     */
+    public function getHost() {
+        return $this->host;
+    }
 
-	/**
-	 * Get the HTTP password.
-	 *
-	 * @return string Returns the HTTP password.
-	 */
-	public function getHttpPassword() {
-		return $this->httpPassword;
-	}
+    /**
+     * Get the HTTP password.
+     *
+     * @return string Returns the HTTP password.
+     */
+    public function getHttpPassword() {
+        return $this->httpPassword;
+    }
 
-	/**
-	 * Get the HTTP username.
-	 *
-	 * @return string Returns the HTTP username.
-	 */
-	public function getHttpUsername() {
-		return $this->httpUsername;
-	}
+    /**
+     * Get the HTTP username.
+     *
+     * @return string Returns the HTTP username.
+     */
+    public function getHttpUsername() {
+        return $this->httpUsername;
+    }
 
-	/**
-	 * Get the proxy host.
-	 *
-	 * @return string Returns the proxy host.
-	 */
-	public function getProxyHost() {
-		return $this->proxyHost;
-	}
+    /**
+     * Get the proxy host.
+     *
+     * @return string Returns the proxy host.
+     */
+    public function getProxyHost() {
+        return $this->proxyHost;
+    }
 
-	/**
-	 * Get the proxy password.
-	 *
-	 * @return string Returns the proxy password.
-	 */
-	public function getProxyPassword() {
-		return $this->proxyPassword;
-	}
+    /**
+     * Get the proxy password.
+     *
+     * @return string Returns the proxy password.
+     */
+    public function getProxyPassword() {
+        return $this->proxyPassword;
+    }
 
-	/**
-	 * Get the proxy port.
-	 *
-	 * @return integer Returns the proxy port.
-	 */
-	public function getProxyPort() {
-		return $this->proxyPort;
-	}
+    /**
+     * Get the proxy port.
+     *
+     * @return integer Returns the proxy port.
+     */
+    public function getProxyPort() {
+        return $this->proxyPort;
+    }
 
-	/**
-	 * Get the proxy type.
-	 *
-	 * @return integer Returns the proxy type.
-	 */
-	public function getProxyType() {
-		return $this->proxyType;
-	}
+    /**
+     * Get the proxy type.
+     *
+     * @return integer Returns the proxy type.
+     */
+    public function getProxyType() {
+        return $this->proxyType;
+    }
 
-	/**
-	 * Get the proxy username.
-	 *
-	 * @return string Returns the proxy username.
-	 */
-	public function getProxyUsername() {
-		return $this->proxyUsername;
-	}
+    /**
+     * Get the proxy username.
+     *
+     * @return string Returns the proxy username.
+     */
+    public function getProxyUsername() {
+        return $this->proxyUsername;
+    }
 
-	/**
-	 * Get the request timeout.
-	 *
-	 * @return integer Returns the request timeout.
-	 */
-	public function getRequestTimeout() {
-		return $this->requestTimeout;
-	}
+    /**
+     * Get the request timeout.
+     *
+     * @return integer Returns the request timeout.
+     */
+    public function getRequestTimeout() {
+        return $this->requestTimeout;
+    }
 
-	/**
-	 * Get the SSL verification.
-	 *
-	 * @return boolean Returns the SSL verification.
-	 */
-	public function getSslVerification() {
-		return $this->sslVerification;
-	}
+    /**
+     * Get the SSL verification.
+     *
+     * @return boolean Returns the SSL verification.
+     */
+    public function getSslVerification() {
+        return $this->sslVerification;
+    }
 
-	/**
-	 * Get the user agent.
-	 *
-	 * @return string Returns the user agent.
-	 */
-	public function getUserAgent() {
-		return $this->userAgent;
-	}
+    /**
+     * Get the user agent.
+     *
+     * @return string Returns the user agent.
+     */
+    public function getUserAgent() {
+        return $this->userAgent;
+    }
 
-	/**
-	 * Get the verbose.
-	 *
-	 * @return boolean Returns the verbose.
-	 */
-	public function getVerbose() {
-		return $this->verbose;
-	}
+    /**
+     * Get the verbose.
+     *
+     * @return boolean Returns the verbose.
+     */
+    public function getVerbose() {
+        return $this->verbose;
+    }
 
-	/**
-	 * Remove an header.
-	 *
-	 * @param string $name The header name.
-	 */
-	public function removeHeader($name) {
-		if (array_key_exists($name, $this->headers)) {
-			unset($this->headers[$name]);
-		}
-	}
+    /**
+     * Remove an header.
+     *
+     * @param string $name The header name.
+     */
+    public function removeHeader($name) {
+        if (array_key_exists($name, $this->headers)) {
+            unset($this->headers[$name]);
+        }
+    }
 
-	/**
-	 * Set the allow encoding.
-	 *
-	 * @param boolean $allowEncoding The allow encoding.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setAllowEncoding($allowEncoding = false) {
-		$this->allowEncoding = $allowEncoding;
-		return $this;
-	}
+    /**
+     * Set the allow encoding.
+     *
+     * @param boolean $allowEncoding The allow encoding.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setAllowEncoding($allowEncoding = false) {
+        $this->allowEncoding = $allowEncoding;
+        return $this;
+    }
 
-	/**
-	 * Set the connect timeout.
-	 *
-	 * @param integer $connectTimeout The connect timeout.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setConnectTimeout($connectTimeout = 0) {
-		$this->connectTimeout = $connectTimeout;
-		return $this;
-	}
+    /**
+     * Set the connect timeout.
+     *
+     * @param integer $connectTimeout The connect timeout.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setConnectTimeout($connectTimeout = 0) {
+        $this->connectTimeout = $connectTimeout;
+        return $this;
+    }
 
-	/**
-	 * Set the debug.
-	 *
-	 * @param boolean $debug The debug.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setDebug($debug = false) {
-		$this->debug = $debug;
-		return $this;
-	}
+    /**
+     * Set the debug.
+     *
+     * @param boolean $debug The debug.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setDebug($debug = false) {
+        $this->debug = $debug;
+        return $this;
+    }
 
-	/**
-	 * Set the debug file.
-	 *
-	 * @param string $debugFile The debug file.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setDebugFile($debugFile = "php://output") {
-		$this->debugFile = $debugFile;
-		return $this;
-	}
+    /**
+     * Set the debug file.
+     *
+     * @param string $debugFile The debug file.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setDebugFile($debugFile = "php://output") {
+        $this->debugFile = $debugFile;
+        return $this;
+    }
 
-	/**
-	 * Set the headers.
-	 *
-	 * @param array $headers The headers
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	protected function setHeaders(array $headers = []) {
-		$this->headers = $headers;
-		return $this;
-	}
+    /**
+     * Set the headers.
+     *
+     * @param array $headers The headers
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    protected function setHeaders(array $headers = []) {
+        $this->headers = $headers;
+        return $this;
+    }
 
-	/**
-	 * Set the host.
-	 *
-	 * @param string $host The host.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setHost($host) {
-		$this->host = preg_replace("/\/$/", "", trim($host));
-		return $this;
-	}
+    /**
+     * Set the host.
+     *
+     * @param string $host The host.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setHost($host) {
+        $this->host = preg_replace("/\/$/", "", trim($host));
+        return $this;
+    }
 
-	/**
-	 * Set the HTTP basic password.
-	 *
-	 * @param string $httpPassword The HTTP basic password.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setHttpPassword($httpPassword) {
-		$this->httpPassword = $httpPassword;
-		return $this;
-	}
+    /**
+     * Set the HTTP basic password.
+     *
+     * @param string $httpPassword The HTTP basic password.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setHttpPassword($httpPassword) {
+        $this->httpPassword = $httpPassword;
+        return $this;
+    }
 
-	/**
-	 * Set the HTTP basic username.
-	 *
-	 * @param string $httpUsername The HTTP basic username.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setHttpUsername($httpUsername) {
-		$this->httpUsername = $httpUsername;
-		return $this;
-	}
+    /**
+     * Set the HTTP basic username.
+     *
+     * @param string $httpUsername The HTTP basic username.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setHttpUsername($httpUsername) {
+        $this->httpUsername = $httpUsername;
+        return $this;
+    }
 
-	/**
-	 * Set the proxy host.
-	 *
-	 * @param string $proxyHost The proxy host.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setProxyHost($proxyHost) {
-		$this->proxyHost = $proxyHost;
-		return $this;
-	}
+    /**
+     * Set the proxy host.
+     *
+     * @param string $proxyHost The proxy host.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setProxyHost($proxyHost) {
+        $this->proxyHost = $proxyHost;
+        return $this;
+    }
 
-	/**
-	 * Set the proxy password.
-	 *
-	 * @param string $proxyPassword The proxy password.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setProxyPassword($proxyPassword) {
-		$this->proxyPassword = $proxyPassword;
-		return $this;
-	}
+    /**
+     * Set the proxy password.
+     *
+     * @param string $proxyPassword The proxy password.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setProxyPassword($proxyPassword) {
+        $this->proxyPassword = $proxyPassword;
+        return $this;
+    }
 
-	/**
-	 * Set the proxy port.
-	 *
-	 * @param integer $proxyPort The proxy port.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setProxyPort($proxyPort) {
-		$this->proxyPort = $proxyPort;
-		return $this;
-	}
+    /**
+     * Set the proxy port.
+     *
+     * @param integer $proxyPort The proxy port.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setProxyPort($proxyPort) {
+        $this->proxyPort = $proxyPort;
+        return $this;
+    }
 
-	/**
-	 * Set the proxy type.
-	 *
-	 * @param integer $proxyType The proxy type.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setProxyType($proxyType) {
-		$this->proxyType = $proxyType;
-		return $this;
-	}
+    /**
+     * Set the proxy type.
+     *
+     * @param integer $proxyType The proxy type.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setProxyType($proxyType) {
+        $this->proxyType = $proxyType;
+        return $this;
+    }
 
-	/**
-	 * Set the proxy username.
-	 *
-	 * @param string $proxyUsername The proxy username.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setProxyUsername($proxyUsername) {
-		$this->proxyUsername = $proxyUsername;
-		return $this;
-	}
+    /**
+     * Set the proxy username.
+     *
+     * @param string $proxyUsername The proxy username.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setProxyUsername($proxyUsername) {
+        $this->proxyUsername = $proxyUsername;
+        return $this;
+    }
 
-	/**
-	 * Set the request timeout.
-	 *
-	 * @param integer $requestTimeout The request timeout.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setRequestTimeout($requestTimeout = 0) {
-		$this->requestTimeout = $requestTimeout;
-		return $this;
-	}
+    /**
+     * Set the request timeout.
+     *
+     * @param integer $requestTimeout The request timeout.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setRequestTimeout($requestTimeout = 0) {
+        $this->requestTimeout = $requestTimeout;
+        return $this;
+    }
 
-	/**
-	 * Set the SSL verification.
-	 *
-	 * @param boolean $sslVerification The SSL verification.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setSslVerification($sslVerification = true) {
-		$this->sslVerification = $sslVerification;
-		return $this;
-	}
+    /**
+     * Set the SSL verification.
+     *
+     * @param boolean $sslVerification The SSL verification.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setSslVerification($sslVerification = true) {
+        $this->sslVerification = $sslVerification;
+        return $this;
+    }
 
-	/**
-	 * Set the user agent.
-	 *
-	 * @param string $userAgent The user agent.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setUserAgent($userAgent = "cURLLibrary/1.0") {
-		$this->userAgent = $userAgent;
-		return $this;
-	}
+    /**
+     * Set the user agent.
+     *
+     * @param string $userAgent The user agent.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setUserAgent($userAgent = "cURLLibrary/1.0") {
+        $this->userAgent = $userAgent;
+        return $this;
+    }
 
-	/**
-	 * Set the verbose.
-	 *
-	 * @param boolean $verbose The verbose.
-	 * @return CURLConfiguration Returns the CURL configuration.
-	 */
-	public function setVerbose($verbose = false) {
-		$this->verbose = $verbose;
-		return $this;
-	}
+    /**
+     * Set the verbose.
+     *
+     * @param boolean $verbose The verbose.
+     * @return CURLConfiguration Returns the CURL configuration.
+     */
+    public function setVerbose($verbose = false) {
+        $this->verbose = $verbose;
+        return $this;
+    }
 
 }

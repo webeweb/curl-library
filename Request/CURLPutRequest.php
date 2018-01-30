@@ -22,14 +22,14 @@ use WBW\Library\CURL\Configuration\CURLConfiguration;
  */
 final class CURLPutRequest extends AbstractCURLRequest {
 
-	/**
-	 * Constructor.
-	 *
-	 * @param CURLConfiguration $configuration The configuration.
-	 * @param string $resourcePath The resource path.
-	 */
-	public function __construct(CURLConfiguration $configuration, $resourcePath) {
-		parent::__construct(self::METHOD_PUT, $configuration, $resourcePath);
-	}
+    /**
+     * Constructor.
+     *
+     * @param CURLConfiguration $configuration The configuration.
+     * @param string $resourcePath The resource path.
+     */
+    public function __construct(CURLConfiguration $configuration, $resourcePath) {
+        parent::__construct(self::METHOD_PUT, $configuration, $resourcePath);
+    }
 
 }

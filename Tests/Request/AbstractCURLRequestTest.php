@@ -23,29 +23,29 @@ use WBW\Library\CURL\Configuration\CURLConfiguration;
  */
 abstract class AbstractCURLRequestTest extends PHPUnit_Framework_TestCase {
 
-	/**
-	 * Resource path.
-	 */
-	const RESOURCE_PATH = "/testCall.php";
+    /**
+     * Resource path.
+     */
+    const RESOURCE_PATH = "/testCall.php";
 
-	/**
-	 * CURL configuration.
-	 *
-	 * @var CURLConfiguration
-	 */
-	protected $configuration;
+    /**
+     * CURL configuration.
+     *
+     * @var CURLConfiguration
+     */
+    protected $configuration;
 
-	/**
-	 * {@inheritdoc}
-	 */
-	protected function setUp() {
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp() {
 
-		//
-		parent::setUp();
+        //
+        parent::setUp();
 
-		// Set the CURL configuration.
-		$this->configuration = new CURLConfiguration();
-		$this->configuration->setHost("https://webeweb.fr/");
-	}
+        // Set the CURL configuration.
+        $this->configuration = new CURLConfiguration();
+        $this->configuration->setHost("https://webeweb.fr/");
+    }
 
 }

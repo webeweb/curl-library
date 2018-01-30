@@ -22,41 +22,41 @@ use WBW\Library\CURL\Request\CURLDeleteRequest;
  */
 final class CURLDeleteRequestTest extends AbstractCURLRequestTest {
 
-	/**
-	 * Tests __construct() method.
-	 *
-	 * @return void
-	 */
-	public function testConstructor() {
+    /**
+     * Tests __construct() method.
+     *
+     * @return void
+     */
+    public function testConstructor() {
 
-		$obj = new CURLDeleteRequest($this->configuration, self::RESOURCE_PATH);
+        $obj = new CURLDeleteRequest($this->configuration, self::RESOURCE_PATH);
 
-		$this->assertEquals($this->configuration, $obj->getConfiguration());
-		$this->assertEquals([], $obj->getHeaders());
-		$this->assertEquals(CURLDeleteRequest::METHOD_DELETE, $obj->getMethod());
-		$this->assertEquals([], $obj->getPostData());
-		$this->assertEquals([], $obj->getQueryData());
-		$this->assertEquals("testCall.php", $obj->getResourcePath());
-	}
+        $this->assertEquals($this->configuration, $obj->getConfiguration());
+        $this->assertEquals([], $obj->getHeaders());
+        $this->assertEquals(CURLDeleteRequest::METHOD_DELETE, $obj->getMethod());
+        $this->assertEquals([], $obj->getPostData());
+        $this->assertEquals([], $obj->getQueryData());
+        $this->assertEquals("testCall.php", $obj->getResourcePath());
+    }
 
-	/**
-	 * Tests call() method.
-	 *
-	 * @return void
-	 */
-	public function testCall() {
+    /**
+     * Tests call() method.
+     *
+     * @return void
+     */
+    public function testCall() {
 
-		$obj = new CURLDeleteRequest($this->configuration, self::RESOURCE_PATH);
+        $obj = new CURLDeleteRequest($this->configuration, self::RESOURCE_PATH);
 
-		$obj->addHeader("header", "header");
-		$obj->addQueryData("queryData", "queryData");
+        $obj->addHeader("header", "header");
+        $obj->addQueryData("queryData", "queryData");
 
-		$res = $obj->call();
+        $res = $obj->call();
 
-		$this->assertContains("header: header", $res->getRequestHeader());
-		$this->assertContains("queryData=queryData", $res->getRequestURL());
-		$this->assertEquals(CURLDeleteRequest::METHOD_DELETE, json_decode($res->getResponseBody(), true)["method"]);
-		$this->assertEquals(200, $res->getResponseInfo()["http_code"]);
-	}
+        $this->assertContains("header: header", $res->getRequestHeader());
+        $this->assertContains("queryData=queryData", $res->getRequestURL());
+        $this->assertEquals(CURLDeleteRequest::METHOD_DELETE, json_decode($res->getResponseBody(), true)["method"]);
+        $this->assertEquals(200, $res->getResponseInfo()["http_code"]);
+    }
 
 }

@@ -19,45 +19,45 @@ namespace WBW\Library\CURL\Response;
  */
 interface CURLResponseInterface {
 
-	/**
-	 * Get the request body.
-	 *
-	 * @return string Returns the request body.
-	 */
-	public function getRequestBody();
+    /**
+     * Get the request body.
+     *
+     * @return string Returns the request body.
+     */
+    public function getRequestBody();
 
-	/**
-	 * Get the request header.
-	 *
-	 * @return array Returns the request header.
-	 */
-	public function getRequestHeader();
+    /**
+     * Get the request header.
+     *
+     * @return array Returns the request header.
+     */
+    public function getRequestHeader();
 
-	/**
-	 * Get the request URL.
-	 *
-	 * @return string Returns the request URL.
-	 */
-	public function getRequestURL();
+    /**
+     * Get the request URL.
+     *
+     * @return string Returns the request URL.
+     */
+    public function getRequestURL();
 
-	/**
-	 * Get the response body.
-	 *
-	 * @return string The response body.
-	 */
-	public function getResponseBody();
+    /**
+     * Get the response body.
+     *
+     * @return string The response body.
+     */
+    public function getResponseBody();
 
-	/**
-	 * Get the response header.
-	 *
-	 * @return array Returns the response header.
-	 */
-	public function getResponseHeader();
+    /**
+     * Get the response header.
+     *
+     * @return array Returns the response header.
+     */
+    public function getResponseHeader();
 
-	/**
-	 * Get the response info.
-	 *
-	 * @return array Returns the response info.
-	 */
-	public function getResponseInfo();
+    /**
+     * Get the response info.
+     *
+     * @return array Returns the response info.
+     */
+    public function getResponseInfo();
 }

@@ -22,14 +22,14 @@ use WBW\Library\CURL\Configuration\CURLConfiguration;
  */
 final class CURLDeleteRequest extends AbstractCURLRequest {
 
-	/**
-	 * Constructor.
-	 *
-	 * @param CURLConfiguration $configuration The configuration.
-	 * @param string $resourcePath The resource path.
-	 */
-	public function __construct(CURLConfiguration $configuration, $resourcePath) {
-		parent::__construct(self::METHOD_DELETE, $configuration, $resourcePath);
-	}
+    /**
+     * Constructor.
+     *
+     * @param CURLConfiguration $configuration The configuration.
+     * @param string $resourcePath The resource path.
+     */
+    public function __construct(CURLConfiguration $configuration, $resourcePath) {
+        parent::__construct(self::METHOD_DELETE, $configuration, $resourcePath);
+    }
 
 }

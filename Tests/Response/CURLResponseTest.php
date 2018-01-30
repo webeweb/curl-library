@@ -22,49 +22,49 @@ use PHPUnit_Framework_TestCase;
  */
 final class CURLResponseTest extends PHPUnit_Framework_TestCase {
 
-	/**
-	 * Tests the __constructor() method.
-	 *
-	 * @return void
-	 */
-	public function testConstructor() {
+    /**
+     * Tests the __constructor() method.
+     *
+     * @return void
+     */
+    public function testConstructor() {
 
-		$obj = new CURLResponse();
+        $obj = new CURLResponse();
 
-		$this->assertEquals(null, $obj->getRequestBody());
-		$this->assertEquals([], $obj->getRequestHeader());
-		$this->assertEquals(null, $obj->getRequestURL());
-		$this->assertEquals(null, $obj->getResponseBody());
-		$this->assertEquals([], $obj->getResponseHeader());
-		$this->assertEquals([], $obj->getResponseInfo());
-	}
+        $this->assertEquals(null, $obj->getRequestBody());
+        $this->assertEquals([], $obj->getRequestHeader());
+        $this->assertEquals(null, $obj->getRequestURL());
+        $this->assertEquals(null, $obj->getResponseBody());
+        $this->assertEquals([], $obj->getResponseHeader());
+        $this->assertEquals([], $obj->getResponseInfo());
+    }
 
-	/**
-	 * Tests the setX() method.
-	 *
-	 * @return void
-	 */
-	public function testSetX() {
+    /**
+     * Tests the setX() method.
+     *
+     * @return void
+     */
+    public function testSetX() {
 
-		$obj = new CURLResponse();
+        $obj = new CURLResponse();
 
-		$obj->setRequestBody("requestBody");
-		$this->assertEquals("requestBody", $obj->getRequestBody());
+        $obj->setRequestBody("requestBody");
+        $this->assertEquals("requestBody", $obj->getRequestBody());
 
-		$obj->setRequestHeader(["requestHeader" => "requestHeader"]);
-		$this->assertEquals(["requestHeader" => "requestHeader"], $obj->getRequestHeader());
+        $obj->setRequestHeader(["requestHeader" => "requestHeader"]);
+        $this->assertEquals(["requestHeader" => "requestHeader"], $obj->getRequestHeader());
 
-		$obj->setRequestURL("requestURL");
-		$this->assertEquals("requestURL", $obj->getRequestURL());
+        $obj->setRequestURL("requestURL");
+        $this->assertEquals("requestURL", $obj->getRequestURL());
 
-		$obj->setResponseBody("responseBody");
-		$this->assertEquals("responseBody", $obj->getResponseBody());
+        $obj->setResponseBody("responseBody");
+        $this->assertEquals("responseBody", $obj->getResponseBody());
 
-		$obj->setResponseHeader(["responseHeader" => "responseHeader"]);
-		$this->assertEquals(["responseHeader" => "responseHeader"], $obj->getResponseHeader());
+        $obj->setResponseHeader(["responseHeader" => "responseHeader"]);
+        $this->assertEquals(["responseHeader" => "responseHeader"], $obj->getResponseHeader());
 
-		$obj->setResponseInfo(["responseInfo" => "responseInfo"]);
-		$this->assertEquals(["responseInfo" => "responseInfo"], $obj->getResponseInfo());
-	}
+        $obj->setResponseInfo(["responseInfo" => "responseInfo"]);
+        $this->assertEquals(["responseInfo" => "responseInfo"], $obj->getResponseInfo());
+    }
 
 }
