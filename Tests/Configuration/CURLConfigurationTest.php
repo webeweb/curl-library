@@ -34,23 +34,23 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 
         $obj = new CURLConfiguration();
 
-        $this->assertEquals(false, $obj->getAllowEncoding());
+        $this->assertFalse($obj->getAllowEncoding());
         $this->assertEquals(0, $obj->getConnectTimeout());
-        $this->assertEquals(false, $obj->getDebug());
+        $this->assertFalse($obj->getDebug());
         $this->assertEquals("php://output", $obj->getDebugFile());
         $this->assertEquals([], $obj->getHeaders());
-        $this->assertEquals(null, $obj->getHost());
-        $this->assertEquals(null, $obj->getHttpPassword());
-        $this->assertEquals(null, $obj->getHttpUsername());
-        $this->assertEquals(null, $obj->getProxyHost());
-        $this->assertEquals(null, $obj->getProxyPassword());
-        $this->assertEquals(null, $obj->getProxyPort());
-        $this->assertEquals(null, $obj->getProxyType());
-        $this->assertEquals(null, $obj->getProxyUsername());
+        $this->assertNull($obj->getHost());
+        $this->assertNull($obj->getHttpPassword());
+        $this->assertNull($obj->getHttpUsername());
+        $this->assertNull($obj->getProxyHost());
+        $this->assertNull($obj->getProxyPassword());
+        $this->assertNull($obj->getProxyPort());
+        $this->assertNull($obj->getProxyType());
+        $this->assertNull($obj->getProxyUsername());
         $this->assertEquals(0, $obj->getRequestTimeout());
-        $this->assertEquals(true, $obj->getSslVerification());
+        $this->assertTrue($obj->getSslVerification());
         $this->assertEquals("cURLLibrary/1.0", $obj->getUserAgent());
-        $this->assertEquals(false, $obj->getVerbose());
+        $this->assertFalse($obj->getVerbose());
     }
 
     /**
@@ -120,13 +120,13 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
 
 
         $obj->setAllowEncoding(true);
-        $this->assertEquals(true, $obj->getAllowEncoding());
+        $this->assertTrue($obj->getAllowEncoding());
 
         $obj->setConnectTimeout(1);
         $this->assertEquals(1, $obj->getConnectTimeout());
 
         $obj->setDebug(true);
-        $this->assertEquals(true, $obj->getDebug());
+        $this->assertTrue($obj->getDebug());
 
         $obj->setDebugFile("./debugfile.log");
         $this->assertEquals("./debugfile.log", $obj->getDebugFile());
@@ -159,13 +159,13 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(1, $obj->getRequestTimeout());
 
         $obj->setSslVerification(false);
-        $this->assertEquals(false, $obj->getSslVerification());
+        $this->assertFalse($obj->getSslVerification());
 
         $obj->setUserAgent("userAgent");
         $this->assertEquals("userAgent", $obj->getUserAgent());
 
         $obj->setVerbose(true);
-        $this->assertEquals(true, $obj->getVerbose());
+        $this->assertTrue($obj->getVerbose());
     }
 
 }

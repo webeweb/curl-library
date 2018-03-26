@@ -31,10 +31,10 @@ final class CURLResponseTest extends PHPUnit_Framework_TestCase {
 
         $obj = new CURLResponse();
 
-        $this->assertEquals(null, $obj->getRequestBody());
+        $this->assertNull($obj->getRequestBody());
         $this->assertEquals([], $obj->getRequestHeader());
-        $this->assertEquals(null, $obj->getRequestURL());
-        $this->assertEquals(null, $obj->getResponseBody());
+        $this->assertNull($obj->getRequestURL());
+        $this->assertNull($obj->getResponseBody());
         $this->assertEquals([], $obj->getResponseHeader());
         $this->assertEquals([], $obj->getResponseInfo());
     }
