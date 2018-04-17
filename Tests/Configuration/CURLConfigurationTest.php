@@ -49,7 +49,7 @@ final class CURLConfigurationTest extends PHPUnit_Framework_TestCase {
         $this->assertNull($obj->getProxyUsername());
         $this->assertEquals(0, $obj->getRequestTimeout());
         $this->assertTrue($obj->getSslVerification());
-        $this->assertEquals("cURLLibrary/1.0", $obj->getUserAgent());
+        $this->assertEquals("webeweb/curl-library", $obj->getUserAgent());
         $this->assertFalse($obj->getVerbose());
     }
 

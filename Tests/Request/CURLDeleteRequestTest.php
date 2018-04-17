@@ -33,7 +33,7 @@ final class CURLDeleteRequestTest extends AbstractCURLRequestTest {
 
         $this->assertEquals($this->configuration, $obj->getConfiguration());
         $this->assertEquals([], $obj->getHeaders());
-        $this->assertEquals(CURLDeleteRequest::METHOD_DELETE, $obj->getMethod());
+        $this->assertEquals(CURLDeleteRequest::HTTP_METHOD_DELETE, $obj->getMethod());
         $this->assertEquals([], $obj->getPostData());
         $this->assertEquals([], $obj->getQueryData());
         $this->assertEquals("testCall.php", $obj->getResourcePath());
@@ -55,7 +55,7 @@ final class CURLDeleteRequestTest extends AbstractCURLRequestTest {
 
         $this->assertContains("header: header", $res->getRequestHeader());
         $this->assertContains("queryData=queryData", $res->getRequestURL());
-        $this->assertEquals(CURLDeleteRequest::METHOD_DELETE, json_decode($res->getResponseBody(), true)["method"]);
+        $this->assertEquals(CURLDeleteRequest::HTTP_METHOD_DELETE, json_decode($res->getResponseBody(), true)["method"]);
         $this->assertEquals(200, $res->getResponseInfo()["http_code"]);
     }
 

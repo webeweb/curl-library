@@ -29,7 +29,7 @@ final class CURLPutRequest extends AbstractCURLRequest {
      * @param string $resourcePath The resource path.
      */
     public function __construct(CURLConfiguration $configuration, $resourcePath) {
-        parent::__construct(self::METHOD_PUT, $configuration, $resourcePath);
+        parent::__construct(self::HTTP_METHOD_PUT, $configuration, $resourcePath);
     }
 
 }

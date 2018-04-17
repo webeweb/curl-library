@@ -133,7 +133,7 @@ final class CURLConfiguration {
      *
      * @var string
      */
-    private $userAgent = "cURLLibrary/1.0";
+    private $userAgent = "webeweb/curl-library";
 
     /**
      * Verbose.
@@ -157,7 +157,7 @@ final class CURLConfiguration {
      * @throws StringArgumentException Throws a string argument exception if the argument is not a string.
      */
     public function addHeader($name, $value) {
-        ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
+        ArgumentValidator::isTypeOf($name, ArgumentValidator::TYPE_STRING);
         $this->headers[$name] = $value;
     }
 
@@ -329,7 +329,7 @@ final class CURLConfiguration {
      * @param string $name The header name.
      */
     public function removeHeader($name) {
-        if (array_key_exists($name, $this->headers)) {
+        if (true === array_key_exists($name, $this->headers)) {
             unset($this->headers[$name]);
         }
     }
@@ -505,7 +505,7 @@ final class CURLConfiguration {
      * @param string $userAgent The user agent.
      * @return CURLConfiguration Returns the CURL configuration.
      */
-    public function setUserAgent($userAgent = "cURLLibrary/1.0") {
+    public function setUserAgent($userAgent = "webeweb/curl-library") {
         $this->userAgent = $userAgent;
         return $this;
     }

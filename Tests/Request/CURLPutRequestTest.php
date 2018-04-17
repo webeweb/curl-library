@@ -33,7 +33,7 @@ final class CURLPutRequestTest extends AbstractCURLRequestTest {
 
         $this->assertEquals($this->configuration, $obj->getConfiguration());
         $this->assertEquals([], $obj->getHeaders());
-        $this->assertEquals(CURLPutRequest::METHOD_PUT, $obj->getMethod());
+        $this->assertEquals(CURLPutRequest::HTTP_METHOD_PUT, $obj->getMethod());
         $this->assertEquals([], $obj->getPostData());
         $this->assertEquals([], $obj->getQueryData());
         $this->assertEquals("testCall.php", $obj->getResourcePath());
@@ -55,7 +55,7 @@ final class CURLPutRequestTest extends AbstractCURLRequestTest {
 
         $this->assertContains("header: header", $res->getRequestHeader());
         $this->assertContains("queryData=queryData", $res->getRequestURL());
-        $this->assertEquals(CURLPutRequest::METHOD_PUT, json_decode($res->getResponseBody(), true)["method"]);
+        $this->assertEquals(CURLPutRequest::HTTP_METHOD_PUT, json_decode($res->getResponseBody(), true)["method"]);
         $this->assertEquals(200, $res->getResponseInfo()["http_code"]);
     }
 

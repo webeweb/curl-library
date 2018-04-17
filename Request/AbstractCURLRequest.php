@@ -14,7 +14,7 @@ namespace WBW\Library\CURL\Request;
 use DateTime;
 use WBW\Library\Core\Argument\ArgumentValidator;
 use WBW\Library\Core\Exception\HTTP\InvalidHTTPMethodException;
-use WBW\Library\Core\HTTP\HTTPMethodInterface;
+use WBW\Library\Core\IO\HTTPInterface;
 use WBW\Library\CURL\Configuration\CURLConfiguration;
 use WBW\Library\CURL\Exception\CURLRequestCallException;
 use WBW\Library\CURL\Response\CURLResponse;
@@ -26,7 +26,7 @@ use WBW\Library\CURL\Response\CURLResponse;
  * @package WBW\Library\CURL\Request
  * @abstract
  */
-abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPMethodInterface {
+abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPInterface {
 
     /**
      * Content-type application/x-www-form-urlencoded
@@ -54,7 +54,7 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPMethodIn
      *
      * @var string
      */
-    private $method = self::METHOD_GET;
+    private $method = self::HTTP_METHOD_GET;
 
     /**
      * POST data.
@@ -95,7 +95,7 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPMethodIn
      * {@inheritdoc}
      */
     final public function addHeader($name, $value) {
-        ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
+        ArgumentValidator::isTypeOf($name, ArgumentValidator::TYPE_STRING);
         $this->headers[$name] = $value;
     }
 
@@ -103,7 +103,7 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPMethodIn
      * {@inheritdoc}
      */
     final public function addPostData($name, $value) {
-        ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
+        ArgumentValidator::isTypeOf($name, ArgumentValidator::TYPE_STRING);
         $this->postData[$name] = $value;
     }
 
@@ -111,7 +111,7 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPMethodIn
      * {@inheritdoc}
      */
     final public function addQueryData($name, $value) {
-        ArgumentValidator::isValid($name, ArgumentValidator::TYPE_STRING);
+        ArgumentValidator::isTypeOf($name, ArgumentValidator::TYPE_STRING);
         $this->queryData[$name] = $value;
     }
 
@@ -154,19 +154,19 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPMethodIn
         // Set the post.
         switch ($this->getMethod()) {
 
-            case self::METHOD_DELETE:
-            case self::METHOD_OPTIONS:
-            case self::METHOD_PATCH:
-            case self::METHOD_PUT:
+            case self::HTTP_METHOD_DELETE:
+            case self::HTTP_METHOD_OPTIONS:
+            case self::HTTP_METHOD_PATCH:
+            case self::HTTP_METHOD_PUT:
                 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->getMethod());
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPOSTData);
                 break;
 
-            case self::METHOD_HEAD:
+            case self::HTTP_METHOD_HEAD:
                 curl_setopt($curl, CURLOPT_NOBODY, true);
                 break;
 
-            case self::METHOD_POST:
+            case self::HTTP_METHOD_POST:
                 curl_setopt($curl, CURLOPT_POST, true);
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPOSTData);
                 break;
@@ -468,13 +468,13 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPMethodIn
      */
     final protected function setMethod($method) {
         switch ($method) {
-            case self::METHOD_DELETE:
-            case self::METHOD_GET:
-            case self::METHOD_HEAD:
-            case self::METHOD_OPTIONS:
-            case self::METHOD_PATCH:
-            case self::METHOD_POST:
-            case self::METHOD_PUT:
+            case self::HTTP_METHOD_DELETE:
+            case self::HTTP_METHOD_GET:
+            case self::HTTP_METHOD_HEAD:
+            case self::HTTP_METHOD_OPTIONS:
+            case self::HTTP_METHOD_PATCH:
+            case self::HTTP_METHOD_POST:
+            case self::HTTP_METHOD_PUT:
                 $this->method = $method;
                 break;
             default:

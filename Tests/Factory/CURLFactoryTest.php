@@ -13,8 +13,8 @@ namespace WBW\Library\CURL\Tests\Factory;
 
 use Exception;
 use PHPUnit_Framework_TestCase;
-use WBW\Library\Core\Exception\HTTP\InvalidHTTPMethodException;
-use WBW\Library\Core\HTTP\HTTPMethodInterface;
+use WBW\Library\Core\Exception\IO\InvalidHTTPMethodException;
+use WBW\Library\Core\IO\HTTPInterface;
 use WBW\Library\CURL\Factory\CURLFactory;
 use WBW\Library\CURL\Request\CURLDeleteRequest;
 use WBW\Library\CURL\Request\CURLGetRequest;
@@ -47,25 +47,25 @@ final class CURLFactoryTest extends PHPUnit_Framework_TestCase {
             $this->assertEquals("The HTTP method \"exception\" is invalid", $ex->getMessage());
         }
 
-        $res1 = CURLFactory::getInstance(HTTPMethodInterface::METHOD_DELETE);
+        $res1 = CURLFactory::getInstance(HTTPInterface::HTTP_METHOD_DELETE);
         $this->assertInstanceOf(CURLDeleteRequest::class, $res1);
 
-        $res2 = CURLFactory::getInstance(HTTPMethodInterface::METHOD_GET);
+        $res2 = CURLFactory::getInstance(HTTPInterface::HTTP_METHOD_GET);
         $this->assertInstanceOf(CURLGetRequest::class, $res2);
 
-        $res3 = CURLFactory::getInstance(HTTPMethodInterface::METHOD_HEAD);
+        $res3 = CURLFactory::getInstance(HTTPInterface::HTTP_METHOD_HEAD);
         $this->assertInstanceOf(CURLHeadRequest::class, $res3);
 
-        $res4 = CURLFactory::getInstance(HTTPMethodInterface::METHOD_OPTIONS);
+        $res4 = CURLFactory::getInstance(HTTPInterface::HTTP_METHOD_OPTIONS);
         $this->assertInstanceOf(CURLOptionsRequest::class, $res4);
 
-        $res5 = CURLFactory::getInstance(HTTPMethodInterface::METHOD_PATCH);
+        $res5 = CURLFactory::getInstance(HTTPInterface::HTTP_METHOD_PATCH);
         $this->assertInstanceOf(CURLPatchRequest::class, $res5);
 
-        $res6 = CURLFactory::getInstance(HTTPMethodInterface::METHOD_POST);
+        $res6 = CURLFactory::getInstance(HTTPInterface::HTTP_METHOD_POST);
         $this->assertInstanceOf(CURLPostRequest::class, $res6);
 
-        $res7 = CURLFactory::getInstance(HTTPMethodInterface::METHOD_PUT);
+        $res7 = CURLFactory::getInstance(HTTPInterface::HTTP_METHOD_PUT);
         $this->assertInstanceOf(CURLPutRequest::class, $res7);
     }
 

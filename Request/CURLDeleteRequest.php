@@ -29,7 +29,7 @@ final class CURLDeleteRequest extends AbstractCURLRequest {
      * @param string $resourcePath The resource path.
      */
     public function __construct(CURLConfiguration $configuration, $resourcePath) {
-        parent::__construct(self::METHOD_DELETE, $configuration, $resourcePath);
+        parent::__construct(self::HTTP_METHOD_DELETE, $configuration, $resourcePath);
     }
 
 }

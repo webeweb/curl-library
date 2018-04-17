@@ -33,7 +33,7 @@ final class CURLOptionsRequestTest extends AbstractCURLRequestTest {
 
         $this->assertEquals($this->configuration, $obj->getConfiguration());
         $this->assertEquals([], $obj->getHeaders());
-        $this->assertEquals(CURLOptionsRequest::METHOD_OPTIONS, $obj->getMethod());
+        $this->assertEquals(CURLOptionsRequest::HTTP_METHOD_OPTIONS, $obj->getMethod());
         $this->assertEquals([], $obj->getPostData());
         $this->assertEquals([], $obj->getQueryData());
         $this->assertEquals("testCall.php", $obj->getResourcePath());
@@ -55,7 +55,7 @@ final class CURLOptionsRequestTest extends AbstractCURLRequestTest {
 
         $this->assertContains("header: header", $res->getRequestHeader());
         $this->assertContains("queryData=queryData", $res->getRequestURL());
-        $this->assertEquals(CURLOptionsRequest::METHOD_OPTIONS, json_decode($res->getResponseBody(), true)["method"]);
+        $this->assertEquals(CURLOptionsRequest::HTTP_METHOD_OPTIONS, json_decode($res->getResponseBody(), true)["method"]);
         $this->assertEquals(200, $res->getResponseInfo()["http_code"]);
     }
 

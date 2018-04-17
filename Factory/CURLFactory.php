@@ -11,8 +11,8 @@
 
 namespace WBW\Library\CURL\Factory;
 
-use WBW\Library\Core\Exception\HTTP\InvalidHTTPMethodException;
-use WBW\Library\Core\HTTP\HTTPMethodInterface;
+use WBW\Library\Core\Exception\IO\InvalidHTTPMethodException;
+use WBW\Library\Core\IO\HTTPInterface;
 use WBW\Library\CURL\Configuration\CURLConfiguration;
 use WBW\Library\CURL\Request\CURLDeleteRequest;
 use WBW\Library\CURL\Request\CURLGetRequest;
@@ -30,7 +30,7 @@ use WBW\Library\CURL\Request\CURLRequestInterface;
  * @package WBW\Library\CURL\Factory
  * @final
  */
-final class CURLFactory implements HTTPMethodInterface {
+final class CURLFactory implements HTTPInterface {
 
     /**
      * Get an instance.
@@ -50,25 +50,25 @@ final class CURLFactory implements HTTPMethodInterface {
         // Switch into $method.
         switch ($method) {
 
-            case self::METHOD_DELETE:
+            case self::HTTP_METHOD_DELETE:
                 return new CURLDeleteRequest($configuration, $resourcePath);
 
-            case self::METHOD_GET:
+            case self::HTTP_METHOD_GET:
                 return new CURLGetRequest($configuration, $resourcePath);
 
-            case self::METHOD_HEAD:
+            case self::HTTP_METHOD_HEAD:
                 return new CURLHeadRequest($configuration, $resourcePath);
 
-            case self::METHOD_OPTIONS:
+            case self::HTTP_METHOD_OPTIONS:
                 return new CURLOptionsRequest($configuration, $resourcePath);
 
-            case self::METHOD_PATCH:
+            case self::HTTP_METHOD_PATCH:
                 return new CURLPatchRequest($configuration, $resourcePath);
 
-            case self::METHOD_POST:
+            case self::HTTP_METHOD_POST:
                 return new CURLPostRequest($configuration, $resourcePath);
 
-            case self::METHOD_PUT:
+            case self::HTTP_METHOD_PUT:
                 return new CURLPutRequest($configuration, $resourcePath);
 
             default:
