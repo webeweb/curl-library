@@ -17,7 +17,7 @@ use WBW\Library\CURL\Exception\CURLRequestCallException;
 use WBW\Library\CURL\Response\CURLResponseInterface;
 
 /**
- * CURL request interface.
+ * cURL request interface.
  *
  * @author webeweb <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Request
@@ -29,7 +29,7 @@ interface CURLRequestInterface {
      *
      * @param string $name The header name.
      * @param string $value The header value.
-     * @return CURLRequestInterface Return the cURL request.
+     * @return CURLRequestInterface Returns this cURL request.
      * @throws StringArgumentException Throws a string argument exception if the name is not a string.
      */
     public function addHeader($name, $value);
@@ -39,7 +39,7 @@ interface CURLRequestInterface {
      *
      * @param string $name The POST data name.
      * @param string $value The POST data value.
-     * @return CURLRequestInterface Return the cURL request.
+     * @return CURLRequestInterface Returns this cURL request.
      * @throws StringArgumentException Throws a string argument exception if the name is not a string.
      */
     public function addPostData($name, $value);
@@ -49,7 +49,7 @@ interface CURLRequestInterface {
      *
      * @param string $name The query data name.
      * @param string $value The query data value.
-     * @return CURLRequestInterface Return the cURL request.
+     * @return CURLRequestInterface Returns this cURL request.
      * @throws StringArgumentException Throws a string argument exception if the name is not a string.
      */
     public function addQueryData($name, $value);
@@ -65,21 +65,21 @@ interface CURLRequestInterface {
     /**
      * Clear headers.
      *
-     * @return CURLRequestInterface Return the cURL request.
+     * @return CURLRequestInterface Returns this cURL request.
      */
     public function clearHeaders();
 
     /**
      * Clear post data.
      *
-     * @return CURLRequestInterface Return the cURL request.
+     * @return CURLRequestInterface Returns this cURL request.
      */
     public function clearPostData();
 
     /**
      * Clear query data.
      *
-     * @return CURLRequestInterface Return the cURL request.
+     * @return CURLRequestInterface Returns this cURL request.
      */
     public function clearQueryData();
 
@@ -121,7 +121,7 @@ interface CURLRequestInterface {
     /**
      * Get the resource path.
      *
-     * @return string Return the resource path.
+     * @return string Returns the resource path.
      */
     public function getResourcePath();
 
@@ -129,7 +129,7 @@ interface CURLRequestInterface {
      * Remove an header.
      *
      * @param string $name The header name.
-     * @return CURLRequestInterface Return the cURL request.
+     * @return CURLRequestInterface Returns this cURL request.
      */
     public function removeHeader($name);
 
@@ -137,7 +137,7 @@ interface CURLRequestInterface {
      * Remove a POST data.
      *
      * @param string $name The POST data name.
-     * @return CURLRequestInterface Return the cURL request.
+     * @return CURLRequestInterface Returns this cURL request.
      */
     public function removePostData($name);
 
@@ -145,7 +145,7 @@ interface CURLRequestInterface {
      * Remove a query data.
      *
      * @param string $name The query data name.
-     * @return CURLRequestInterface Return the cURL request.
+     * @return CURLRequestInterface Returns this cURL request.
      */
     public function removeQueryData($name);
 
@@ -153,7 +153,7 @@ interface CURLRequestInterface {
      * Set the resource path.
      *
      * @param string $resourcePath The resource path.
-     * @return CURLRequestInterface Return the cURL request.
+     * @return CURLRequestInterface Returns this cURL request.
      */
     public function setResourcePath($resourcePath);
 }

@@ -37,7 +37,7 @@ final class CURLFactory implements HTTPInterface {
      *
      * @param string $method The method.
      * @param CURLConfiguration $configuration The configuration.
-     * @return CURLRequestInterface Returns the cURL request.
+     * @return CURLRequestInterface Returns this cURL request.
      * @throws InvalidHTTPMethodException Throws an invalid HTTP method exception if the method is not implemented.
      */
     public static function getInstance($method, CURLConfiguration $configuration = null, $resourcePath = null) {

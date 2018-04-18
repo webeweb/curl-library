@@ -29,7 +29,7 @@ abstract class AbstractCURLRequestTest extends PHPUnit_Framework_TestCase {
     const RESOURCE_PATH = "/testCall.php";
 
     /**
-     * CURL configuration.
+     * cURL configuration.
      *
      * @var CURLConfiguration
      */
@@ -43,7 +43,7 @@ abstract class AbstractCURLRequestTest extends PHPUnit_Framework_TestCase {
         //
         parent::setUp();
 
-        // Set the CURL configuration.
+        // Set a cURL configuration mock.
         $this->configuration = new CURLConfiguration();
         $this->configuration->setHost("https://webeweb.fr/");
     }

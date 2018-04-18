@@ -23,7 +23,7 @@ use WBW\Library\CURL\Response\CURLResponse;
 final class CURLRequestCallException extends AbstractCURLException {
 
     /**
-     * CURL response.
+     * cURL response.
      *
      * @var CURLResponse
      */

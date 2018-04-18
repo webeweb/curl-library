@@ -115,7 +115,7 @@ final class CURLResponse implements CURLResponseInterface {
      * Set the request body.
      *
      * @param string $requestBody The request body.
-     * @return CURLResponse Returns the CURL response.
+     * @return CURLResponse Returns this CURL response.
      */
     public function setRequestBody($requestBody) {
         $this->requestBody = $requestBody;
@@ -126,7 +126,7 @@ final class CURLResponse implements CURLResponseInterface {
      * Set the request header.
      *
      * @param array $requestHeader The request header.
-     * @return CURLResponse Returns the CURL response.
+     * @return CURLResponse Returns this CURL response.
      */
     public function setRequestHeader(array $requestHeader = []) {
         $this->requestHeader = $requestHeader;
@@ -137,7 +137,7 @@ final class CURLResponse implements CURLResponseInterface {
      * Set the request URL.
      *
      * @param string $requestURL The request URL.
-     * @return CURLResponse Returns the CURL response.
+     * @return CURLResponse Returns this CURL response.
      */
     public function setRequestURL($requestURL) {
         $this->requestURL = $requestURL;
@@ -148,7 +148,7 @@ final class CURLResponse implements CURLResponseInterface {
      * Set the response body.
      *
      * @param string $responseBody The response body.
-     * @return CURLResponse Returns the CURL response.
+     * @return CURLResponse Returns this CURL response.
      */
     public function setResponseBody($responseBody) {
         $this->responseBody = $responseBody;
@@ -159,7 +159,7 @@ final class CURLResponse implements CURLResponseInterface {
      * Set the response header.
      *
      * @param array $responseHeader The response header.
-     * @return CURLResponse Returns the CURL response.
+     * @return CURLResponse Returns this CURL response.
      */
     public function setResponseHeader(array $responseHeader = []) {
         $this->responseHeader = $responseHeader;
@@ -170,7 +170,7 @@ final class CURLResponse implements CURLResponseInterface {
      * Set the response info.
      *
      * @param array $responseInfo The response info.
-     * @return CURLResponse Returns the CURL response.
+     * @return CURLResponse Returns this CURL response.
      */
     public function setResponseInfo(array $responseInfo = []) {
         $this->responseInfo = $responseInfo;

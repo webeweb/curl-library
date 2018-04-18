@@ -154,17 +154,19 @@ final class CURLConfiguration {
      *
      * @param string $name The header name.
      * @param string $value The header value.
+     * @return CURLConfiguration Returns this CURL configuration.
      * @throws StringArgumentException Throws a string argument exception if the argument is not a string.
      */
     public function addHeader($name, $value) {
         ArgumentValidator::isTypeOf($name, ArgumentValidator::TYPE_STRING);
         $this->headers[$name] = $value;
+        return $this;
     }
 
     /**
      * Clear the headers.
      *
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function clearHeaders() {
         return $this->setHeaders();
@@ -338,7 +340,7 @@ final class CURLConfiguration {
      * Set the allow encoding.
      *
      * @param boolean $allowEncoding The allow encoding.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setAllowEncoding($allowEncoding = false) {
         $this->allowEncoding = $allowEncoding;
@@ -349,7 +351,7 @@ final class CURLConfiguration {
      * Set the connect timeout.
      *
      * @param integer $connectTimeout The connect timeout.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setConnectTimeout($connectTimeout = 0) {
         $this->connectTimeout = $connectTimeout;
@@ -360,7 +362,7 @@ final class CURLConfiguration {
      * Set the debug.
      *
      * @param boolean $debug The debug.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setDebug($debug = false) {
         $this->debug = $debug;
@@ -371,7 +373,7 @@ final class CURLConfiguration {
      * Set the debug file.
      *
      * @param string $debugFile The debug file.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setDebugFile($debugFile = "php://output") {
         $this->debugFile = $debugFile;
@@ -382,7 +384,7 @@ final class CURLConfiguration {
      * Set the headers.
      *
      * @param array $headers The headers
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     protected function setHeaders(array $headers = []) {
         $this->headers = $headers;
@@ -393,7 +395,7 @@ final class CURLConfiguration {
      * Set the host.
      *
      * @param string $host The host.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setHost($host) {
         $this->host = preg_replace("/\/$/", "", trim($host));
@@ -404,7 +406,7 @@ final class CURLConfiguration {
      * Set the HTTP basic password.
      *
      * @param string $httpPassword The HTTP basic password.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setHttpPassword($httpPassword) {
         $this->httpPassword = $httpPassword;
@@ -415,7 +417,7 @@ final class CURLConfiguration {
      * Set the HTTP basic username.
      *
      * @param string $httpUsername The HTTP basic username.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setHttpUsername($httpUsername) {
         $this->httpUsername = $httpUsername;
@@ -426,7 +428,7 @@ final class CURLConfiguration {
      * Set the proxy host.
      *
      * @param string $proxyHost The proxy host.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setProxyHost($proxyHost) {
         $this->proxyHost = $proxyHost;
@@ -437,7 +439,7 @@ final class CURLConfiguration {
      * Set the proxy password.
      *
      * @param string $proxyPassword The proxy password.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setProxyPassword($proxyPassword) {
         $this->proxyPassword = $proxyPassword;
@@ -448,7 +450,7 @@ final class CURLConfiguration {
      * Set the proxy port.
      *
      * @param integer $proxyPort The proxy port.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setProxyPort($proxyPort) {
         $this->proxyPort = $proxyPort;
@@ -459,7 +461,7 @@ final class CURLConfiguration {
      * Set the proxy type.
      *
      * @param integer $proxyType The proxy type.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setProxyType($proxyType) {
         $this->proxyType = $proxyType;
@@ -470,7 +472,7 @@ final class CURLConfiguration {
      * Set the proxy username.
      *
      * @param string $proxyUsername The proxy username.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setProxyUsername($proxyUsername) {
         $this->proxyUsername = $proxyUsername;
@@ -481,7 +483,7 @@ final class CURLConfiguration {
      * Set the request timeout.
      *
      * @param integer $requestTimeout The request timeout.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setRequestTimeout($requestTimeout = 0) {
         $this->requestTimeout = $requestTimeout;
@@ -492,7 +494,7 @@ final class CURLConfiguration {
      * Set the SSL verification.
      *
      * @param boolean $sslVerification The SSL verification.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setSslVerification($sslVerification = true) {
         $this->sslVerification = $sslVerification;
@@ -503,7 +505,7 @@ final class CURLConfiguration {
      * Set the user agent.
      *
      * @param string $userAgent The user agent.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setUserAgent($userAgent = "webeweb/curl-library") {
         $this->userAgent = $userAgent;
@@ -514,7 +516,7 @@ final class CURLConfiguration {
      * Set the verbose.
      *
      * @param boolean $verbose The verbose.
-     * @return CURLConfiguration Returns the CURL configuration.
+     * @return CURLConfiguration Returns this CURL configuration.
      */
     public function setVerbose($verbose = false) {
         $this->verbose = $verbose;
