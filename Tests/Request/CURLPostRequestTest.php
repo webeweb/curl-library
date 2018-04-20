@@ -33,7 +33,7 @@ final class CURLPostRequestTest extends AbstractCURLRequestTest {
 
         $obj = new CURLPostRequest($this->configuration, self::RESOURCE_PATH);
 
-        $this->assertEquals($this->configuration, $obj->getConfiguration());
+        $this->assertSame($this->configuration, $obj->getConfiguration());
         $this->assertEquals([], $obj->getHeaders());
         $this->assertEquals(CURLPostRequest::HTTP_METHOD_POST, $obj->getMethod());
         $this->assertEquals([], $obj->getPostData());

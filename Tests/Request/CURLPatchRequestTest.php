@@ -32,7 +32,7 @@ final class CURLPatchRequestTest extends AbstractCURLRequestTest {
 
         $obj = new CURLPatchRequest($this->configuration, self::RESOURCE_PATH);
 
-        $this->assertEquals($this->configuration, $obj->getConfiguration());
+        $this->assertSame($this->configuration, $obj->getConfiguration());
         $this->assertEquals([], $obj->getHeaders());
         $this->assertEquals(CURLPatchRequest::HTTP_METHOD_PATCH, $obj->getMethod());
         $this->assertEquals([], $obj->getPostData());

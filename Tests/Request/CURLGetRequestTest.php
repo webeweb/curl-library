@@ -35,7 +35,7 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
 
         $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
 
-        $this->assertEquals($this->configuration, $obj->getConfiguration());
+        $this->assertSame($this->configuration, $obj->getConfiguration());
         $this->assertEquals([], $obj->getHeaders());
         $this->assertEquals(CURLGetRequest::HTTP_METHOD_GET, $obj->getMethod());
         $this->assertEquals([], $obj->getPostData());

@@ -31,7 +31,7 @@ final class CURLDeleteRequestTest extends AbstractCURLRequestTest {
 
         $obj = new CURLDeleteRequest($this->configuration, self::RESOURCE_PATH);
 
-        $this->assertEquals($this->configuration, $obj->getConfiguration());
+        $this->assertSame($this->configuration, $obj->getConfiguration());
         $this->assertEquals([], $obj->getHeaders());
         $this->assertEquals(CURLDeleteRequest::HTTP_METHOD_DELETE, $obj->getMethod());
         $this->assertEquals([], $obj->getPostData());
