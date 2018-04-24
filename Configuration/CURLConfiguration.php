@@ -19,9 +19,8 @@ use WBW\Library\Core\Exception\Argument\StringArgumentException;
  *
  * @author webeweb <https://github.com/webeweb/>
  * @package SDKBundle\Web\API\CURL\Configuration
- * @final
  */
-final class CURLConfiguration {
+class CURLConfiguration {
 
     /**
      * Allow encoding.
