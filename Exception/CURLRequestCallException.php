@@ -18,9 +18,8 @@ use WBW\Library\CURL\Response\CURLResponse;
  *
  * @author webeweb <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Exception
- * @final
  */
-final class CURLRequestCallException extends AbstractCURLException {
+class CURLRequestCallException extends AbstractCURLException {
 
     /**
      * cURL response.
