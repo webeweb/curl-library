@@ -16,9 +16,8 @@ namespace WBW\Library\CURL\Response;
  *
  * @author webeweb <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Response
- * @final
  */
-final class CURLResponse implements CURLResponseInterface {
+class CURLResponse implements CURLResponseInterface {
 
     /**
      * Request body.
