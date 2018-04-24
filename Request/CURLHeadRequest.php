@@ -18,9 +18,8 @@ use WBW\Library\CURL\Configuration\CURLConfiguration;
  *
  * @author webeweb <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Request
- * @final
  */
-final class CURLHeadRequest extends AbstractCURLRequest {
+class CURLHeadRequest extends AbstractCURLRequest {
 
     /**
      * Constructor.
