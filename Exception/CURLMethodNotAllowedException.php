@@ -16,9 +16,8 @@ namespace WBW\Library\CURL\Exception;
  *
  * @author webeweb <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Exception
- * @final
  */
-final class CURLMethodNotAllowedException extends AbstractCURLException {
+class CURLMethodNotAllowedException extends AbstractCURLException {
 
     /**
      * Constructor.
