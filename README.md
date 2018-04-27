@@ -38,19 +38,19 @@ Composer documentation.
 ## Usage
 
 ```php
-	// Initialize the POST request.
-	$request = new CURLPostRequest(new CURLConfiguration(), "/resource-path");
-	$request->getConfiguration()->setHost("http://domain.tld");
-	$request->addQueryData("id", 1);
-	$request->addPostData("firstname", "John");
-	$request->addPostData("lastname", "DOE");
-	...
+     // Initialize the POST request.
+     $request = new CURLPostRequest(new CURLConfiguration(), "/resource-path");
+     $request->getConfiguration()->setHost("http://domain.tld");
+     $request->addQueryData("id", 1);
+     $request->addPostData("firstname", "John");
+     $request->addPostData("lastname", "DOE");
+     // ...
 
-	// Call the POST request.
-	$response = $request->call();
+     // Call the POST request.
+     $response = $request->call();
 
-	// Make something with the response.
-	...
+     // Make something with the response.
+     // ...
 ```
 
 Requests available :
