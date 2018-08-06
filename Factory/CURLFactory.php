@@ -28,9 +28,15 @@ use WBW\Library\CURL\Request\CURLRequestInterface;
  *
  * @author webeweb <https://github.com/webeweb/>
  * @package WBW\Library\CURL\Factory
- * @final
  */
-final class CURLFactory implements HTTPInterface {
+class CURLFactory implements HTTPInterface {
+
+    /**
+     * Constructor.
+     */
+    private function __construct() {
+        // NOTHING TO DO.
+    }
 
     /**
      * Get an instance.
