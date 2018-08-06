@@ -32,13 +32,6 @@ use WBW\Library\CURL\Request\CURLRequestInterface;
 class CURLFactory implements HTTPInterface {
 
     /**
-     * Constructor.
-     */
-    private function __construct() {
-        // NOTHING TO DO.
-    }
-
-    /**
      * Get an instance.
      *
      * @param string $method The method.
