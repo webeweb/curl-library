@@ -31,7 +31,7 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
      *
      * @return void
      */
-    public function testConstructor() {
+    public function testConstruct() {
 
         $obj = new CURLGetRequest($this->configuration, self::RESOURCE_PATH);
 

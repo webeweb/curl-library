@@ -29,7 +29,7 @@ final class CURLPostRequestTest extends AbstractCURLRequestTest {
      *
      * @return void
      */
-    public function testConstructor() {
+    public function testConstruct() {
 
         $obj = new CURLPostRequest($this->configuration, self::RESOURCE_PATH);
 

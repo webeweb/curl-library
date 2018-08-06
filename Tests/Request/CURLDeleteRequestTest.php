@@ -27,7 +27,7 @@ final class CURLDeleteRequestTest extends AbstractCURLRequestTest {
      *
      * @return void
      */
-    public function testConstructor() {
+    public function testConstruct() {
 
         $obj = new CURLDeleteRequest($this->configuration, self::RESOURCE_PATH);
 

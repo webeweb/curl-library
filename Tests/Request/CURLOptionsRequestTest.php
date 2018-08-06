@@ -27,7 +27,7 @@ final class CURLOptionsRequestTest extends AbstractCURLRequestTest {
      *
      * @return void
      */
-    public function testConstructor() {
+    public function testConstruct() {
 
         $obj = new CURLOptionsRequest($this->configuration, self::RESOURCE_PATH);
 

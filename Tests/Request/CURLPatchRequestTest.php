@@ -28,7 +28,7 @@ final class CURLPatchRequestTest extends AbstractCURLRequestTest {
      *
      * @return void
      */
-    public function testConstructor() {
+    public function testConstruct() {
 
         $obj = new CURLPatchRequest($this->configuration, self::RESOURCE_PATH);
 
