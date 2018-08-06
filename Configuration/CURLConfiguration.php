@@ -18,7 +18,7 @@ use WBW\Library\Core\Exception\Argument\StringArgumentException;
  * cURL configuration.
  *
  * @author webeweb <https://github.com/webeweb/>
- * @package SDKBundle\Web\API\CURL\Configuration
+ * @package WBW\Library\CURL\Configuration
  */
 class CURLConfiguration {
 
