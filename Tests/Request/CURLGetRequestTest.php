@@ -13,7 +13,7 @@ namespace WBW\Library\CURL\Tests\Request;
 
 use Exception;
 use WBW\Library\Core\Exception\Argument\StringArgumentException;
-use WBW\Library\Core\Utility\IO\HTTPUtility;
+use WBW\Library\Core\Helper\IO\HTTPHelper;
 use WBW\Library\CURL\Exception\CURLRequestCallException;
 use WBW\Library\CURL\Request\CURLGetRequest;
 
@@ -197,7 +197,7 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
         $obj->removeQueryData("sleep");
 
         /* === HTTP codes ================================================== */
-        foreach (HTTPUtility::getHTTPStatus() as $code) {
+        foreach (HTTPHelper::getHTTPStatus() as $code) {
             try {
 
                 $obj->addQueryData("code", $code);

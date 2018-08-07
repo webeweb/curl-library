@@ -14,7 +14,7 @@ namespace WBW\Library\CURL\Tests\Factory;
 use Exception;
 use PHPUnit_Framework_TestCase;
 use WBW\Library\Core\Exception\IO\InvalidHTTPMethodException;
-use WBW\Library\Core\IO\HTTPInterface;
+use WBW\Library\Core\Helper\IO\HTTPInterface;
 use WBW\Library\CURL\Factory\CURLFactory;
 use WBW\Library\CURL\Request\CURLDeleteRequest;
 use WBW\Library\CURL\Request\CURLGetRequest;

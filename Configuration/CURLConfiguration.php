@@ -11,8 +11,8 @@
 
 namespace WBW\Library\CURL\Configuration;
 
-use WBW\Library\Core\Argument\ArgumentValidator;
 use WBW\Library\Core\Exception\Argument\StringArgumentException;
+use WBW\Library\Core\Helper\Argument\ArgumentHelper;
 
 /**
  * cURL configuration.
@@ -157,7 +157,7 @@ class CURLConfiguration {
      * @throws StringArgumentException Throws a string argument exception if the argument is not a string.
      */
     public function addHeader($name, $value) {
-        ArgumentValidator::isTypeOf($name, ArgumentValidator::TYPE_STRING);
+        ArgumentHelper::isTypeOf($name, ArgumentHelper::ARGUMENT_STRING);
         $this->headers[$name] = $value;
         return $this;
     }

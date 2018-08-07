@@ -12,9 +12,9 @@
 namespace WBW\Library\CURL\Request;
 
 use DateTime;
-use WBW\Library\Core\Argument\ArgumentValidator;
 use WBW\Library\Core\Exception\HTTP\InvalidHTTPMethodException;
-use WBW\Library\Core\IO\HTTPInterface;
+use WBW\Library\Core\Helper\Argument\ArgumentHelper;
+use WBW\Library\Core\Helper\IO\HTTPInterface;
 use WBW\Library\CURL\Configuration\CURLConfiguration;
 use WBW\Library\CURL\Exception\CURLRequestCallException;
 use WBW\Library\CURL\Response\CURLResponse;
@@ -95,7 +95,7 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPInterfac
      * {@inheritdoc}
      */
     public function addHeader($name, $value) {
-        ArgumentValidator::isTypeOf($name, ArgumentValidator::TYPE_STRING);
+        ArgumentHelper::isTypeOf($name, ArgumentHelper::ARGUMENT_STRING);
         $this->headers[$name] = $value;
     }
 
@@ -103,7 +103,7 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPInterfac
      * {@inheritdoc}
      */
     public function addPostData($name, $value) {
-        ArgumentValidator::isTypeOf($name, ArgumentValidator::TYPE_STRING);
+        ArgumentHelper::isTypeOf($name, ArgumentHelper::ARGUMENT_STRING);
         $this->postData[$name] = $value;
     }
 
@@ -111,7 +111,7 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPInterfac
      * {@inheritdoc}
      */
     public function addQueryData($name, $value) {
-        ArgumentValidator::isTypeOf($name, ArgumentValidator::TYPE_STRING);
+        ArgumentHelper::isTypeOf($name, ArgumentHelper::ARGUMENT_STRING);
         $this->queryData[$name] = $value;
     }
 
