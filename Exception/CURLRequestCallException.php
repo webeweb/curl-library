@@ -32,11 +32,12 @@ class CURLRequestCallException extends AbstractCURLException {
      * Constructor.
      *
      * @param string $message The message.
+     * @param int $code The code.
      * @param CURLResponse $response The response.
      */
-    public function __construct($message, CURLResponse $response) {
-        parent::__construct($message);
-        $this->response = $response;
+    public function __construct($message, $code, CURLResponse $response) {
+        parent::__construct($message, $code);
+        $this->setResponse($response);
     }
 
     /**
@@ -46,6 +47,17 @@ class CURLRequestCallException extends AbstractCURLException {
      */
     public function getResponse() {
         return $this->response;
+    }
+
+    /**
+     * Set the response.
+     *
+     * @param CURLResponse $response The response.
+     * @return CURLRequestCallException Returns this cURL request call exception.
+     */
+    protected function setResponse(CURLResponse $response) {
+        $this->response = $response;
+        return $this;
     }
 
 }

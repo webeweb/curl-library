@@ -204,13 +204,14 @@ final class CURLGetRequestTest extends AbstractCURLRequestTest {
 
                 $rslt = $obj->call();
 
-                $this->assertEquals($code, $rslt->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value with code " . $code);
+                $this->assertEquals($code, $rslt->getResponseInfo()["http_code"]);
                 $this->assertGreaterThanOrEqual(200, $rslt->getResponseInfo()["http_code"]);
                 $this->assertLessThanOrEqual(299, $rslt->getResponseInfo()["http_code"]);
             } catch (Exception $ex) {
 
                 $this->assertInstanceOf(CURLRequestCallException::class, $ex);
-                $this->assertEquals($code, $ex->getResponse()->getResponseInfo()["http_code"], "The method getResponseInfo() does not return the expected value with code " . $code);
+                $this->assertEquals($code, $ex->getCode());
+                $this->assertEquals($code, $ex->getResponse()->getResponseInfo()["http_code"]);
             }
         }
 
