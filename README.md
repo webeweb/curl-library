@@ -5,9 +5,6 @@ curl-library
 
 Integrate web API with your projects.
 
-`curl-library` uses a rolling release based on git master branch which is
-considered stable.
-
 ---
 
 ## Compatibility
