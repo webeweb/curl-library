@@ -3,7 +3,7 @@ curl-library
 
 [![Build Status](https://travis-ci.org/webeweb/curl-library.svg?branch=master)](https://travis-ci.org/webeweb/curl-library) [![Coverage Status](https://coveralls.io/repos/github/webeweb/curl-library/badge.svg?branch=master)](https://coveralls.io/github/webeweb/curl-library?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/webeweb/curl-library/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/webeweb/curl-library/?branch=master) [![Latest Stable Version](https://poser.pugx.org/webeweb/curl-library/v/stable)](https://packagist.org/packages/webeweb/curl-library) [![Latest Unstable Version](https://poser.pugx.org/webeweb/curl-library/v/unstable)](https://packagist.org/packages/webeweb/curl-library) [![License](https://poser.pugx.org/webeweb/curl-library/license)](https://packagist.org/packages/webeweb/curl-library) [![composer.lock](https://poser.pugx.org/webeweb/curl-library/composerlock)](https://packagist.org/packages/webeweb/curl-library)
 
-Interact with web API in your projects.
+Integrate web API with your projects.
 
 `curl-library` uses a rolling release based on git master branch which is
 considered stable.
