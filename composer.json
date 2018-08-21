@@ -1,8 +1,8 @@
 {
     "name": "webeweb/curl-library",
     "type": "library",
-    "description": "Interact with web API in your projects",
-    "keywords": ["webeweb", "library", "cURL"],
+    "description": "Integrate web API with your projects",
+    "keywords": ["webeweb", "library", "web", "API", "cURL"],
     "homepage": "http://github.com/webeweb/curl-library",
     "license": "LGPL-3.0-only",
     "authors": [
