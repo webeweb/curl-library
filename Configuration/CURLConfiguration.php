@@ -12,7 +12,7 @@
 namespace WBW\Library\CURL\Configuration;
 
 use WBW\Library\Core\Exception\Argument\StringArgumentException;
-use WBW\Library\Core\Helper\Argument\ArgumentHelper;
+use WBW\Library\Core\Argument\ArgumentHelper;
 
 /**
  * cURL configuration.
