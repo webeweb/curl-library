@@ -442,7 +442,7 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPInterfac
      * Set the configuration.
      *
      * @param CURLConfiguration $configuration The configuration.
-     * @return AbstractCURLRequest Returns this cURL request.
+     * @return AbstractCURLRequest Returns this request.
      */
     protected function setConfiguration(CURLConfiguration $configuration) {
         $this->configuration = $configuration;
@@ -453,7 +453,7 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPInterfac
      * Set the headers.
      *
      * @param array $headers The headers.
-     * @return AbstractCURLRequest Returns this cURL request.
+     * @return AbstractCURLRequest Returns this request.
      */
     protected function setHeaders(array $headers = []) {
         $this->headers = $headers;
@@ -464,7 +464,7 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPInterfac
      * Set the method.
      *
      * @param string $method The method.
-     * @return AbstractCURLRequest Returns this cURL request.
+     * @return AbstractCURLRequest Returns this request.
      * @throws InvalidHTTPMethodException Throws an invalid HTTP method exception if the method is not implemented.
      */
     protected function setMethod($method) {
@@ -488,7 +488,7 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPInterfac
      * Set the POST data.
      *
      * @param array $postData The POST data.
-     * @return AbstractCURLRequest Returns this cURL request.
+     * @return AbstractCURLRequest Returns this request.
      */
     protected function setPostData(array $postData = []) {
         $this->postData = $postData;
@@ -499,7 +499,7 @@ abstract class AbstractCURLRequest implements CURLRequestInterface, HTTPInterfac
      * Set the query data.
      *
      * @param array $queryData The query data.
-     * @return AbstractCURLRequest Returns this cURL request.
+     * @return AbstractCURLRequest Returns this request.
      */
     protected function setQueryData(array $queryData = []) {
         $this->queryData = $queryData;

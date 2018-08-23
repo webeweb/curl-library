@@ -43,7 +43,7 @@ class CURLRequestCallException extends AbstractCURLException {
     /**
      * Get the response.
      *
-     * @return CURLResponse Returns the cURL response.
+     * @return CURLResponse Returns the response.
      */
     public function getResponse() {
         return $this->response;
@@ -53,7 +53,7 @@ class CURLRequestCallException extends AbstractCURLException {
      * Set the response.
      *
      * @param CURLResponse $response The response.
-     * @return CURLRequestCallException Returns this cURL request call exception.
+     * @return CURLRequestCallException Returns this request call exception.
      */
     protected function setResponse(CURLResponse $response) {
         $this->response = $response;
