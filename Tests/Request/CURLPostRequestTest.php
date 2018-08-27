@@ -50,13 +50,17 @@ final class CURLPostRequestTest extends AbstractCURLRequestTest {
 
         $obj = new CURLPostRequest($this->configuration, self::RESOURCE_PATH);
 
+        // ===
         try {
+
             $obj->addPostData(1, "value");
         } catch (Exception $ex) {
+
             $this->assertInstanceOf(StringArgumentException::class, $ex);
             $this->assertEquals("The argument \"1\" is not a string", $ex->getMessage());
         }
 
+        // ===
         $obj->addPostData("name", "value");
 
         $res = ["name" => "value"];

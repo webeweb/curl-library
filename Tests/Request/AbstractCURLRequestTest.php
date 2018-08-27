@@ -39,8 +39,6 @@ abstract class AbstractCURLRequestTest extends PHPUnit_Framework_TestCase {
      * {@inheritdoc}
      */
     protected function setUp() {
-
-        //
         parent::setUp();
 
         // Set a cURL configuration mock.
