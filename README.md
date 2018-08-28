@@ -107,5 +107,5 @@ $ vendor/bin/phpunit
 
 ## License
 
-curl-library is released under the LGPL License. See the bundled [LICENSE](LICENSE)
+`curl-library` is released under the LGPL License. See the bundled [LICENSE](LICENSE)
 file for details.
