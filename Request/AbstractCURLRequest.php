@@ -12,9 +12,9 @@
 namespace WBW\Library\CURL\Request;
 
 use DateTime;
-use WBW\Library\Core\Exception\HTTP\InvalidHTTPMethodException;
 use WBW\Library\Core\Argument\ArgumentHelper;
-use WBW\Library\Core\IO\HTTPInterface;
+use WBW\Library\Core\Exception\HTTP\InvalidHTTPMethodException;
+use WBW\Library\Core\Network\HTTP\HTTPInterface;
 use WBW\Library\CURL\Configuration\CURLConfiguration;
 use WBW\Library\CURL\Exception\CURLRequestCallException;
 use WBW\Library\CURL\Response\CURLResponse;
