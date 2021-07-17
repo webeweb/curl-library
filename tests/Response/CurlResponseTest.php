@@ -1,52 +1,35 @@
 <?php
 
-/**
+/*
  * This file is part of the curl-library package.
  *
- * (c) 2017 WEBEWEB
+ * (c) 2018 WEBEWEB
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace WBW\Library\CURL\Response;
+namespace WBW\Library\Curl\Tests\Response;
 
-use PHPUnit_Framework_TestCase;
+use WBW\Library\Curl\Response\CurlResponse;
+use WBW\Library\Curl\Tests\AbstractTestCase;
 
 /**
  * cURL response test.
  *
  * @author webeweb <https://github.com/webeweb/>
- * @package WBW\Library\CURL\Tests\Response
- * @final
+ * @package WBW\Library\Curl\Tests\Response
  */
-final class CURLResponseTest extends PHPUnit_Framework_TestCase {
-
-    /**
-     * Tests the __constructor() method.
-     *
-     * @return void
-     */
-    public function testConstruct() {
-
-        $obj = new CURLResponse();
-
-        $this->assertNull($obj->getRequestBody());
-        $this->assertEquals([], $obj->getRequestHeader());
-        $this->assertNull($obj->getRequestURL());
-        $this->assertNull($obj->getResponseBody());
-        $this->assertEquals([], $obj->getResponseHeader());
-        $this->assertEquals([], $obj->getResponseInfo());
-    }
+class CurlResponseTest extends AbstractTestCase {
 
     /**
      * Tests the setRequestBody() method.
      *
      * @return void
      */
-    public function testSetRequestBody() {
+    public function testSetRequestBody(): void {
 
-        $obj = new CURLResponse();
+        $obj = new CurlResponse();
 
         $obj->setRequestBody("requestBody");
         $this->assertEquals("requestBody", $obj->getRequestBody());
@@ -57,25 +40,25 @@ final class CURLResponseTest extends PHPUnit_Framework_TestCase {
      *
      * @return void
      */
-    public function testSetRequestHeader() {
+    public function testSetRequestHeader(): void {
 
-        $obj = new CURLResponse();
+        $obj = new CurlResponse();
 
         $obj->setRequestHeader(["requestHeader" => "requestHeader"]);
         $this->assertEquals(["requestHeader" => "requestHeader"], $obj->getRequestHeader());
     }
 
     /**
-     * Tests the setRequestURL() method.
+     * Tests the setRequestUrl() method.
      *
      * @return void
      */
-    public function testSetRequestURL() {
+    public function testSetRequestUrl(): void {
 
-        $obj = new CURLResponse();
+        $obj = new CurlResponse();
 
-        $obj->setRequestURL("requestURL");
-        $this->assertEquals("requestURL", $obj->getRequestURL());
+        $obj->setRequestUrl("requestURL");
+        $this->assertEquals("requestURL", $obj->getRequestUrl());
     }
 
     /**
@@ -83,9 +66,9 @@ final class CURLResponseTest extends PHPUnit_Framework_TestCase {
      *
      * @return void
      */
-    public function testSetResponseBody() {
+    public function testSetResponseBody(): void {
 
-        $obj = new CURLResponse();
+        $obj = new CurlResponse();
 
         $obj->setResponseBody("responseBody");
         $this->assertEquals("responseBody", $obj->getResponseBody());
@@ -96,9 +79,9 @@ final class CURLResponseTest extends PHPUnit_Framework_TestCase {
      *
      * @return void
      */
-    public function testSetResponseHeader() {
+    public function testSetResponseHeader(): void {
 
-        $obj = new CURLResponse();
+        $obj = new CurlResponse();
 
         $obj->setResponseHeader(["responseHeader" => "responseHeader"]);
         $this->assertEquals(["responseHeader" => "responseHeader"], $obj->getResponseHeader());
@@ -109,12 +92,28 @@ final class CURLResponseTest extends PHPUnit_Framework_TestCase {
      *
      * @return void
      */
-    public function testSetResponseInfo() {
+    public function testSetResponseInfo(): void {
 
-        $obj = new CURLResponse();
+        $obj = new CurlResponse();
 
         $obj->setResponseInfo(["responseInfo" => "responseInfo"]);
         $this->assertEquals(["responseInfo" => "responseInfo"], $obj->getResponseInfo());
     }
 
+    /**
+     * Tests the __constructor() method.
+     *
+     * @return void
+     */
+    public function test__construct(): void {
+
+        $obj = new CurlResponse();
+
+        $this->assertNull($obj->getRequestBody());
+        $this->assertEquals([], $obj->getRequestHeader());
+        $this->assertNull($obj->getRequestUrl());
+        $this->assertNull($obj->getResponseBody());
+        $this->assertEquals([], $obj->getResponseHeader());
+        $this->assertEquals([], $obj->getResponseInfo());
+    }
 }
