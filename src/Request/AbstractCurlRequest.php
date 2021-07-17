@@ -148,7 +148,7 @@ abstract class AbstractCurlRequest implements CurlRequestInterface {
         $responseInfo   = curl_getinfo($stream);
 
         if (true === $this->getConfiguration()->getDebug()) {
-            $msg = (new DateTime())->format("c") . " [DEBUG] {$requestUrl}" . PHP_EOL . "HTTP response body ~BEGIN~" . PHP_EOL . print_r($responseBody, true) . PHP_EOL . "~END~" . PHP_EOL;
+            $msg = (new DateTime())->format("c") . " [DEBUG] $requestUrl" . PHP_EOL . "HTTP response body ~BEGIN~" . PHP_EOL . print_r($responseBody, true) . PHP_EOL . "~END~" . PHP_EOL;
             error_log($msg, 3, $this->getConfiguration()->getDebugFile());
         }
 
@@ -162,9 +162,9 @@ abstract class AbstractCurlRequest implements CurlRequestInterface {
         $msg = curl_errno($stream);
         if (0 === $curlHttpCode) {
             if (false === empty(curl_error($stream))) {
-                $msg = "Call to {$requestUrl} failed : " . curl_error($stream);
+                $msg = "Call to $requestUrl failed : " . curl_error($stream);
             } else {
-                $msg = "Call to {$requestUrl} failed, but for an unknown reason. This could happen if you are disconnected from the network.";
+                $msg = "Call to $requestUrl failed, but for an unknown reason. This could happen if you are disconnected from the network.";
             }
         }
 
