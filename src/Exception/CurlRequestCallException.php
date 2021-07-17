@@ -1,30 +1,30 @@
 <?php
 
-/**
+/*
  * This file is part of the curl-library package.
  *
- * (c) 2017 WEBEWEB
+ * (c) 2018 WEBEWEB
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace WBW\Library\CURL\Exception;
+namespace WBW\Library\Curl\Exception;
 
-use WBW\Library\CURL\Response\CURLResponse;
+use WBW\Library\Curl\API\CurlResponseInterface;
 
 /**
  * cURL request call exception.
  *
  * @author webeweb <https://github.com/webeweb/>
- * @package WBW\Library\CURL\Exception
+ * @package WBW\Library\Curl\Exception
  */
-class CURLRequestCallException extends AbstractCURLException {
+class CurlRequestCallException extends AbstractCurlException {
 
     /**
      * cURL response.
      *
-     * @var CURLResponse
+     * @var CurlResponseInterface|null
      */
     private $response;
 
@@ -33,9 +33,9 @@ class CURLRequestCallException extends AbstractCURLException {
      *
      * @param string $message The message.
      * @param int $code The code.
-     * @param CURLResponse $response The response.
+     * @param CurlResponseInterface $response The response.
      */
-    public function __construct($message, $code, CURLResponse $response) {
+    public function __construct(string $message, int $code, CurlResponseInterface $response) {
         parent::__construct($message, $code);
         $this->setResponse($response);
     }
@@ -43,21 +43,20 @@ class CURLRequestCallException extends AbstractCURLException {
     /**
      * Get the response.
      *
-     * @return CURLResponse Returns the response.
+     * @return CurlResponseInterface|null Returns the response.
      */
-    public function getResponse() {
+    public function getResponse(): ?CurlResponseInterface {
         return $this->response;
     }
 
     /**
      * Set the response.
      *
-     * @param CURLResponse $response The response.
-     * @return CURLRequestCallException Returns this request call exception.
+     * @param CurlResponseInterface $response The response.
+     * @return CurlRequestCallException Returns this request call exception.
      */
-    protected function setResponse(CURLResponse $response) {
+    protected function setResponse(CurlResponseInterface $response): CurlRequestCallException {
         $this->response = $response;
         return $this;
     }
-
 }
