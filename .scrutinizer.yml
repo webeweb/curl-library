@@ -1,4 +1,4 @@
-# .scutinizer.yml
+# .scrutinizer.yml
 checks:
     php:
         code_rating: true
@@ -6,7 +6,7 @@ checks:
 
 filter:
     excluded_paths:
-        - "Tests/*"
+        - "tests/*"
         - "vendor/*"
 
 tools:

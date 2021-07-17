@@ -1,39 +1,28 @@
 {
     "name": "webeweb/curl-library",
     "type": "library",
-    "description": "Integrate web API with your projects",
-    "keywords": ["webeweb", "library", "web", "API", "cURL"],
-    "homepage": "http://github.com/webeweb/curl-library",
-    "license": "LGPL-3.0-only",
+    "description": "",
+    "keywords": [
+        "curl",
+        "library",
+        "webeweb"
+    ],
+    "homepage": "https://github.com/webeweb/curl-library",
+    "license": "MIT",
     "authors": [
         {
             "name": "webeweb",
-            "homepage": "http://github.com/webeweb/"
+            "homepage": "https://github.com/webeweb"
         }
     ],
     "require": {
-        "php": "^5.6|^7.0",
+        "php": "^7.1|^8.0",
         "ext-curl": "*",
-        "webeweb/core-library": "^4.2"
+        "ext-json": "*",
+        "webeweb/traits-library": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "5.7.*"
-    },
-    "support": {
-        "issues": "http://github.com/webeweb/curl-library/issues"
-    },
-    "autoload": {
-        "psr-4": {
-            "WBW\\Library\\CURL\\": "src/"
-        },
-        "exclude-from-classmap": [
-            "/Tests/"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "WBW\\Library\\CURL\\Tests\\": "tests/"
-        }
+        "phpunit/phpunit": "^7.0|^9.0"
     },
     "config": {
         "sort-packages": true
@@ -42,5 +31,18 @@
         "branch-alias": {
             "dev-master": "1.x-dev"
         }
+    },
+    "autoload": {
+        "psr-4": {
+            "WBW\\Library\\Curl\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WBW\\Library\\Curl\\Tests\\": "tests/"
+        }
+    },
+    "support": {
+        "issues": "https://github.com/webeweb/curl-library/issues"
     }
 }
