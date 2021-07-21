@@ -1,7 +1,7 @@
 {
     "name": "webeweb/curl-library",
     "type": "library",
-    "description": "",
+    "description": "Integrate cURL with your projects.",
     "keywords": [
         "curl",
         "library",
