@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+### [1.2.2](https://github.com/webeweb/curl-library/tree/v1.2.2) (2021-08-12)
+
+- Update dependencies
+
 ### [1.2.1](https://github.com/webeweb/curl-library/tree/v1.2.1) (2021-07-21)
 
 - Fix project description
