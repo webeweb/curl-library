@@ -11,6 +11,10 @@ curl-library
 
 Integrate cURL with your projects.
 
+> IMPORTANT NOTICE: This package is no longer maintained and its classes have
+> been migrated into package "core-library" (available into version up to 8.0.0
+> and more) [Core library](https://github.com/webeweb/core-library/)
+
 If you like this package, pay me a beer (or a coffee)
 [![paypal.me](https://img.shields.io/badge/paypal.me-webeweb-0070ba.svg?style=flat-square&logo=paypal)](https://www.paypal.me/webeweb)
 
